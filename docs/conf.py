@@ -5,10 +5,10 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "Mitigating Real World DDoS Attacks"
+classname = "Multilayer DDoS Defense (onprem & cloud) (Taught in Spanish)"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
-github_repo = "https://github.com/djmistryman/f5Agility2018"
+github_repo = "https://github.com/ehc-io/ddos-183"
 
 # OPTIONAL: Google Analytics
 # googleanalytics_id = 'UA-85156643-4'
