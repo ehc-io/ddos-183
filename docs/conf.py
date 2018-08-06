@@ -10,9 +10,6 @@ classname = "Multilayer DDoS Defense (onprem & cloud) (Taught in Spanish)"
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/ehc-io/ddos-183"
 
-# OPTIONAL: Google Analytics
-# googleanalytics_id = 'UA-85156643-4'
-
 #
 # END CONFIG
 # ----------

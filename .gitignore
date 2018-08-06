@@ -16,3 +16,22 @@ bin-release/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+.DS_Store
+containthedocs-cleanbuild.sh
+containthedocs-bash.sh
+containthedocs-build.sh
+containthedocs-clean.sh
+containthedocs-convert.sh
+containthedocs-pdf.sh
+containthedocs-pdf-perclass.sh
+containthedocs-spelling.sh
+.vscode/settings.json
+docs/.DS_Store
+containthedocs-cleanbuild.sh
+containthedocs-bash.sh
+containthedocs-build.sh
+containthedocs-clean.sh
+containthedocs-convert.sh
+containthedocs-pdf.sh
+containthedocs-pdf-perclass.sh
+containthedocs-spelling.sh

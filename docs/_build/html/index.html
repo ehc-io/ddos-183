@@ -1,0 +1,1673 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lab Diagram &#8212; Multilayer DDoS Defense (onprem &amp; cloud) (Taught in Spanish)  documentation</title>
+    
+    <link rel="stylesheet" href="_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<!--
+# Copyright 2017 F5 Networks
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<link href="https://cdn.f5.com/favicon.ico" rel="icon">
+<script src="https://use.fontawesome.com/21fb8a09c3.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+  </head>
+  <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row corp-header">
+      <div class="container corp-header">
+        <div class="container corp-menu">
+          <ul>
+            <li><a href="https://f5.com" class="internalLink">F5.com</a></li>
+            <li><a href="https://support.f5.com">Support</a></li>
+            <li><a href="https://devcentral.f5.com">Community</a></li>
+            <li><a href="https://github.com/F5Networks">GitHub</a></li>
+            <li><a href="https://f5.com/about-us/careers">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pageHeader">
+      <div class="container stat">
+        <div class="col-xs-12 stat">
+          <a class="internalLink" href="https://f5.com">
+            <img class="logo" src="https://cdn.f5.com/websites/support/assets/images/logo.svg" width="50" height="44" alt="F5 Networks" title="F5 Networks" border="0">
+          </a>
+            <ul id="MainMenu" class="main-menu">
+              <li>
+                <a href="#">Products
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ProductsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Connectors</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/marathon-asp-ctlr/latest" data-link-type="Nav: Mega">F5 Marathon ASP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest" data-link-type="Nav: Mega">F5 Kubernetes BIG-IP Controller</a></li>
+                          <li><a href="http://clouddocs.f5.com/products/connectors/f5-kube-proxy/latest" data-link-type="Nav: Mega">F5 Kubernetes Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/products/connectors">See all </a></--span-->
+                      </li>
+                      <li class="divider"></li>
+                      <li class="third"><span class="a-mm-h">Application Service Proxy</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/products/asp/latest" data-link-type="Nav: Mega">F5 Application Service Proxy</a></li>
+                        </ul>
+                        <!--span class="seemore"><a href="/products/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Container Integrations
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="ContainersSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Container Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/marathon/" data-link-type="Nav: Mega">Mesos Marathon</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/kubernetes/" data-link-type="Nav: Mega">Kubernetes</a></li>
+                          <li><a href="http://clouddocs.f5.com/containers/latest/openshift/" data-link-type="Nav: Mega">RedHat OpenShift</a></li>
+                        </ul>
+                        <span class="seemore"><a data-link-type="Nav: Mega" href="http://clouddocs.f5.com/containers/latest">View details </a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Clouds
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+
+                <div class="menu-panel soft-hide" id="CloudsSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third"><span class="a-mm-h">Cloud Integrations</span>
+                        <ul>
+                          <li><a href="http://clouddocs.f5.com/cloud/openstack/" data-link-type="Nav: Mega">OpenStack</a></li>
+                        </ul>
+                        <!--span class="seemore"><a data-link-type="Nav: Mega" href="/cloud/">See all </a></span-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="#">Resources
+                  <span class="indicator"><span class="arrow-up"></span></span>
+                </a>
+                <div class="menu-panel soft-hide" id="UPCProgramSubmenu">
+                  <div class="container">
+                    <ul class="submenu col-sm-11">
+                      <li class="third">
+                        <span class="a-mm-h">Downloads</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://hub.docker.com/r/f5networks/" class="internalLink">Docker Hub</a></li>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://store.docker.com/images/f5networks" class="internalLink">Docker Store</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <span class="a-mm-h">OpenSource</span>
+                        <ul>
+                          <li><a target="_blank" data-link-type="Nav: Mega" href="https://github.com/F5Networks" class="internalLink">GitHub</a></li>
+                        </ul>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li class="third">
+                        <a href="//university.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega">F5 University</a>
+                        <ul>
+                          <li>
+                            <p>Get up to speed with free self-paced courses</p>
+                          </li>
+                        </ul>
+                        <a data-ng-href="https://devcentral.f5.com" class="a-mm-h internalLink" target="_blank" data-link-type="Nav: Mega" href="https://devcentral.f5.com">DevCentral</a>
+                        <ul>
+                          <li>
+                            <p>Join the community of 250,000+ technical peers</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /container-fluid -->
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 sidebar">
+         <h4><a href="./">Multilayer DDoS Defense (onprem & cloud) (Taught in Spanish) </a></h4>
+<div id="searchbox" style="display: none" role="search">
+  <form class="search" action="search.html" method="get">
+    <div>
+      <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
+      <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
+      <button type="submit" class="btn btn-primary btn-xs">Go</button>
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">Lab Diagram</a></li>
+<li><a class="reference internal" href="#access-and-credential-summary">Access and Credential Summary</a></li>
+<li><a class="reference internal" href="#helpful-tips-and-tricks">Helpful Tips and Tricks</a></li>
+<li><a class="reference internal" href="#introduction-to-ddos-hybrid-defender">Introduction to DDoS Hybrid Defender</a></li>
+<li><a class="reference internal" href="#accessing-the-lab-environment">Accessing the Lab Environment</a><ul>
+<li><a class="reference internal" href="#task-use-rdp-client-and-connect-to-your-windows-jumpbox-ip-and-the-win-toolsserver-ip">Task - Use RDP client and connect to your Windows Jumpbox IP and the Win-ToolsServer IP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-1-environment-review">Exercise 1– Environment Review</a><ul>
+<li><a class="reference internal" href="#lab-1-1-review-the-tools-and-understand-your-environment">Lab 1.1 – Review the tools and understand your environment</a></li>
+<li><a class="reference internal" href="#lab-1-2-launch-an-attack-and-view-traffic">Lab 1.2 – Launch an attack and view traffic</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-2-manual-mitigations">Exercise 2 – Manual Mitigations</a><ul>
+<li><a class="reference internal" href="#lab-2-1-device-level-protection-for-mitigating-attacks">Lab 2.1 – Device Level Protection for Mitigating Attacks.</a></li>
+<li><a class="reference internal" href="#lab-2-2-device-level-protections-for-mitigating-attacks">Lab 2.2 – Device Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-3-device-level-protections-for-mitigating-attacks">Lab 2.3 – Device Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-4-device-level-protections-for-mitigating-attacks">Lab 2.4 – Device Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-5-device-level-protections-for-mitigating-attacks">Lab 2.5 – Device Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-6-protected-object-level-protections-for-mitigating-attacks">Lab 2.6 – Protected Object Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-7-protected-object-level-protections-for-mitigating-attacks">Lab 2.7 – Protected Object Level Protections for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-2-8-whitelisting">Lab 2.8 – Whitelisting</a></li>
+<li><a class="reference internal" href="#lab-2-9-bot-defense-for-application-attacks">Lab 2.9 – BOT Defense for Application Attacks.</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-3-automatic-mitigations">Exercise 3 – Automatic Mitigations</a><ul>
+<li><a class="reference internal" href="#lab-3-1-auto-thresholding-for-mitigating-attacks">Lab 3.1 – Auto Thresholding for Mitigating Attacks.</a></li>
+<li><a class="reference internal" href="#lab-3-2-behavioral-l4-for-mitigating-attacks">Lab 3.2 – Behavioral L4 for Mitigating Attacks</a></li>
+<li><a class="reference internal" href="#lab-3-3-behavioral-l7-for-mitigating-attacks">Lab 3.3 – Behavioral L7 for Mitigating Attacks</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+        
+      </div>
+      <div class="col-md-offset-3 col-sm-offset-3 main">
+        <h4>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="#">Multilayer DDoS Defense (onprem &amp; cloud) (Taught in Spanish)</a>
+          <span class="right"><a href="genindex.html">Index</a></span>
+        </h4>
+        
+  <div class="section" id="lab-diagram">
+<h1>Lab Diagram<a class="headerlink" href="#lab-diagram" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="_images/image10.png"><img alt="image10" src="_images/image10.png" style="width: 5.11111in; height: 5.85169in;" /></a></p>
+</div>
+<div class="section" id="access-and-credential-summary">
+<h1>Access and Credential Summary<a class="headerlink" href="#access-and-credential-summary" title="Permalink to this headline">¶</a></h1>
+<p>You will be using the Win7 JUMPBOX to access other systems for all labs.
+You will use Putty that has been preconfigured with appropriate keys to
+access the Good Client and the Attacker systems. To run scripts, you
+will need to have root access, requiring you to <strong>‘sudo bash’</strong> before
+running attacks, baselines, etc.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="29%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">System</th>
+<th class="head">Username</th>
+<th class="head">Password</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Jumpbox</td>
+<td>external_user</td>
+<td>f5DEMOs4u</td>
+</tr>
+<tr class="row-odd"><td>Hybrid Defender – WebUI/TMUI</td>
+<td>admin</td>
+<td>f5DEMOs4u</td>
+</tr>
+<tr class="row-even"><td>Hybrid Defender – CLI</td>
+<td>root</td>
+<td>f5DEMOs4u</td>
+</tr>
+<tr class="row-odd"><td>Passive BIG-IP – WebUI/TMUI</td>
+<td>admin</td>
+<td>f5DEMOs4u</td>
+</tr>
+<tr class="row-even"><td>Good Client</td>
+<td>ubuntu</td>
+<td>Use key</td>
+</tr>
+<tr class="row-odd"><td>Attacker</td>
+<td>ubuntu</td>
+<td>Use key</td>
+</tr>
+<tr class="row-even"><td>Win-ToolsServer</td>
+<td>external_user</td>
+<td>f5DEMOs4u</td>
+</tr>
+<tr class="row-odd"><td>WebServer / Auction Server</td>
+<td>root</td>
+<td>default</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="helpful-tips-and-tricks">
+<h1>Helpful Tips and Tricks<a class="headerlink" href="#helpful-tips-and-tricks" title="Permalink to this headline">¶</a></h1>
+<p>Here are a few tips that you can use during the labs. Since the
+environment and all its components are running in a virtualized
+environment with limited shared resources you may encounter some slow
+performance.</p>
+<p>1 &gt; When using the Wireshark tool, it will capture a lot of packets.
+During DDoS attacks the tool will be overwhelmed. Its recommended that
+you start the capture and then stop it soon so that you can view the
+data captured easily.</p>
+<p>2 &gt; If you find that you are not seeing any attacks then go back and
+check if the Attack you launched is still running. If it has stopped,
+kindly relaunch it.</p>
+<p>3 &gt; If an attack is not being detected on the DHD check the value of
+your detection threshold EPS. For an attack to be detected this value
+must be lower than the attack being launched. Similarly, the rate/leak
+limit value sets the threshold for dropping the packets.</p>
+<p>4 &gt; During automatic/behavioral mitigations labs there is about 10-15
+minutes of baseline traffic learning time for the Hybrid Defender. Use
+that time to ask questions, chat with F5 Engineers and/or your peers
+about DDoS mitigations, security and what they are doing in their
+organization. Additionally, browse around the DoS Visibility tool to see
+some cool graphical reports that were generated.</p>
+<p>5 &gt; Make sure the name of the Protected Objects you create in various
+labs matches exactly to what is provided in this guide otherwise the
+scripts/commands for monitoring learning status will not work as they
+are tied to specific profile names that get created.</p>
+<p>6 &gt; You will notice that the commands “<strong>sudo bash</strong>” “<strong>cd
+f5agility</strong>” are included in each step. If you are already logged in
+and have root privileges and in the f5agility folder then kindly ignore
+those steps. If not, then use them. Basically, you need root level
+access to execute the scripts and be in the f5agility folder/directory.</p>
+<p>7 &gt; Since the WebUI/TMUI will look the same for the BIG-IP Passive and
+the Hybrid Defender device make sure that all mitigation/changes are
+being made to the Hybrid Defender only and the Passive device is used
+only for visibility.</p>
+<p>8 &gt; Don’t forget to use CTRL+C to break and stop the attacks so that you
+get better responses from various tools once you have enough data.</p>
+<p>9 &gt; When starting a new capture in WireShark always select continue
+without saving when prompted.</p>
+<p>10 &gt; Use Right click and “Open in new tab” to browse various DHD menus
+(Overview, Event Logs,etc) so you don’t have to go back and forth.</p>
+<p>11 &gt; <strong>STOP</strong> all attacks, good traffic baseline scripts after end of
+each lab before proceeding to the next lab.</p>
+<p>12 &gt; Use the PuTTY shortcuts on the desktops to access various shells.
+The PuTTY window has a title on top so that you know which shell you are
+in. If you get a Security Alert for the Servers Host Key just click YES
+to proceed to connect to the shell.</p>
+</div>
+<div class="section" id="introduction-to-ddos-hybrid-defender">
+<h1>Introduction to DDoS Hybrid Defender<a class="headerlink" href="#introduction-to-ddos-hybrid-defender" title="Permalink to this headline">¶</a></h1>
+<p>F5® DDoS Hybrid Defender™ (DHD) protects your organization against a
+wide range of DDoS attacks using a multi-pronged approach. By combining
+on-premises and cloud technologies, analytics, and advanced methods,
+DDoS Hybrid Defender is a hybrid solution that detects network and
+application layer attacks and is easy to deploy and manage.</p>
+<p>DDoS Hybrid Defender mitigates against the full spectrum of DDoS attacks
+including:</p>
+<ul class="simple">
+<li>Network capacity attacks</li>
+<li>DNS and SIP protocol volumetric attacks</li>
+<li>HTTP and HTTPS volumetric attacks</li>
+<li>HTTP and HTTPS CPU-based (heavy URL) attacks</li>
+</ul>
+<p>You can specify which objects to protect on the network, assigning the
+appropriate protections to network devices and application servers, and
+prevent attackers from exhausting network resources and impacting
+application availability.</p>
+<p><strong>Deployments:</strong></p>
+<p>The deployment you use for DDoS Hybrid Defender™ depends on the needs of
+your organization. For maximum DDoS protection, it is recommended that
+you deploy DDoS Hybrid Defender inline. However, it can also be deployed
+out of band, or in locations where symmetric data flows are not
+guaranteed.</p>
+<p>Typical locations for the placement of DDoS Hybrid Defender are at the
+edge of the network or at the edge of the data center</p>
+<p><strong>Inline deployment</strong></p>
+<p>DDoS Hybrid Defender provides maximum protection when deployed inline in
+one of two ways:</p>
+<ul class="simple">
+<li>Bridged mode with VLAN groups (This is default and we will use in our</li>
+</ul>
+<p>labs)</p>
+<ul class="simple">
+<li>Routed mode</li>
+</ul>
+<p><strong>Out of band deployment</strong></p>
+<p>You can deploy DDoS Hybrid Defender out of band in two ways:</p>
+<ul class="simple">
+<li>Set up a Layer 2 switch with span ports so that it mirrors traffic</li>
+</ul>
+<p>onto DDoS Hybrid Defender. (Our passive device is setup this way in our
+labs)</p>
+<ul class="simple">
+<li>Configure network devices so that they send NetFlow data to DDoS</li>
+</ul>
+<p>Hybrid Defender.</p>
+</div>
+<div class="section" id="accessing-the-lab-environment">
+<h1>Accessing the Lab Environment<a class="headerlink" href="#accessing-the-lab-environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-use-rdp-client-and-connect-to-your-windows-jumpbox-ip-and-the-win-toolsserver-ip">
+<h2>Task - Use RDP client and connect to your Windows Jumpbox IP and the Win-ToolsServer IP<a class="headerlink" href="#task-use-rdp-client-and-connect-to-your-windows-jumpbox-ip-and-the-win-toolsserver-ip" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Note: Use the show options to provide **</p>
+<p><strong>User name: external_user. Password: f5DEMOs4u</strong></p>
+<p><a class="reference internal" href="_images/image3.png"><img alt="image0" src="_images/image3.png" style="width: 2.99000in; height: 3.46000in;" /></a></p>
+<p>Click YES at the warning</p>
+<p><a class="reference internal" href="_images/image4.png"><img alt="image1" src="_images/image4.png" style="width: 2.92708in; height: 2.92708in;" /></a></p>
+<p><strong>All Exercises/Tasks are to be completed from the Windows Jumpbox.
+There are various shortcuts – Chrome Incognito, Putty shortcuts, on the
+Jumpbox that you will use through the exercises.</strong></p>
+</div>
+</div>
+<div class="section" id="exercise-1-environment-review">
+<h1>Exercise 1– Environment Review<a class="headerlink" href="#exercise-1-environment-review" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lab-1-1-review-the-tools-and-understand-your-environment">
+<h2>Lab 1.1 – Review the tools and understand your environment<a class="headerlink" href="#lab-1-1-review-the-tools-and-understand-your-environment" title="Permalink to this headline">¶</a></h2>
+<p>You are the security engineer for Acme corporation. Your organization
+has recently seen a lot of outages in your network and applications.
+Some of these have been due to DDoS attacks and the outages have caused
+a significant loss of revenue as well as reputational impact. You have
+made the wise decision to invest in a world class leading edge DDoS
+mitigation solution and have the F5 DHD installed in your environment.
+It’s been configured in the Layer 2 inline mode and is now available to
+you to enforce DDoS mitigations.</p>
+<p><em>Tools:</em></p>
+<p>1 &gt; In our lab we have an additional DHD available to you in a passive
+mode. It’s basically setup on SPAN ports (out of band deployment) to
+provide you visibility.</p>
+<p>2 &gt; The Win-ToolsServer is also installed to listen on SPAN port and has
+Wireshark available for visibility.</p>
+<p>Let’s get familiar on how to use these tools.</p>
+<p>Note: Not all attacks will be visible in both tools. So, use the tools
+accordingly. This is done purposefully so that you get into the habit of
+troubleshooting/fighting attacks in the real world.</p>
+<p>Use a web browser (Chrome in incognito mode) to log into the WebUI of
+the Passive DHD at <a class="reference external" href="https://10.1.1.246">https://10.1.1.246</a> or use the bookmarked shortcut.
+Accept the SSL warning and proceed to connect.</p>
+<p>Username: admin</p>
+<p>Password: f5DEMOs4u</p>
+<ul class="simple">
+<li>Click <strong>Security&gt;&gt;Event Logs&gt;&gt;DoS&gt;&gt;Network&gt;&gt;Events</strong></li>
+<li>Click <strong>Security&gt;&gt;DoS Protection&gt;&gt;DoS Overview</strong> (Tip: Right Click
+and open link in new tab/window)</li>
+<li>You will use the above two screens on the Passive DHD for visibility
+of traffic/attacks.</li>
+<li>On the Win-Tools Server launch Wireshark by using the shortcut link
+on desktop and then click on the blue shark fin on top left corner to
+start capturing data. (Tip: Use the Red Square button to stop
+captures when needed)</li>
+</ul>
+</div>
+<div class="section" id="lab-1-2-launch-an-attack-and-view-traffic">
+<h2>Lab 1.2 – Launch an attack and view traffic<a class="headerlink" href="#lab-1-2-launch-an-attack-and-view-traffic" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab1-2.sh</p>
+<ul class="simple">
+<li>View Wireshark and notice the ongoing captures.</li>
+<li>What type of traffic do you notice? As you can see these are all ICMP
+requests/responses and a lot of them. What are the IP addresses
+involved? Can you identify the attacking IP? (Tip: Did you
+review the lab network diagram?)</li>
+</ul>
+<p><a class="reference internal" href="_images/image5.png"><img alt="image2" src="_images/image5.png" style="width: 5.30972in; height: 2.39444in;" /></a></p>
+<p>In the Passive DHD Windows what do you notice? (Tip: You may need
+to click Search button/Refresh button or set Auto Refresh)</p>
+<p><a class="reference internal" href="_images/image6.png"><img alt="image3" src="_images/image6.png" style="width: 5.26736in; height: 0.69235in;" /></a></p>
+<p><a class="reference internal" href="_images/image7.png"><img alt="image4" src="_images/image7.png" style="width: 5.30972in; height: 1.70139in;" /></a></p>
+<p><strong>As you can see the visibility is better in terms of the Attack Vector
+and number of packets in/sec on the passive DHD.</strong></p>
+<p>It’s up to you on which tool you may want to use for the remaining labs.
+If you are comfortable with WireShark then use that or use the Passive
+DHD or both. As noted previously you will have to visit both tools to
+see where you can gather some visibility to fight a real-world DDoS
+attack.</p>
+<p>Use CTRL+C in the attacker shell to stop the attack.</p>
+</div>
+</div>
+<div class="section" id="exercise-2-manual-mitigations">
+<h1>Exercise 2 – Manual Mitigations<a class="headerlink" href="#exercise-2-manual-mitigations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lab-2-1-device-level-protection-for-mitigating-attacks">
+<h2>Lab 2.1 – Device Level Protection for Mitigating Attacks.<a class="headerlink" href="#lab-2-1-device-level-protection-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-1.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>On the Passive DHD identify the ongoing attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved?</li>
+<li>Let’s mitigate this attack using Device Level mitigation.</li>
+</ul>
+<p>Log into the DHD <a class="reference external" href="https://10.1.1.245">https://10.1.1.245</a> accept the SSL warning and proceed
+to connect with credentials provided.</p>
+<ul class="simple">
+<li>In the Configuration Utility, go to <strong>DoS Protection&gt;&gt;Quick
+Configuration.</strong></li>
+<li>In the <strong>Device Protection</strong> section click <strong>Device Configuration.</strong></li>
+<li>In the <strong>Flood</strong> row click the + icon, and then click <strong>ICMPv4</strong>
+flood.</li>
+<li>On the right-side of the page select the drop-down to <strong>“Mitigate”</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="66%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mitigation</td>
+<td>Fully Manual</td>
+</tr>
+<tr class="row-odd"><td>Detection Threshold EPS</td>
+<td>100</td>
+</tr>
+<tr class="row-even"><td>Detection Threshold Percent</td>
+<td>500</td>
+</tr>
+<tr class="row-odd"><td>Rate/Leak Limit</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>On the Hybrid Defender you will now see the attack is being mitigated
+(Where will you check this? Tip: It’s the same places that you are
+looking on the Passive device). You have successfully mitigated a
+network flood single vector attack. Use CTRL+C in the attacker window
+to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-2-device-level-protections-for-mitigating-attacks">
+<h2>Lab 2.2 – Device Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-2-device-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-2.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>On the Passive DHD identify the ongoing attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved?</li>
+</ul>
+<p>Mitigate this attack using Device Level mitigation steps like those that
+you did in Lab 2.1 above.</p>
+</div>
+<div class="section" id="lab-2-3-device-level-protections-for-mitigating-attacks">
+<h2>Lab 2.3 – Device Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-3-device-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-3.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved? Look closely and you will
+notice that there is a range of destination IPs that are being
+targeted and a lot of SYN, Retransmit, Out of Sequence, RST packets.
+This looks like someone is trying to run a scan against your network.
+How will you mitigate against this? They are “Sweep”ing your network.</li>
+<li>In the Configuration Utility, in the <strong>Device Protection</strong> section
+click <strong>Device Configuration.</strong></li>
+<li>In the <strong>Single Endpoint</strong> row click the + icon, and then click
+<strong>Single Endpoint Sweep</strong>.</li>
+<li>On the right-side of the page select the drop-down to <strong>“Mitigate”</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="69%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Detection Threshold EPS</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td>Rate/Leak Limit</td>
+<td>500</td>
+</tr>
+<tr class="row-even"><td>Packet Types (Selected)</td>
+<td>All IPv4</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>On the Hybrid Defender you will now see the attack is being
+mitigated. This attack is short lived so make sure you launch it
+again if it has stopped to see the mitigation. You have successfully
+mitigated a sweep flood attack. Use CTRL+C in the attacker window to
+stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-4-device-level-protections-for-mitigating-attacks">
+<h2>Lab 2.4 – Device Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-4-device-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-4.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>On the Passive DHD identify the ongoing attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved?</li>
+<li>Use the manual mitigations steps you learned in previous tasks to
+mitigate against all the attack vectors that you have identified.</li>
+<li>Use CTRL+C in the attacker window to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-5-device-level-protections-for-mitigating-attacks">
+<h2>Lab 2.5 – Device Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-5-device-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>You received a call that a lot of users are intermittently getting a
+page cannot be displayed for various applications. Your Network
+Operations Center has stated that none of their monitoring systems for
+those applications are reporting any outages. The NOC tools monitor
+application health using the application URLs like
+<a class="reference external" href="http://10.1.20.12/index.php">http://10.1.20.12/index.php</a> and so on. Your users are using the
+application using the FQDNs. You suspect that there is an ongoing DDoS
+attack and you need to identify it and mitigate against it.</p>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-5.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>Let’s look at an alternate way to see which vector is being triggered
+so that you can identify the attack. If in your environment you had
+no tools like the Wireshark or the Passive DHD device, you can still
+identify the attack. While the event logs, DoS Overview screens are
+populated only when an attack is detected based on the threshold
+values set, if the attack doesn’t trigger the detection threshold you
+will not see it in the Overview and Event Logs.</li>
+<li>In the Configuration Utility of the Hybrid Defender, go to <strong>DoS
+Protection&gt;&gt;Quick Configuration.</strong></li>
+<li>In the <strong>Device Protection</strong> section click <strong>Device Configuration.</strong></li>
+<li>In the <strong>DNS</strong> row click the <strong>+</strong> icon, and then view the Current Device
+Statistics Section. You can see that we are triggering a vector and
+registering the packets for that vector even though we have the
+default detection/mitigation configured for it.</li>
+<li>Alternately there is a CLI command also available to view the attack
+vector that is being triggered. Open a putty shell to the Hybrid
+Defender (use shortcut on desktop), login with the credentials:
+root/f5DEMOs4u and then :</li>
+</ul>
+<p># cd f5agility</p>
+<p># ./show_attackvector_stats.sh</p>
+<ul class="simple">
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved? Hint: (Wireshark) Destination
+IP, Targeted Port and Protocol used.</li>
+<li>Use the manual mitigations steps you learned in previous tasks to
+mitigate against the attack vector that you have identified.</li>
+<li>Use CTRL+C in the attacker window to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-6-protected-object-level-protections-for-mitigating-attacks">
+<h2>Lab 2.6 – Protected Object Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-6-protected-object-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>You mitigated a DNS vector attack above at device level. You have again
+received a call that a lot of users are intermittently getting a page
+cannot be displayed for various applications. Your Network Operations
+Center has stated that none of their monitoring systems for those
+applications are reporting any outages. The NOC tools monitor
+application health using the application URLs like
+<a class="reference external" href="http://10.1.20.12/index.php">http://10.1.20.12/index.php</a> and so on. Your users are using the
+application using the FQDNs. You suspect that there is an ongoing DDoS
+attack and you need to identify it and mitigate against it. You don’t
+want to implement a mitigation for a vector device wide and want to
+specifically mitigate the suspected victim server.</p>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-6.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture/stop and identify the ongoing
+attack.</li>
+<li>On the Passive DHD identify the ongoing attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved?</li>
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection &gt; Quick Configuration</strong> page.</li>
+<li>In the <strong>Protected Objects</strong> section click <strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create.</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>DNSServer</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.14</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>53</td>
+</tr>
+<tr class="row-odd"><td>Protocol</td>
+<td>UDP</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Protection Settings:
+DDoS Settings</td>
+<td>DNS</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>In the <strong>DNS</strong> row click the <strong>+</strong> icon, and then click <strong>DNS A
+Query</strong>.</li>
+<li>On the right-side of the page configure using the following
+information, and then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="66%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Detection Threshold EPS</td>
+<td>Specify: 10</td>
+</tr>
+<tr class="row-odd"><td>Detection Threshold Percent</td>
+<td>Specify: 500</td>
+</tr>
+<tr class="row-even"><td>Mitigation Threshold EPS</td>
+<td>Specify: 100</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>On the Hybrid Defender you will now see the attack is being
+detected/mitigated. You have successfully mitigated a DNS A Query
+flood. Use CTRL+C in the attacker window to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-7-protected-object-level-protections-for-mitigating-attacks">
+<h2>Lab 2.7 – Protected Object Level Protections for Mitigating Attacks<a class="headerlink" href="#lab-2-7-protected-object-level-protections-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>There has been a high-profile DDoS attack and you must provide Law
+Enforcement some details on the offending IP addresses. In your
+environment at any given time you have a few hundred thousands of IP
+addresses observed on your network. You want to identify a few offending
+IP addresses and blacklist them so that you can provide the details to
+Law Enforcement.</p>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-7.sh</p>
+<ul class="simple">
+<li>On the WireShark start a capture and identify the ongoing attack.</li>
+<li>Did you identify the attack? What type of attack is it? What Source
+IPs and Destinations IPs are involved? Make a note of the protocol of
+attack and the destination IP (target).</li>
+<li>We will build a protected object and use Bad Actor Detection and
+Black Listing.</li>
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection &gt; Quick Configuration</strong> page</li>
+<li>In the <strong>Protected Objects</strong> section click <strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create.</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>BadActorServer</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.12</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>*</td>
+</tr>
+<tr class="row-odd"><td>Protocol</td>
+<td>All</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Protection Settings:
+DDoS Settings</td>
+<td>UDP</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>In the <strong>UDP</strong> row click the <strong>+</strong> icon, and then click <strong>UDP
+Flood</strong>.</li>
+<li>On the right-side of the page configure using the following
+information, and then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="70%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Detection Threshold PPS</td>
+<td>Specify: 100</td>
+</tr>
+<tr class="row-odd"><td>Detection Threshold Percent</td>
+<td>Specify: 500</td>
+</tr>
+<tr class="row-even"><td>Mitigation Threshold EPS</td>
+<td>Specify: 200</td>
+</tr>
+<tr class="row-odd"><td>Bad Actor Detection</td>
+<td>Checked</td>
+</tr>
+<tr class="row-even"><td>Per Source IP Detection Threshold</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td>Per Source IP Mitigation Threshold</td>
+<td>30</td>
+</tr>
+<tr class="row-even"><td>Blacklist Attacking Address</td>
+<td>Checked</td>
+</tr>
+<tr class="row-odd"><td>Sustained Attack Detection Time</td>
+<td>15</td>
+</tr>
+<tr class="row-even"><td>Category Duration Time</td>
+<td>120</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>On the Hybrid Defender you will now see the attack is being
+detected/mitigated.</li>
+<li>View the offending IP addresses at <strong>Security&gt;&gt;Event Logs&gt;&gt;Network&gt;&gt;IP Intelligence</strong></li>
+<li>View the Shun list / Blacklist at <strong>Security&gt;&gt;Event Logs&gt;&gt;Network&gt;&gt;Shun</strong></li>
+<li>You have successfully identified the Bad Actors and put them in a
+Blacklist. Use CTRL+C in the attacker window to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-8-whitelisting">
+<h2>Lab 2.8 – Whitelisting<a class="headerlink" href="#lab-2-8-whitelisting" title="Permalink to this headline">¶</a></h2>
+<p>You get a call from your QA team that is running load runner scripts
+against your application server 10.1.20.12 that they are seeing packets
+being dropped. You ask them what’s the source IP address of the server
+they are running the load runner script from and they provide you with
+10.1.17.225.</p>
+<ul class="simple">
+<li>Why do you think their packets are being dropped? Hint: Check the
+blacklist (<strong>Event Logs&gt;&gt;Network&gt;&gt;Shun</strong>). They have been added to
+that list. You will now need to maintain the mitigations in place and
+only allow 10.1.17.225 to not be enforced with any DDoS mitigations
+going to 10.1.20.12.</li>
+<li>Go to the protected object 10.1.20.12 and add the IP to the
+whitelist.</li>
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-7.sh</p>
+<ul class="simple">
+<li>View the offending IP addresses at <strong>Security&gt;&gt;Event Logs&gt;&gt;Network&gt;&gt;IP Intelligence</strong> and <strong>Security&gt;&gt;Event Logs&gt;&gt;Network&gt;&gt;Shun</strong>
+and confirm that 10.1.17.225 is not being added
+to the list.</li>
+<li>You have successfully whitelisted an IP to bypass DDoS mitigations.
+Use CTRL+C in the attacker window to stop the attack.</li>
+</ul>
+</div>
+<div class="section" id="lab-2-9-bot-defense-for-application-attacks">
+<h2>Lab 2.9 – BOT Defense for Application Attacks.<a class="headerlink" href="#lab-2-9-bot-defense-for-application-attacks" title="Permalink to this headline">¶</a></h2>
+<p>HTTP DoS attacks are very popular. Some can be in form of HTTP Floods
+and some can be low and slow attacks (slow loris, slow post, slow read).
+They have been used by BOTS to bring down a site. Sometimes even though
+the BOTS don’t bring the site down they demand for you to stand up
+additional infrastructure to support the traffic they are generating
+costing your organization a significant spend when it can be mitigated
+and avoided. Your organization just published a brand-new web
+application. As soon as it was available to public you started getting
+calls that the site is sometimes unavailable and slow to respond. Based
+on the predicted traffic patterns one server was enough to handle the
+valid user load. The application team viewed the web server logs and
+noticed that there is 30% additional traffic then predicted from what
+seems like automated tools. Your IT management has asked you to provide
+a solution on what’s driving up the traffic to the server and
+potentially mitigate it. You will now learn how to manually mitigate BOT
+traffic.</p>
+<ul class="simple">
+<li>Open a PuTTY shell to the WebServer (use the shortcut on the
+desktop). Login with credentials: root/default. You will use the
+webservers log to monitor the requests coming to the server. Once
+logged into the WebServer shell:</li>
+</ul>
+<p># cd /usr/local/apache/logs</p>
+<p># tail -f access_log</p>
+<ul class="simple">
+<li>Hit the Enter key a few times so that you can see incoming requests
+clearly in the blank space.</li>
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack to simulate BOT traffic:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-9.sh</p>
+<ul class="simple">
+<li>We are just simulating 25 requests so that it’s a controlled
+environment and you can view the requests/logs.</li>
+<li>View the WebServer shell where you have the tail -f access_log
+running. Do you see the requests come in? What’s the source IP
+address of the requests?</li>
+<li>As you can see the site is available to everyone including BOTS. You
+have not set this up on the DHD and hence no BOT protection is
+applied.</li>
+<li>You will now publish the website through the DHD with needed
+protections.</li>
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection &gt;  Quick Configuration</strong> page and in the Protected Objects section click
+<strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>WebServer</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.101</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>80</td>
+</tr>
+<tr class="row-odd"><td>VLAN (Selected)</td>
+<td><strong>defaultVLAN (uncheck ANY)</strong></td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Protection Settings:
+DDoS Settings</td>
+<td>IPv4, TCP, HTTP</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>By simply creating the Protected Object and applying HTTP protections
+the BOT protections are automatically turned on. Everyone will now
+access the web application through the DHD with mitigations enforced.</li>
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack to simulate BOT traffic:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab2-9.sh</p>
+<ul>
+<li><p class="first">View the WebServer log (tail -f access_log) in the shell. You will
+not see requests come through this time from the attacker.</p>
+</li>
+<li><p class="first">View the mitigation in <strong>Security&gt;&gt;Event Logs&gt;&gt;Bot Defense&gt;&gt;Requests.</strong> All the requests from the BOT are blocked.</p>
+</li>
+<li><p class="first">Open a firefox browser on the Jumpbox and go to <a class="reference external" href="http://10.1.20.101">http://10.1.20.101</a>.
+This request will open your web application and its not blocked as
+it’s not a BOT. You will also see the request in the WebServer log
+shell.</p>
+</li>
+<li><p class="first">View the valid request from your browser in the DHD in
+<strong>Security&gt;&gt;Event Logs&gt;&gt;Bot Defense&gt;&gt;Requests.</strong> You will notice that
+valid requests are being challenged and allowed only after a valid
+response. Note: There is a default grace period of 300s when the
+mitigation is implemented so some requests are allowed as grace. This
+is Proactive BOT defense in action.</p>
+</li>
+<li><p class="first">View the BOT Defense in <strong>Security&gt;&gt;Reporting&gt;&gt;DoS&gt;&gt;Analysis</strong> and
+look at the graph under HTTP -&gt; Transaction Outcomes. <strong>Please be
+patient as these graphs are usually populated with a delay.</strong></p>
+<p>You have successfully mitigated BOT traffic to your application.
+CTRL+C in all shell windows and close them all.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="exercise-3-automatic-mitigations">
+<h1>Exercise 3 – Automatic Mitigations<a class="headerlink" href="#exercise-3-automatic-mitigations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lab-3-1-auto-thresholding-for-mitigating-attacks">
+<h2>Lab 3.1 – Auto Thresholding for Mitigating Attacks.<a class="headerlink" href="#lab-3-1-auto-thresholding-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>Your organization is about to launch a new marketing campaign and there
+is a website that will host the content. You want to make sure that the
+application is protected against DDoS attacks but are not sure what
+traffic patterns are or what values to set for detections/rate
+limits/mitigations. You will create a Protected Object for the marketing
+website and use automatic mitigations.</p>
+<ul class="simple">
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection&gt;&gt;Quick Configuration</strong> page and in the <strong>Protected Objects</strong> section click
+<strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>MarketingServer</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.15</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>*</td>
+</tr>
+<tr class="row-odd"><td>Protocol</td>
+<td>All Protocols</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Threshold Sensitivity</td>
+<td>High</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+DDoS Settings</td>
+<td>IPv4, TCP,</td>
+</tr>
+</tbody>
+</table>
+<p>Generate some good traffic to the marketing server.</p>
+<ul class="simple">
+<li>Putty SSH (use the shortcut) to open a shell to the good client
+system.</li>
+<li>Login as user: ubuntu. The session is preconfigured to authenticate
+with a certificate.</li>
+<li>Start the auto-threshold baselining script with:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./auto_baseline.sh</p>
+<p>Let this baseline traffic run for at least 10 minutes before proceeding
+to the below step.</p>
+<p>In our lab we need to roll back the device level protection so that it
+doesn’t mitigate the stress we are generating for the auto-threshold on
+the MarketingServer.</p>
+<ul class="simple">
+<li>In the Configuration Utility, in the <strong>Device Protection</strong> section
+click <strong>Device Configuration.</strong></li>
+<li>In the <strong>Flood</strong> row click the + icon, and then click <strong>ICMPv4</strong>
+flood.</li>
+<li>On the right-side of the page select the drop-down to
+<strong>“Detect-Only”</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="66%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mitigation</td>
+<td>Fully Manual</td>
+</tr>
+<tr class="row-odd"><td>Detection Threshold EPS</td>
+<td>Infinite</td>
+</tr>
+<tr class="row-even"><td>Detection Threshold Percent</td>
+<td>500</td>
+</tr>
+<tr class="row-odd"><td>Rate/Leak Limit</td>
+<td>Infinite</td>
+</tr>
+</tbody>
+</table>
+<p>Click <strong>Update</strong> at the bottom of the screen. This will allow our attack
+to pass through to the automatic mitigation profile of the
+MarketingServer that we are configuring below.</p>
+<p>In the Hybrid Defender WebUI, for the <strong>MarketingServer</strong> Protected
+Object configuration, enable auto-thresholding for the following
+vectors: <strong>ICMPv4 Flood, TCP SYN Flood, TCP Push Flood, TCP RST Flood,
+TCP SYN ACK Flood</strong> by selecting each vector and <strong>clicking the “Fully
+Automatic” Configuration radio button</strong>. When all vectors are
+configured, click <strong>Update</strong> at the bottom of the screen.</p>
+<ul>
+<li><p class="first">In the Hybrid Defender WebUI, view the Auto Threshold event log by
+navigation to <strong>Security&gt;&gt;Event Logs&gt;&gt;DoS&gt;&gt;Network&gt;&gt;Auto Threshold</strong>.</p>
+<p>The system is updating the detection thresholds. With
+auto-thresholding, the system adjusts the detection thresholds based
+on observed traffic patterns. However, mitigation rate limits are
+always dynamic based on detected system or protected object stress.
+If anomalous levels of traffic are running, but there is no stress,
+the Hybrid Defender will generate alerts but will not block traffic.
+Under stress, the rate limits are automatically created and adjusted
+dynamically.</p>
+<p>Generate some stress by launching an attack.</p>
+<p>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack:</p>
+</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab3-1.sh</p>
+<p>Keep on refreshing the Auto Threshold event log (<strong>Security&gt;&gt;Event
+Logs&gt;&gt;DoS&gt;&gt;Network&gt;&gt;Auto Threshold)</strong> and observe how the values are
+changing dynamically. Even though our attack is ICMPv4 flood the other
+vectors that are set to Fully Automatically are also being adjusted
+dynamically.</p>
+<p>View <strong>Security&gt;&gt;DoS Protection&gt;&gt;DoS Overview.</strong> Notice how automatic
+detection and mitigation is happening as stress varies.</p>
+<p>Stop all scripts and attacks using CTRL + C.</p>
+</div>
+<div class="section" id="lab-3-2-behavioral-l4-for-mitigating-attacks">
+<h2>Lab 3.2 – Behavioral L4 for Mitigating Attacks<a class="headerlink" href="#lab-3-2-behavioral-l4-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>In this lab you will use the Hybrid Defender’s network behavioral DoS
+analysis capabilities and its ability to interpret behavioral history
+and stress to automatically generate and enforce a precise, dynamic
+signature. This capability allows the granular filtering of the good
+from the bad, which is a major challenge in DoS mitigation. The bad must
+be accurately identified to mitigate the DoS attack, particularly if the
+attack changes over time. Enforcement of a very precise signature, with
+enforcement thresholds based on system or network stress signals,
+dramatically reduces false positives—increasing network and application
+availability.</p>
+<ul class="simple">
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection &gt; Quick Configuration</strong> page</li>
+<li>In the <strong>Protected Objects</strong> section click <strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create.</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>BaDoSL4Server</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.13</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>*</td>
+</tr>
+<tr class="row-odd"><td>Protocol</td>
+<td>All Protocols</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Protection Settings:
+DDoS Settings</td>
+<td>IPv4, TCP, L4 Behavioral</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>In the <strong>L4 Behavioral</strong> row click the <strong>+</strong> icon.</li>
+<li>Configure under Dynamic Signatures using the following information,
+and then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Learn Only</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>Mitigation Sensitivity</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Putty SSH (use the shortcut) to open a shell to the good client
+system.</li>
+<li>Login as user: ubuntu. The session is preconfigured to authenticate
+with a certificate.</li>
+<li>Start the behavioral L4 baselining script with:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./baseline_L4.sh</p>
+<p>You can monitor the learning progress on the DHD.</p>
+<ul class="simple">
+<li>Putty SSH (use the shortcut) to open <strong>two shells</strong> to the
+HybridDefender.</li>
+<li>Login as user: root and password provided.</li>
+<li>View the behavioral L4 baselining learning with following in
+1<sup>st</sup> shell. Notice the learning phase In Progress.</li>
+</ul>
+<p># cd f5agility</p>
+<p># ./show_baseline_L4_status.sh</p>
+<ul class="simple">
+<li>View the behavioral L4 baselining bins populating in 2nd shell.</li>
+</ul>
+<p># cd f5agility</p>
+<p># ./show_baseline_L4_bins.sh</p>
+<ul class="simple">
+<li>While the learning is happening, we need to turn off some manual
+mitigations at Device Level as they will block our attack that is
+going to create stress to trigger dynamic signatures.</li>
+<li>In the Configuration Utility, in the <strong>Device Protection</strong> section
+click <strong>Device Configuration.</strong></li>
+<li>In the <strong>Flood</strong> row click the + icon, and then change click <strong>TCP
+SYN Flood, TCP SYN Oversize</strong> and change the attack vector to
+<strong>“Detect-Only”</strong>.</li>
+<li>In the <strong>Single Endpoint</strong> row click the + icon, and then change
+click <strong>Single Endpoint Sweep</strong> and change the attack vector to
+<strong>“Detect-Only”</strong>.</li>
+</ul>
+<p>Make sure the status is changed from “In Progress” to “Finished” for the
+learning phase on the DHD before proceeding to the next steps below
+(about 15 minutes)</p>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell and launch the attack:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab3-2.sh</p>
+<p>On the Hybrid Defender you will now see the attack is being
+detected/mitigated. . Did you notice the dynamic signatures in DoS
+Overview window? Give it a couple of minutes and it will show up. You
+can view the signature <strong>Security&gt;&gt;DoS Protection&gt;&gt;Signatures</strong> under
+Dynamic Signature section. Click on the “Network” (not the signature
+hyperlink) to view details of the signature.</p>
+<p><a class="reference internal" href="_images/image8.png"><img alt="image5" src="_images/image8.png" style="width: 5.11111in; height: 1.85169in;" /></a></p>
+<p>Use CTRL+C in all shells - attacker, good traffic, DHD to stop all
+scripts.</p>
+</div>
+<div class="section" id="lab-3-3-behavioral-l7-for-mitigating-attacks">
+<h2>Lab 3.3 – Behavioral L7 for Mitigating Attacks<a class="headerlink" href="#lab-3-3-behavioral-l7-for-mitigating-attacks" title="Permalink to this headline">¶</a></h2>
+<p>In this lab you will use the Hybrid Defender’s application behavioral
+DoS analysis capabilities and its ability to interpret behavioral
+history and stress to automatically generate and enforce a precise,
+dynamic signature. This capability allows the granular filtering of the
+good from the bad, which is a major challenge in DoS mitigation. The bad
+must be accurately identified to mitigate the DoS attack, particularly
+if the attack changes over time. Enforcement of a very precise
+signature, with enforcement thresholds based on system, network or
+application stress signals, dramatically reduces false
+positives—increasing network and application availability.</p>
+<ul class="simple">
+<li>In the BIG-IP Configuration Utility, open the <strong>DoS Protection &gt;
+Quick Configuration</strong> page and in the</li>
+<li>In the <strong>Protected Objects</strong> section click <strong>Create</strong>.</li>
+<li>Configure a protected object using the following information, and
+then click <strong>Create.</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>BaDoSL7Server</td>
+</tr>
+<tr class="row-odd"><td>IP Address</td>
+<td>10.1.20.20</td>
+</tr>
+<tr class="row-even"><td>Port</td>
+<td>80</td>
+</tr>
+<tr class="row-odd"><td>Protocol</td>
+<td>TCP</td>
+</tr>
+<tr class="row-even"><td>Protection Settings:
+Action</td>
+<td>Log and Mitigate</td>
+</tr>
+<tr class="row-odd"><td>Protection Settings:
+DDoS Settings</td>
+<td>IPv4, TCP, HTTP</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>In the <strong>HTTP</strong> row click the <strong>+</strong> icon.</li>
+<li>Click <strong>Behavioral</strong> and in the right pane configure using the
+following information.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mitigation</td>
+<td>Standard Protection</td>
+</tr>
+<tr class="row-odd"><td>Request Signature Detection</td>
+<td>Checked</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Click <strong>Proactive Bot Defense</strong> and in the right pane configure using
+the following information.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="61%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mitigate Action</td>
+<td>Disabled</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Click <strong>DOS Tool</strong> and in the right pane configure using the
+following information, and then click <strong>Create</strong>.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="66%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mitigate Action</td>
+<td>Report</td>
+</tr>
+</tbody>
+</table>
+<p>Putty SSH (use the shortcut) to open <strong>two shells</strong> to the good client
+system.</p>
+<ul class="simple">
+<li>Login as user: ubuntu. The session is preconfigured to authenticate
+with a key.</li>
+<li>Start the behavioral L7 baselining script in both shells with:</li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./baseline_L7.sh</p>
+<p>Select 1) Increasing in first shell and 2) Alternate in the second
+shell.</p>
+<p>You will see a few 0000 statuses as there are certain bad requests in
+the script. But majority of status is 200s.</p>
+<p>You can monitor the learning progress on the DHD.</p>
+<ul class="simple">
+<li>Putty SSH (use the shortcut) to open a shell to the HybridDefender.</li>
+<li>Login as user: root and password provided.</li>
+<li>View the behavioral L7 baseline learning with following. Notice the
+learning phase In Progress.</li>
+</ul>
+<p># cd f5agility</p>
+<p># ./show_L7BaDoS_learning.sh</p>
+<ul>
+<li><p class="first">The output is like this:</p>
+<p><em>vs./Common/BaDoSL7Server+/Common/BaDoSL7Server.info.learning:[**62.0614*</em>,
+6, 7061, 100] *</p>
+</li>
+<li><p class="first">It will be 0.00 for a while (in above example output 62.0614 is the
+average approximation to the learned baselines)</p>
+</li>
+<li><p class="first">For this demo, wait until you have reached at least 80.00-90.00
+(<strong>the first number in the output</strong>). This should happen after about
+8-10 minutes. Once you see 80.00 and above you can move to next
+steps.</p>
+</li>
+<li><p class="first">The longer it runs, the better it is, because the system is
+self-adjusting permanently.</p>
+</li>
+</ul>
+<p>Make sure the status is “80.00-90.00” range (the first number in the
+output) for the learning phase on the DHD before proceeding to the next
+steps (about 10 minutes). Once you see 80.00 and above you can move on.</p>
+<ul class="simple">
+<li>Hit CTRL+C in the DHD Shell and stop this learning status. We will
+now use this Shell window to see the dynamic signature that is
+generated.</li>
+<li>Keep this shell window easily viewable. Behavioral L7 mitigation is
+very dynamic and hence based on the environmental conditions,
+underlying infrastructure for your lab instance some of you may see
+the Signature quickly appear and vanish, some may not see it and some
+will see it longer. Basically, the Signature mitigation is triggered
+and then by default the offending IP is added to Bad Actor/Shun list
+and the signature disappears if the system identifies it’s no longer
+needed for mitigation.</li>
+</ul>
+<p># ./show_dos_signature.sh</p>
+<ul class="simple">
+<li>Access the Attacker System CLI/shell (use putty shortcut on Jumpbox)
+and launch the attack. Open <strong>TWO</strong> shells<strong>.</strong> In first
+shell<strong>:</strong></li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab3-3.sh</p>
+<p>Choose 1) Attack Start – Similarity.</p>
+<ul class="simple">
+<li>In Second shell<strong>:</strong></li>
+</ul>
+<p># sudo bash</p>
+<p># cd f5agility</p>
+<p># ./lab3-3.sh</p>
+<p>Choose 2) Attack Start – Score.</p>
+<p>As soon as the attack is started you will see that your baseline traffic
+status of 200s in the good client is now suddenly going to 0000. Wait
+for a couple of minutes till it returns to a lot more 200s. (Keep the
+eye on the DHD Shell for Signature)</p>
+<p>On the Hybrid Defender Shell you will now see the attack is being
+mitigated and a signature may appear (see note above).</p>
+<p>View Bot Defense logs. <strong>Security&gt;&gt;Event Logs&gt;&gt;Bot Defense&gt;&gt;Requests</strong></p>
+<p>View Bad Actor Log/Blacklist and notice the offending IP is added to the
+list. <strong>Security&gt;&gt;Event Logs&gt;&gt;Network&gt;&gt;Shun</strong></p>
+<p>Use CTRL+C in all open shell windows (Attacker, Good Client, Hybrid
+Defender) to STOP all traffic and scripts. Close out all windows</p>
+<blockquote>
+<div><strong>END OF LABS!</strong></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">F5 Networks, Inc. | f5.com</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>US Headquarters: 401 Elliott Ave W, Seattle, WA 98119 | 888-882-4447 // Americas: <a class="reference external" href="mailto:info&#37;&#52;&#48;f5&#46;com">info<span>&#64;</span>f5<span>&#46;</span>com</a> // Asia-Pacific: <a class="reference external" href="mailto:apacinfo&#37;&#52;&#48;f5&#46;com">apacinfo<span>&#64;</span>f5<span>&#46;</span>com</a> // Europe/Middle East/Africa: <a class="reference external" href="mailto:emeainfo&#37;&#52;&#48;f5&#46;com">emeainfo<span>&#64;</span>f5<span>&#46;</span>com</a> // Japan: <a class="reference external" href="mailto:f5j-info&#37;&#52;&#48;f5&#46;com">f5j-info<span>&#64;</span>f5<span>&#46;</span>com</a>
+©2017 F5 Networks, Inc. All rights reserved. F5, F5 Networks, and the F5 logo are trademarks of F5 Networks, Inc. in the U.S. and in certain other countries. Other F5 trademarks are identified at f5.com. Any other products, services, or company names referenced herein may be trademarks of their respective owners with no endorsement or affiliation, express or implied, claimed by F5. These training materials and documentation are F5&nbsp;Confidential Information and are subject to the F5 Networks Reseller Agreement. You may not share these training materials and documentation with any third party without the express written permission of F5.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+        
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="content-fluid pre-footer">
+            <div class="blocks-container">
+              <div class="block">
+                <h3>Support Programs</h3>
+                <p>Regionally located support centers enable F5 to provide support in a number of languages through native-speaking support engineers.</p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/support/support-offerings" target="_blank" href="https://f5.com/support/support-offerings">See more
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Contact Support</h3>
+                <p>
+                  North America: 1-888-882-7535<br>
+                  Outside North America: 800-11-275-435
+                </p>
+                <a class="btn internalLink" data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" href="https://f5.com/about-us/contact#regional-support">Local Support Numbers
+                  <span class="icon-1x-right icon-new-window" data-icon="new-window">​</span>
+                </a>
+              </div>
+              <div class="block">
+                <h3>Feedback and Help</h3>
+                <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+                <a class="btn" data-ui-sref="siteFeedback" target="_blank" href="https://support.f5.com/csp/siteFeedback">Leave feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="footer">
+            <div class="container">
+              <div class="col-sm-3 col-md-2">
+                <h4>About F5</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/about-us/contact" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact" class="internalLink">Contact F5</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/about-us/careers" target="_blank" data-link-type="footer" href="https://f5.com/about-us/careers" class="internalLink">Careers</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3 col-md-2">
+                <h4>Education</h4>
+                <ul>
+                  <li><a data-ng-href="https://f5.com/education/training" target="_blank" data-link-type="footer" href="https://f5.com/education/training" class="internalLink">Training</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/certification" target="_blank" data-link-type="footer" href="https://f5.com/education/certification" class="internalLink">Certification</a>
+                  </li>
+                  <li><a data-ng-href="https://f5.com/education/training/free-courses" target="_blank" data-link-type="footer" href="https://f5.com/education/training/free-courses" class="internalLink">Free Online Training</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-sm-3 col-md-2">
+                <h4>F5 sites</h4>
+                <ul>
+                <li><a data-ng-href="https://f5.com" target="_blank" data-link-type="footer" href="https://f5.com" class="internalLink">F5.com</a>
+                </li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" data-link-type="footer" href="https://devcentral.f5.com" class="internalLink">Community</a>
+                </li>
+                <li><a data-ng-href="https://partners.f5.com" target="_blank" data-link-type="footer" href="https://partners.f5.com" class="internalLink">Partners</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2">
+            <h4>Support Tasks</h4>
+            <ul>
+                <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                </li>
+                <li><a data-ng-href="https://f5.com/about-us/contact#regional-support" target="_blank" data-link-type="footer" href="https://f5.com/about-us/contact#regional-support" class="internalLink">Contact Support</a>
+                </li>
+                <li><a data-ui-sref="siteFeedback" target="_blank" data-link-type="footer" href="https://support.f5.com/csp/siteFeedback">Leave feedback [+]</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-md-3 right">
+            <h4>Connect with us</h4>
+            <ul class="social_icons">
+                <li><a href="//twitter.com/f5networks" target="_blank" data-name="twitter" data-type="" data-prefix="social" data-utf="E032" title="Twitter" class="externalLink"><i class="icon-1x icon-twitter icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.linkedin.com/companies/f5-networks" target="_blank" class="linkedin externalLink" title="LinkedIn"><i class="icon-1x icon-linkedin icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.facebook.com/f5networksinc" target="_blank" class="facebook externalLink" title="Facebook"><i class="icon-1x icon-facebook icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a href="//www.youtube.com/f5networksinc" target="_blank" class="youtube externalLink" title="YouTube"><i class="icon-1x icon-youtube icon-inverse-circle" data-link-type="footer"></i></a></li>
+                <li><a data-ng-href="https://devcentral.f5.com" target="_blank" class="devcentral internalLink" title="DevCentral" href="https://devcentral.f5.com"><i class="icon-1x icon-dc-pos icon-inverse-circle" data-link-type="footer"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="content-fluid left">
+            <div class="col-xs-12">
+                <p>
+                    © Copyright <span class="ng-binding">2017</span> by F5 Networks, Inc. |
+                    <a data-ng-href="https://f5.com/about-us/policies" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies" class="internalLink">Policies</a> |
+                    <a data-ng-href="https://f5.com/about-us/policies/trademarks" target="_blank" data-link-type="footer" href="https://f5.com/about-us/policies/trademarks" class="internalLink">Trademarks</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</footer>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  </body>
+</html>
