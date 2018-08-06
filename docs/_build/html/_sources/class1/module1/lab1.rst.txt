@@ -1,12 +1,10 @@
-Lab – Download the |bip| |ve| Image
------------------------------------
+Lab – Disable Device-Level DHD DoS Protection
+---------------------------------------------
 
 This lab will teach you how to disable Hybrid Defender device-level protection and check the expected results.
 
 Task – Open a Web Browser
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. TODO:: Needs task description
 
 In this task you will open a web browser and navigate to the |f5| Downloads
 site.
@@ -25,8 +23,6 @@ Follow these steps to complete this task:
 
 Task – Download the Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. TODO:: Needs task description
 
 In this task we will download the |f5| |bip| |ve| image to your system
 
