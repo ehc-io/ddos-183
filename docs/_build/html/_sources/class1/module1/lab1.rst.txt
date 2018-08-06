@@ -1,9 +1,7 @@
 Lab – Download the |bip| |ve| Image
 -----------------------------------
 
-.. TODO:: Needs lab description
-
-This lab will teach you how to download the |bip| |ve| image to your system.
+This lab will teach you how to disable Hybrid Defender device-level protection and check the expected results.
 
 Task – Open a Web Browser
 ~~~~~~~~~~~~~~~~~~~~~~~~~

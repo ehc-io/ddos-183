@@ -1,7 +1,5 @@
-Lab – Install a |bip| |ve| image on a Hypervisor
+Lab – Re-Enable Device-Level DHD DoS Protection
 ------------------------------------------------
-
-.. TODO:: Needs lab description
 
 In the previous lab we learned how to download the |bip| |ve| image.  Now, we
 can install the image onto a hypervisor.
