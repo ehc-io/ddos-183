@@ -1,15 +1,11 @@
 Class - |classname|
-===================
+=====================
 
-This module will include exercises demonstrating how to do basic DDOS Protection using the F5 DDOS Hybrid Denfender.
+This module demonstrates how to do basic DOS Protection using the F5 DDOS Hybrid Denfender.
 This class covers the following topics:
 
-- Understanding Device-Level Protection
-- Configure Protected Object-Level for IPv4 Flood Protection
-- Configure Protected Object-Level for UDP Flood Protection
-- Configure Protected Object-Based Sweep Protection
-- Configure Protected Object-Level TCP PSH Attack Protection
-- Check out the DoS Visibility Page 
+- Configuring Protections for Known DoS Vectors
+- Configuring Behavioral DoS Protection
 
 Expected time to complete: **1 hour**
 

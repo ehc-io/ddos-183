@@ -1,4 +1,4 @@
-Lab – Understanding Device-Level Protection
+Lab – Configuring Device-Level Protection
 ---------------------------------------------
 
 This lab will teach you how Hybrid Defender device-level protection works.

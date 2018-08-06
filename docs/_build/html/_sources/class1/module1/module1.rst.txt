@@ -1,5 +1,5 @@
-Module – Basic DDOS Protection Defense using F5 DHD
-===================================================
+Module – Configuring Protections for Known DoS Vectors
+========================================================
 
 In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
 
