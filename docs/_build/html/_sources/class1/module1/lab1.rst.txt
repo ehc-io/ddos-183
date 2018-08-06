@@ -1,7 +1,7 @@
-Lab – Disable Device-Level DHD DoS Protection
+Lab – Understanding Device-Level Protection
 ---------------------------------------------
 
-This lab will teach you how to disable Hybrid Defender device-level protection and check the expected results.
+This lab will teach you how Hybrid Defender device-level protection works.
 
 Task – Open a Web Browser
 ~~~~~~~~~~~~~~~~~~~~~~~~~

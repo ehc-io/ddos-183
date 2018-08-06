@@ -1,7 +1,8 @@
-Lab - Configure Protected Object-Level for IPv4 Flood Protection
+Lab - Configure Protected Object-Level for UDP Flood Protection
 ---------------------------------------------------------------
 
-Task – Upload the image to your Hypervisor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the previous lab we learned how to download the |bip| |ve| image.  Now, we
+can install the image onto a hypervisor.
 
-.. TODO:: Needs task description
+Task – Upload the image to your Hypervisor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
