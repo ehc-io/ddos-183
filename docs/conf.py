@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "Multilayer DDoS Defense (onprem & cloud) (Spanish)"
+classname = "Multilayer DDoS Defense - Spanish"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/ehc-io/ddos-183"

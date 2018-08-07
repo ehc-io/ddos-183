@@ -1,5 +1,5 @@
-Getting Started
----------------
+Introduction
+--------------
 
 Please follow the instructions provided by the instructor to start your
 lab and access your jump host.
@@ -83,50 +83,3 @@ You can deploy DDoS Hybrid Defender out of band in two ways:
 
 • Set up a Layer 2 switch with span ports so that it mirrors traffic onto DHD  
 • Configure network devices so that they send NetFlow data to DDoS Hybrid Defender
-
-Lab Diagram
-===========
-
-The following components have been included in your lab environment:
-
-- 1 x F5 BIG-IP DHD (v13.1.0)
-- 1 x Linux kali 
-- 3 x Linux Ubuntu (xubuntu 14.04) [Jumphost, LAMP server, goodlclient]
-
-Lab Components
-^^^^^^^^^^^^^^
-The following table lists VLANS, IP Addresses and Credentials for all
-components:
-
-.. list-table::
-    :widths: 20 40 40
-    :header-rows: 1
-    :stub-columns: 1
-
-    * - **Component**
-      - **VLAN/IP Address(es)**
-      - **Credentials**
-    * - Jumphost
-      - - **Management:** 10.1.0.51
-        - **internal:** 10.1.20.51
-      - ``f5student``/``f5student``
-
-    * - kali[Hacker]
-      - - **Management:** 10.1.0.52
-        - **internal:** 10.1.20.52
-      - ``f5student``/``f5student``
-
-    * - goodclient
-      - - **Management:** 10.1.0.53
-        - **internal:** 10.1.20.53
-      - ``f5student``/``f5student``
-  
-    * - Lamp[victim]
-      - - **Management:** 10.1.0.252
-        - **internal:** 10.1.20.252
-      - ``f5``/``f5student``
-  
-    * - F5-DHD[defense]
-      - - **Management:** 10.1.0.244
-        - **internal:** 10.1.20.244
-      - ``root``/``root``

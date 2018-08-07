@@ -1,48 +1,43 @@
-Lab – Install a |f5| |bip| Appliance
-------------------------------------
+Lab – Configuring SSL keys
+---------------------------------------------
 
-.. TODO:: Needs lab description
+This lab will teach you how Hybrid Defender device-level protection works.
 
-In this lab we will unpack and install the |bip| Appliance into a rack in your
-datacenter.
+Task – Open a Web Browser
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Task – Unpack the |bip| Appliance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this task you will open a web browser and navigate to the |f5| Downloads
+site.
 
-.. TODO:: Needs task description
-
-In this task you will remove the |bip| Appliance from it's packaging.
-
-Follow these steps to complete this task:
-
-#. Open the box with an extremely sharp knife or cutter
-
-   .. DANGER:: Knives are sharp and can cut you.  Please be careful.
-
-      |knivessharp|
-
-#. Carefully remove the |bip| from it's packaging
-#. Set it down on a stable surface
-
-Task – Install the |bip| Appliance in a Datacenter Rack
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. TODO:: Needs task description
-
-In this task you will install the |bip| Appliance into a Rack.  You will need
-the following tools:
-
-- Phillips Screwdriver
-- Hammer
-- Crowbar
-
-.. CAUTION:: Appliances can be heavy.  Please follow all applicable safety
-   guidelines.
+.. NOTE:: An account is required to download software.  You can create one at
+   https://login.f5.com/resource/registerEmail.jsp
 
 Follow these steps to complete this task:
 
-#. Install the rackmount rails onto the appliance using the included hardware
-#. Lift the appliance into place
-#. Complete installation by using your tools to secure the appliance.
+#. Open your web browser
+#. Navigate to https://downloads.f5.com
+#. Login with your username and password.
+#. After logging in you should see the following window:
 
-.. |knivessharp| image:: http://theinkkitchen.com/wp-content/uploads/2014/08/Screenshot-2014-07-30-12.22.44.png
+   |image1|
+
+Task – Download the Image
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this task we will download the |f5| |bip| |ve| image to your system
+
+Follow these steps to complete this task:
+
+#. Click the 'Find a Download' button.
+
+   .. image:: /_static/image002.png
+
+#. Click the link that contains the |bip| TMOS software version you would like
+   to download.
+
+   .. IMPORTANT:: Be sure to click a link that has "\ |ve|" in the name
+
+#. Find the image appropriate for your hypervisor
+#. Download the image and save it to you local system
+
+.. |image1| image:: /_static/image001.png
