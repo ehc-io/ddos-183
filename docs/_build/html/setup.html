@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Lab Setup &#8212; Multilayer DDoS Defense - Spanish  documentation</title>
+    <title>2. Lab Setup &#8212; Multilayer DDoS Defense (on prem &amp; cloud)  documentation</title>
     
     <link rel="stylesheet" href="_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Class - Multilayer DDoS Defense - Spanish" href="class1/class1.html" />
+    <link rel="next" title="3. Class - Multilayer DDoS Defense (on prem &amp; cloud)" href="class1/class1.html" />
     <link rel="prev" title="1. Introduction" href="intro.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="./">Multilayer DDoS Defense - Spanish </a></h4>
+         <h4><a href="./">Multilayer DDoS Defense (on prem & cloud) </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="search.html" method="get">
     <div>
@@ -214,7 +214,7 @@
   <ul>
 <li><a class="reference internal" href="#">2. Lab Setup</a><ul>
 <li><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
-<li><a class="reference internal" href="#lab-diagram">2.2. Lab Diagram</a></li>
+<li><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
 </ul>
 </li>
 </ul>
@@ -225,10 +225,10 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Lab Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-diagram">2.2. Lab Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. Class - Multilayer DDoS Defense - Spanish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. Class - Multilayer DDoS Defense (on prem &amp; cloud)</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -236,12 +236,12 @@
                         title="previous chapter">1. Introduction</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="class1/class1.html"
-                        title="next chapter">3. Class - Multilayer DDoS Defense - Spanish</a></p>
+                        title="next chapter">3. Class - Multilayer DDoS Defense (on prem &amp; cloud)</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Defense - Spanish</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Defense (on prem &amp; cloud)</a>
           <span class="right"><a href="genindex.html">Index</a></span>
         </h4>
         
@@ -249,16 +249,22 @@
 <h1>2. Lab Setup<a class="headerlink" href="#lab-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="getting-started">
 <h2>2.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><div class="admonition hint">
+<p><strong>Accessing the lab environment.</strong></p>
+<ol class="arabic">
+<li><p class="first">Open a browser and go to <a class="reference external" href="http://training.f5agility.com">http://training.f5agility.com</a>.  Enter your Class# and Student# as provided by your instructor.</p>
+</li>
+<li><p class="first">Look for the xubuntu-jumpbox-vxx.  You will use the xubuntu jumpbox for all the labs. (see below)</p>
+<div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">If you encounter syntax errors you can troubleshoot issues and/or the use of an online editor such as <a class="reference external" href="http://www.yamllint.com/">http://www.yamllint.com/</a></p>
+<p class="last">You will be using the Win7 JUMPBOX to access other systems for all labs. You will use Putty that has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. To run scripts, you will need to have root access, requiring you to ‘sudo bash’ before running attacks, baselines, etc</p>
 </div>
 <img alt="_images/dashboard_student.png" src="_images/dashboard_student.png" />
-</div></blockquote>
+</li>
+</ol>
 </div>
-<div class="section" id="lab-diagram">
-<h2>2.2. Lab Diagram<a class="headerlink" href="#lab-diagram" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lab-components">
+<h2>2.2. Lab Components<a class="headerlink" href="#lab-components" title="Permalink to this headline">¶</a></h2>
+<p><strong>Lab Diagram</strong></p>
 <blockquote>
 <div><img alt="_images/diagram.png" src="_images/diagram.png" />
 </div></blockquote>
@@ -336,7 +342,7 @@ components:</p>
 		        <a href="intro.html" title="1. Introduction" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="class1/class1.html" title="3. Class - Multilayer DDoS Defense - Spanish" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="class1/class1.html" title="3. Class - Multilayer DDoS Defense (on prem &amp; cloud)" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

@@ -1,17 +1,7 @@
-Introduction
---------------
+Introduction to Multi layer DDOS Defense
+---------------------------------------------
 
-Please follow the instructions provided by the instructor to start your
-lab and access your jump host.
 
-.. NOTE::
-	 All work for this lab will be performed exclusively from the Linux
-	 jumphost. No installation or interaction with your local system is
-	 required.
-
-Multi layer DDOS Protection
-===========================
-   
 **THE PROBLEM**
 
 On-premises DDoS defenses can be very effective for blocking most DDoS 
@@ -21,6 +11,7 @@ On the other hand, while Cloud-based DDoS protection (On-Demand) works well
 for volumetric attacks, it struggles with much slower mitigation response, 
 increased latency, higher operational complexity and the inability 
 to handle HTTPS encrypted attacks due to its asymmetric nature.
+
 
 **THE SOLUTION**
 
@@ -36,8 +27,27 @@ protection while large volumetric attacks are handled by F5’s Silverline
 DDoS Protection cloud service which, working On-Demand, detects and 
 mitigates DDoS attacks in real time.
 
-DDoS Hybrid Defender
-====================
+
+F5 Silverline
+=============
+
+F5 Silverline is a cloud-based, fully managed security service for WAF and DDoS 
+protection. F5 Silverline provides Enterprise customers proven security technologies
+coupled with world-class security professionals. F5’s security experts are an 
+extension to the customer’s staff and allow them to defeat the largest and most 
+complex attacks.
+
+The primary customer benefits to F5 Silverline include:
+
+• Minimize the risk of data breach and downtime  
+• Enhance security visibility to their application state  
+• Reduced operational expense and capital investment required for application security  
+• Ensure timely detection and fast restoration of services in the event of an attack  
+
+
+
+F5 DDoS Hybrid Defender
+=======================
 
 F5® DDoS Hybrid Defender™ (DHD) protects your organization against a
 wide range of DDoS attacks using a multi-pronged approach. By combining
@@ -48,10 +58,10 @@ application layer attacks and is easy to deploy and manage.
 DDoS Hybrid Defender mitigates against the full spectrum of DDoS attacks
 including:
 
-• Network capacity attacks
-• DNS and SIP protocol volumetric attacks
-• HTTP and HTTPS volumetric attacks
-• HTTP and HTTPS CPU-based (heavy URL) attacks
+• Network capacity attacks  
+• DNS and SIP protocol volumetric attacks  
+• HTTP and HTTPS volumetric attacks  
+• HTTP and HTTPS CPU-based (heavy URL) attacks  
 
 You can specify which objects to protect on the network, assigning the
 appropriate protections to network devices and application servers, and

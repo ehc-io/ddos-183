@@ -4,14 +4,22 @@ Lab Setup
 Getting Started
 ================
 
+**Accessing the lab environment.**
+
+#. Open a browser and go to http://training.f5agility.com.  Enter your Class# and Student# as provided by your instructor.
+
+#. Look for the xubuntu-jumpbox-vxx.  You will use the xubuntu jumpbox for all the labs. (see below)
+
    .. HINT::
 
-      If you encounter syntax errors you can troubleshoot issues and/or the use of an online editor such as http://www.yamllint.com/
+      You will be using the Win7 JUMPBOX to access other systems for all labs. You will use Putty that has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. To run scripts, you will need to have root access, requiring you to ‘sudo bash’ before running attacks, baselines, etc
       
    .. image:: /_static/dashboard_student.png
 
-Lab Diagram
-===========
+Lab Components
+===============
+
+**Lab Diagram**
 
    .. image:: /_static/diagram.png
 
