@@ -35,3 +35,5 @@ containthedocs-convert.sh
 containthedocs-pdf.sh
 containthedocs-pdf-perclass.sh
 containthedocs-spelling.sh
+notes.txt
+.gitignore
