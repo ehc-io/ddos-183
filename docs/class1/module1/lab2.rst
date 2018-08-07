@@ -75,3 +75,21 @@ Follow these steps to complete this task:
 #. After logging in you should see the following window:
 
    |image3|
+
+Task – Check out the DoS Visibility Page 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this task you will open a web browser and navigate to the |f5| Downloads
+site.
+
+.. NOTE:: An account is required to download software.  You can create one at
+   https://login.f5.com/resource/registerEmail.jsp
+
+Follow these steps to complete this task:
+
+#. Open your web browser
+#. Navigate to https://downloads.f5.com
+#. Login with your username and password.
+#. After logging in you should see the following window:
+
+   |image3|
