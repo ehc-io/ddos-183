@@ -1,5 +1,5 @@
 Lab Setup
-----------
+---------
 
 Getting Started
 ================
