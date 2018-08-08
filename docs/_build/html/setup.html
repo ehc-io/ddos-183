@@ -215,7 +215,8 @@
 <li><a class="reference internal" href="#">2. Lab Setup</a><ul>
 <li><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
 <li><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
-<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
+<li><a class="reference internal" href="#networking-info">2.3. Networking Info</a></li>
+<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 </ul>
@@ -227,7 +228,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Lab Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#networking-info">2.3. Networking Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. On prem Mitigation Exercises</a></li>
@@ -255,30 +257,37 @@
 <ol class="arabic">
 <li><p class="first">Open a browser and go to <a class="reference external" href="http://training.f5agility.com">http://training.f5agility.com</a>.  Enter your Class# and Student# as provided by your instructor.</p>
 </li>
-<li><p class="first">Look for the xubuntu-jumpbox.  You will use the xubuntu jumpbox for all the labs. (see below)</p>
+<li><p class="first">Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">You will be using the Ubuntu xjumpbox to access other systems for all labs. You will use Putty that has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. To run scripts, you will need to have root access, requiring you to ‘sudo bash’ before running attacks, baselines, etc</p>
+<p class="last">You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt which has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. A few scripts require root access. Don’t forget to ‘sudo bash’ before running attacks, baselines, etc.</p>
 </div>
-<img alt="_images/dashboard_student.png" src="_images/dashboard_student.png" />
 </li>
 </ol>
+<blockquote>
+<div><img alt="dashboard" src="_images/dashboard_student.png" /></div></blockquote>
 </div>
 <div class="section" id="lab-components">
 <h2>2.2. Lab Components<a class="headerlink" href="#lab-components" title="Permalink to this headline">¶</a></h2>
 <p><strong>Lab Diagram</strong></p>
 <blockquote>
-<div><img alt="_images/diagram.png" src="_images/diagram.png" />
-</div></blockquote>
-<p>The following components have been included in your lab environment:</p>
+<div><img alt="topology" src="_images/lab_network_topology.png" /></div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they’re in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.</p>
+</div>
+<p>The lab environment provides the following resources:</p>
 <ul class="simple">
 <li>1 x F5 BIG-IP DHD (v13.1.2)</li>
-<li>1 x Linux kali</li>
-<li>3 x Linux Ubuntu 14.04.5 LTS [Jumphost, LAMP server, goodlclient]</li>
+<li>1 x Linux Kali <strong>[Attacker]</strong></li>
+<li>3 x Linux Ubuntu 14.04.5 LTS [<strong>Jumphost</strong>, <strong>LAMP server</strong>, <strong>goodclient</strong>]</li>
 </ul>
-<p>The following table lists VLANS, IP Addresses and Credentials for all
-components:</p>
-<table border="1" class="colwidths-given docutils">
+</div>
+<div class="section" id="networking-info">
+<h2>2.3. Networking Info<a class="headerlink" href="#networking-info" title="Permalink to this headline">¶</a></h2>
+<p>IP addressing, Out of Band management, and credentials for all components:</p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="40%" />
@@ -299,7 +308,7 @@ components:</p>
 </td>
 <td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
 </tr>
-<tr class="row-odd"><th class="stub">kali[Hacker]</th>
+<tr class="row-odd"><th class="stub">kali</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.52</li>
 <li><strong>internal:</strong> 10.1.20.52</li>
@@ -315,7 +324,7 @@ components:</p>
 </td>
 <td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
 </tr>
-<tr class="row-odd"><th class="stub">Lamp[victim]</th>
+<tr class="row-odd"><th class="stub">Lamp</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.252</li>
 <li><strong>internal:</strong> 10.1.20.252</li>
@@ -323,7 +332,7 @@ components:</p>
 </td>
 <td><code class="docutils literal"><span class="pre">f5</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
 </tr>
-<tr class="row-even"><th class="stub">F5-DHD[defense]</th>
+<tr class="row-even"><th class="stub">F5-DHD</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.244</li>
 <li><strong>internal:</strong> 10.1.20.244</li>
@@ -333,30 +342,47 @@ components:</p>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 </div>
 <div class="section" id="register-dhd-device-with-silverline">
-<h2>2.3. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
+<h2>2.4. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
 <p>For Silverline signaling we will be leveraging both the DHD built-in signaling,
 as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
 <ol class="arabic">
-<li><p class="first">In System-&gt;Platform change the hostname to &lt;yourf5emailprefix&gt;.f5demo.com. For example <a class="reference external" href="mailto:j&#46;smith&#37;&#52;&#48;f5&#46;com">j<span>&#46;</span>smith<span>&#64;</span>f5<span>&#46;</span>com</a> would register as j.smith.f5demo.com. If you have more than one DHD environment registered to Silverline, add a number to make each DHD unique.</p>
+<li><p class="first">Go to System-&gt;Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal.</p>
 <blockquote>
-<div><p><strong>dhd-[student#].latam.f5demo.com</strong></p>
+<div><p><strong>dhd-77.latam.f5demo.com</strong></p>
 </div></blockquote>
 </li>
-<li><p class="first">In Device Management-&gt;Devices select the device and then click “Change Device Name…”.</p>
+<li><p class="first">In Device Management-&gt;Devices select the device and then click “Change Device Name”.</p>
 </li>
 <li><p class="first">Update the device name to match the hostname you have chosen.</p>
-<blockquote>
-<div><p><strong>image-02</strong></p>
-</div></blockquote>
 </li>
 <li><p class="first">From the Hybrid Defender shell, restart services with:</p>
 <blockquote>
 <div><p><code class="docutils literal"><span class="pre">#</span> <span class="pre">bigstart</span> <span class="pre">restart</span></code></p>
 </div></blockquote>
 </li>
-<li><p class="first">Register the device with Silverline in DoS Protection-&gt;Quick Configuration-&gt;Silverline:</p>
+<li><p class="first">Register the device with Silverline in DoS Protection-&gt;Quick Configuration-&gt;Silverline as follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Username</td>
+<td><a class="reference external" href="mailto:dhdadmin&#37;&#52;&#48;signaling&#46;com">dhdadmin<span>&#64;</span>signaling<span>&#46;</span>com</a></td>
+</tr>
+<tr class="row-even"><td>Password</td>
+<td>[will be provided]</td>
+</tr>
+<tr class="row-odd"><td>Service URL</td>
+<td><a class="reference external" href="https://api.f5silverline.com">https://api.f5silverline.com</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 </li>
 <li><p class="first">Register the device with the Silverline iApp, to provide bandwith utilization updates in iApps-&gt;Application Services-&gt;Applications-&gt;silverline_connector. In the iApp, select Reconfigure and then click Finished. This will cause the iApp to register under the new device name.</p>
 </li>
