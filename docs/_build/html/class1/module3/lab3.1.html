@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. On prem Mitigation Exercises &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
+    <title>3.2.1. Lab – Configuring SSL keys &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
     
-    <link rel="stylesheet" href="../_static/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/f5_agility_theme.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/f5.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -23,13 +23,12 @@
         SOURCELINK_SUFFIX: '.txt'
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Module – Configuring Protections for Static DoS Vectors" href="module2/module2.html" />
-    <link rel="prev" title="2. Lab Setup" href="../setup.html" />
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="3.2. Module – Configuring Protections for Encrypted Traffic" href="module3.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -195,9 +194,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="../">Multilayer DDoS Defense Lab Guide </a></h4>
+         <h4><a href="../../">Multilayer DDoS Defense Lab Guide </a></h4>
 <div id="searchbox" style="display: none" role="search">
-  <form class="search" action="../search.html" method="get">
+  <form class="search" action="../../search.html" method="get">
     <div>
       <input type="text" name="q" placeholder="Search" style="padding-left: 6px;"/>
       <!-- <input type="submit" value="Go" style="margin-top: 4px;"/> -->
@@ -208,43 +207,86 @@
   </form>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+  <p class="caption">
+   <span class="caption-text">Current Page</span>
+  </p>
+  <ul>
+<li><a class="reference internal" href="#">3.2.1. Lab – Configuring SSL keys</a><ul>
+<li><a class="reference internal" href="#task-open-a-web-browser">3.2.1.1. Task – Open a Web Browser</a></li>
+<li><a class="reference internal" href="#task-download-the-image">3.2.1.2. Task – Download the Image</a></li>
+</ul>
+</li>
+</ul>
+
 
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">2. Lab Setup</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. On prem Mitigation Exercises</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="module2/module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3/module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Lab Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Mitigation Exercises</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../setup.html"
-                        title="previous chapter">2. Lab Setup</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="module2/module2.html"
-                        title="next chapter">3.1. Module – Configuring Protections for Static DoS Vectors</a></p>
+  <p class="topless"><a href="module3.html"
+                        title="previous chapter">3.2. Module – Configuring Protections for Encrypted Traffic</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../index.html">Multilayer DDoS Defense Lab Guide</a>
-          <span class="right"><a href="../genindex.html">Index</a></span>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Defense Lab Guide</a>
+          <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="on-prem-mitigation-exercises">
-<h1>3. On prem Mitigation Exercises<a class="headerlink" href="#on-prem-mitigation-exercises" title="Permalink to this headline">¶</a></h1>
-<p>This module demonstrates how to do basic DOS Protection using the F5 DDOS Hybrid Denfender.
-This class covers the following topics:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="module2/module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module3/module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
-</ul>
+  <div class="section" id="lab-configuring-ssl-keys">
+<h1>3.2.1. Lab – Configuring SSL keys<a class="headerlink" href="#lab-configuring-ssl-keys" title="Permalink to this headline">¶</a></h1>
+<p>This lab will teach you how Hybrid Defender device-level protection works.</p>
+<div class="section" id="task-open-a-web-browser">
+<h2>3.2.1.1. Task – Open a Web Browser<a class="headerlink" href="#task-open-a-web-browser" title="Permalink to this headline">¶</a></h2>
+<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
+site.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An account is required to download software.  You can create one at
+<a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
 </div>
-<p>Expected time to complete: <strong>2 hours</strong></p>
+<p>Follow these steps to complete this task:</p>
+<ol class="arabic">
+<li><p class="first">Open your web browser</p>
+</li>
+<li><p class="first">Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></p>
+</li>
+<li><p class="first">Login with your username and password.</p>
+</li>
+<li><p class="first">After logging in you should see the following window:</p>
+<p><img alt="image1" src="../../_images/image001.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="task-download-the-image">
+<h2>3.2.1.2. Task – Download the Image<a class="headerlink" href="#task-download-the-image" title="Permalink to this headline">¶</a></h2>
+<p>In this task we will download the F5 Networks BIG-IP Virtual Edition image to your system</p>
+<p>Follow these steps to complete this task:</p>
+<ol class="arabic">
+<li><p class="first">Click the ‘Find a Download’ button.</p>
+<img alt="../../_images/image002.png" src="../../_images/image002.png" />
+</li>
+<li><p class="first">Click the link that contains the BIG-IP TMOS software version you would like
+to download.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Be sure to click a link that has “Virtual Edition” in the name</p>
+</div>
+</li>
+<li><p class="first">Find the image appropriate for your hypervisor</p>
+</li>
+<li><p class="first">Download the image and save it to you local system</p>
+</li>
+</ol>
+</div>
 </div>
 
 
@@ -252,10 +294,8 @@ This class covers the following topics:</p>
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="../setup.html" title="2. Lab Setup" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="module3.html" title="3.2. Module – Configuring Protections for Encrypted Traffic" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
-           
-              <a href="module2/module2.html" title="3.1. Module – Configuring Protections for Static DoS Vectors" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
@@ -372,7 +412,7 @@ This class covers the following topics:</p>
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="../_static/js/bootstrap.min.js"></script>
+  <script src="../../_static/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     jQuery.noConflict(true)
   </script>

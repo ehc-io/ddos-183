@@ -1,5 +1,5 @@
-Class - |classname|
-====================
+On prem Mitigation Exercises
+============================
 
 This module demonstrates how to do basic DOS Protection using the F5 DDOS Hybrid Denfender.
 This class covers the following topics:

@@ -14,7 +14,7 @@ site.
 
 Follow these steps to complete this task:
 
-#. Open your web browser
+#. Open your web browser  
 #. Navigate to https://downloads.f5.com
 #. Login with your username and password.
 #. After logging in you should see the following window:

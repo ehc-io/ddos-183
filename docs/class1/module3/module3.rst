@@ -1,5 +1,5 @@
-Module – Configuring Protections for Static DoS Vectors
-========================================================
+Module – Configuring Protections for Encrypted Traffic
+=======================================================
 
 In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
 

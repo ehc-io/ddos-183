@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Lab Setup &#8212; Multilayer DDoS Defense (on prem &amp; cloud)  documentation</title>
+    <title>2. Lab Setup &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
     
     <link rel="stylesheet" href="_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Class - Multilayer DDoS Defense (on prem &amp; cloud)" href="class1/class1.html" />
+    <link rel="next" title="3. On prem Mitigation Exercises" href="class1/class1.html" />
     <link rel="prev" title="1. Introduction to Multi layer DDOS Defense" href="intro.html" />
 <!--
 # Copyright 2017 F5 Networks
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="./">Multilayer DDoS Defense (on prem & cloud) </a></h4>
+         <h4><a href="./">Multilayer DDoS Defense Lab Guide </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="search.html" method="get">
     <div>
@@ -215,6 +215,7 @@
 <li><a class="reference internal" href="#">2. Lab Setup</a><ul>
 <li><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
 <li><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
+<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 </ul>
@@ -226,9 +227,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Lab Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. Class - Multilayer DDoS Defense (on prem &amp; cloud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. On prem Mitigation Exercises</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -236,12 +238,12 @@
                         title="previous chapter">1. Introduction to Multi layer DDOS Defense</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="class1/class1.html"
-                        title="next chapter">3. Class - Multilayer DDoS Defense (on prem &amp; cloud)</a></p>
+                        title="next chapter">3. On prem Mitigation Exercises</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Defense (on prem &amp; cloud)</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Defense Lab Guide</a>
           <span class="right"><a href="genindex.html">Index</a></span>
         </h4>
         
@@ -253,10 +255,10 @@
 <ol class="arabic">
 <li><p class="first">Open a browser and go to <a class="reference external" href="http://training.f5agility.com">http://training.f5agility.com</a>.  Enter your Class# and Student# as provided by your instructor.</p>
 </li>
-<li><p class="first">Look for the xubuntu-jumpbox-vxx.  You will use the xubuntu jumpbox for all the labs. (see below)</p>
+<li><p class="first">Look for the xubuntu-jumpbox.  You will use the xubuntu jumpbox for all the labs. (see below)</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">You will be using the Win7 JUMPBOX to access other systems for all labs. You will use Putty that has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. To run scripts, you will need to have root access, requiring you to ‘sudo bash’ before running attacks, baselines, etc</p>
+<p class="last">You will be using the Ubuntu xjumpbox to access other systems for all labs. You will use Putty that has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. To run scripts, you will need to have root access, requiring you to ‘sudo bash’ before running attacks, baselines, etc</p>
 </div>
 <img alt="_images/dashboard_student.png" src="_images/dashboard_student.png" />
 </li>
@@ -270,9 +272,9 @@
 </div></blockquote>
 <p>The following components have been included in your lab environment:</p>
 <ul class="simple">
-<li>1 x F5 BIG-IP DHD (v13.1.0)</li>
+<li>1 x F5 BIG-IP DHD (v13.1.2)</li>
 <li>1 x Linux kali</li>
-<li>3 x Linux Ubuntu (xubuntu 14.04) [Jumphost, LAMP server, goodlclient]</li>
+<li>3 x Linux Ubuntu 14.04.5 LTS [Jumphost, LAMP server, goodlclient]</li>
 </ul>
 <p>The following table lists VLANS, IP Addresses and Credentials for all
 components:</p>
@@ -332,6 +334,46 @@ components:</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="register-dhd-device-with-silverline">
+<h2>2.3. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
+<p>For Silverline signaling we will be leveraging both the DHD built-in signaling,
+as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
+<ol class="arabic">
+<li><p class="first">In System-&gt;Platform change the hostname to &lt;yourf5emailprefix&gt;.f5demo.com. For example <a class="reference external" href="mailto:j&#46;smith&#37;&#52;&#48;f5&#46;com">j<span>&#46;</span>smith<span>&#64;</span>f5<span>&#46;</span>com</a> would register as j.smith.f5demo.com. If you have more than one DHD environment registered to Silverline, add a number to make each DHD unique.</p>
+<blockquote>
+<div><p><strong>dhd-[student#].latam.f5demo.com</strong></p>
+</div></blockquote>
+</li>
+<li><p class="first">In Device Management-&gt;Devices select the device and then click “Change Device Name…”.</p>
+</li>
+<li><p class="first">Update the device name to match the hostname you have chosen.</p>
+<blockquote>
+<div><p><strong>image-02</strong></p>
+</div></blockquote>
+</li>
+<li><p class="first">From the Hybrid Defender shell, restart services with:</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">#</span> <span class="pre">bigstart</span> <span class="pre">restart</span></code></p>
+</div></blockquote>
+</li>
+<li><p class="first">Register the device with Silverline in DoS Protection-&gt;Quick Configuration-&gt;Silverline:</p>
+</li>
+<li><p class="first">Register the device with the Silverline iApp, to provide bandwith utilization updates in iApps-&gt;Application Services-&gt;Applications-&gt;silverline_connector. In the iApp, select Reconfigure and then click Finished. This will cause the iApp to register under the new device name.</p>
+</li>
+<li><p class="first">Approve the device registrations</p>
+</li>
+<li><dl class="first docutils">
+<dt>Access the Silverline Portal DHD Admin Account:</dt>
+<dd><ul class="first last simple">
+<li>Navigate to Config-&gt;Hybrid Config-&gt;Hybrid Device Management</li>
+<li>Enter your email prefix in the Search field</li>
+<li>Verify that you have both registrations. Approve both</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
 </div>
 
 
@@ -342,7 +384,7 @@ components:</p>
 		        <a href="intro.html" title="1. Introduction to Multi layer DDOS Defense" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="class1/class1.html" title="3. Class - Multilayer DDoS Defense (on prem &amp; cloud)" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="class1/class1.html" title="3. On prem Mitigation Exercises" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

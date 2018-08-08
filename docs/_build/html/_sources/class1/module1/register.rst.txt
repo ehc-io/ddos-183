@@ -1,0 +1,24 @@
+Lab - Register DHD Device with Silverline
+---------------------------------------------
+
+For Silverline signaling we will be leveraging both the DHD built-in signaling, 
+as well as bandwidth utilization reporting for Hybrid DDoS protection.
+
+In System->Platform change the hostname to <yourf5emailprefix>.f5demo.com. For 
+example j.smith@f5.com would register as j.smith.f5demo.com. If you have more than 
+one DHD environment registered to Silverline, add a number to make each DHD unique.
+
+[image-01]
+
+dhd-[student#].latam.f5demo.com
+
+In Device Management->Devices select the device and then click “Change Device Name…”. 
+Update the device name to match the hostname you have chosen.
+
+[image-02]
+
+From the Hybrid Defender shell, restart services with
+# bigstart restart	
+Register the device with Silverline in DoS Protection->Quick Configuration->Silverline:
+
+[table]

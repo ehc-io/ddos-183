@@ -1,10 +1,11 @@
-Module – Configuring Protections for Static DoS Vectors
-========================================================
+Module - Siverline Signaling
+============================
 
-In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
+In this module you will learn how to configure Silverline signaling, 
+as well as get familiar with Silverline Portal.
+
 
 .. toctree::
    :maxdepth: 1
    :glob:
-
-   lab*
+   
