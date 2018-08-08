@@ -88,6 +88,20 @@ as well as bandwidth utilization reporting for Hybrid DDoS protection.
 
 #. Register the device with Silverline in DoS Protection->Quick Configuration->Silverline:
 
+    .. list-table::
+        :widths: 20 40 40
+        :header-rows: 1
+
+        * - **Column 1**
+          - **Column 2**
+          - **Column 3**
+        * - Row 1
+          - Value 1
+          - Value 2
+        * - Row 2
+          - Value 1
+          - Value 2
+      
 #. Register the device with the Silverline iApp, to provide bandwith utilization updates in iApps->Application Services->Applications->silverline_connector. In the iApp, select Reconfigure and then click Finished. This will cause the iApp to register under the new device name.  
 
 #. Approve the device registrations  
