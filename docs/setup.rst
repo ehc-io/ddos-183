@@ -16,6 +16,8 @@ Getting Started
 
   |image1| 
 
+    .. TODO:: Replace Dashboard picture, for a more precise description/visualization.
+
 Lab Components
 ~~~~~~~~~~~~~~
 
