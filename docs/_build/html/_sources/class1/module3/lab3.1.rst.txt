@@ -30,7 +30,7 @@ Follow these steps to complete this task:
 
 #. Click the 'Find a Download' button.
 
-   .. image:: /_static/image002.png
+   |image1|
 
 #. Click the link that contains the |bip| TMOS software version you would like
    to download.
@@ -40,4 +40,4 @@ Follow these steps to complete this task:
 #. Find the image appropriate for your hypervisor
 #. Download the image and save it to you local system
 
-.. |image1| image:: /_static/image001.png
+   |image1|

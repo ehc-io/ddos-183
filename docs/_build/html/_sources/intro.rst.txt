@@ -1,5 +1,5 @@
-Introduction to Multi layer DDOS Defense
----------------------------------------------
+Introduction
+------------
 
 
 **THE PROBLEM**
