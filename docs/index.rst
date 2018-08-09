@@ -4,7 +4,7 @@ F5 Agility Labs - Index
 Welcome
 -------
 
-Welcome to the |classbold| lab at F5 Agility |year|
+This is the |classbold| at F5 Agility |year|
 
 |repoinfo|
 

@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "Multilayer DDoS Defense Lab Guide"
+classname = "Multilayer DDoS Protection"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/ehc-io/ddos-183"
