@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
+    <title>3.1.2. Lab - Configuring DNS Attack Protection &#8212; Multilayer DDoS Protection  documentation</title>
     
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.2. Module – Configuring Protections for Encrypted Traffic" href="../module3/module3.html" />
-    <link rel="prev" title="3.1.1. Lab – Configuring Device-Level Protection" href="lab2.1.html" />
+    <link rel="next" title="3.2. Network Behavioral DoS" href="../module3/module3.html" />
+    <link rel="prev" title="3.1.1. Lab – Configuring Flood Attack Protection" href="lab2.1.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="../../">Multilayer DDoS Defense Lab Guide </a></h4>
+         <h4><a href="../../">Multilayer DDoS Protection </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="../../search.html" method="get">
     <div>
@@ -212,12 +212,14 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors</a><ul>
-<li><a class="reference internal" href="#task-configure-protected-object-level-ipv4-flood-dhd-dos-protection">3.1.2.1. Task – Configure Protected Object-Level IPv4 Flood DHD DoS Protection</a></li>
-<li><a class="reference internal" href="#task-configure-protected-object-level-udp-flood-attack-protection">3.1.2.2. Task – Configure Protected Object-Level UDP Flood Attack Protection</a></li>
-<li><a class="reference internal" href="#task-configure-protected-object-based-sweep-protection">3.1.2.3. Task – Configure Protected Object-Based Sweep Protection</a></li>
-<li><a class="reference internal" href="#task-configure-protected-object-based-tcp-xmas-protection">3.1.2.4. Task – Configure Protected Object-Based TCP XMAS Protection</a></li>
-<li><a class="reference internal" href="#task-check-out-the-dos-visibility-page">3.1.2.5. Task – Check out the DoS Visibility Page</a></li>
+<li><a class="reference internal" href="#">3.1.2. Lab - Configuring DNS Attack Protection</a><ul>
+<li><a class="reference internal" href="#configure-protected-object-level-ipv4-flood-dhd-dos-protection">3.1.2.1. Configure Protected Object-Level IPv4 Flood DHD DoS Protection</a></li>
+<li><a class="reference internal" href="#configure-protected-object-based-sweep-protection">3.1.2.2. Configure Protected Object-Based Sweep Protection</a></li>
+<li><a class="reference internal" href="#configure-protected-object-based-tcp-xmas-protection">3.1.2.3. Configure Protected Object-Based TCP XMAS Protection</a></li>
+<li><a class="reference internal" href="#check-out-the-dos-visibility-page">3.1.2.4. Check out the DoS Visibility Page</a></li>
+<li><a class="reference internal" href="#configure-protected-object-level-udp-flood-attack-protection">3.1.2.5. Configure Protected Object-Level UDP Flood Attack Protection</a></li>
+<li><a class="reference internal" href="#configure-bad-actor-detection">3.1.2.6. Configure Bad Actor Detection</a></li>
+<li><a class="reference internal" href="#configure-bad-auto-threshold">3.1.2.7. Configure Bad Auto Threshold</a></li>
 </ul>
 </li>
 </ul>
@@ -225,35 +227,37 @@
 
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Lab Setup</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Mitigation Exercises</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Hybrid Defender Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Attack Mitigation Exercises</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="module2.html">3.1. Configuring DoS Protection for Static DoS Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">3.2. Network Behavioral DoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">3.3. Application Layer Attacks</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="lab2.1.html"
-                        title="previous chapter">3.1.1. Lab – Configuring Device-Level Protection</a></p>
+                        title="previous chapter">3.1.1. Lab – Configuring Flood Attack Protection</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../module3/module3.html"
-                        title="next chapter">3.2. Module – Configuring Protections for Encrypted Traffic</a></p>
+                        title="next chapter">3.2. Network Behavioral DoS</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Defense Lab Guide</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Protection</a>
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-configuring-protections-for-well-known-dos-vectors">
-<h1>3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors<a class="headerlink" href="#lab-configuring-protections-for-well-known-dos-vectors" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lab-configuring-dns-attack-protection">
+<h1>3.1.2. Lab - Configuring DNS Attack Protection<a class="headerlink" href="#lab-configuring-dns-attack-protection" title="Permalink to this headline">¶</a></h1>
 <p>This lab teachs you on how to configure DoS protection for basic and advanced DDoS vectors.</p>
-<div class="section" id="task-configure-protected-object-level-ipv4-flood-dhd-dos-protection">
-<h2>3.1.2.1. Task – Configure Protected Object-Level IPv4 Flood DHD DoS Protection<a class="headerlink" href="#task-configure-protected-object-level-ipv4-flood-dhd-dos-protection" title="Permalink to this headline">¶</a></h2>
-<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
+<div class="section" id="configure-protected-object-level-ipv4-flood-dhd-dos-protection">
+<h2>3.1.2.1. Configure Protected Object-Level IPv4 Flood DHD DoS Protection<a class="headerlink" href="#configure-protected-object-level-ipv4-flood-dhd-dos-protection" title="Permalink to this headline">¶</a></h2>
+<p>Create Object level server_subnet,
+In this task you will open a web browser and navigate to the F5 Networks Downloads
 site.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -273,8 +277,8 @@ site.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="task-configure-protected-object-level-udp-flood-attack-protection">
-<h2>3.1.2.2. Task – Configure Protected Object-Level UDP Flood Attack Protection<a class="headerlink" href="#task-configure-protected-object-level-udp-flood-attack-protection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configure-protected-object-based-sweep-protection">
+<h2>3.1.2.2. Configure Protected Object-Based Sweep Protection<a class="headerlink" href="#configure-protected-object-based-sweep-protection" title="Permalink to this headline">¶</a></h2>
 <p>In this task you will open a web browser and navigate to the F5 Networks Downloads
 site.</p>
 <div class="admonition note">
@@ -291,12 +295,40 @@ site.</p>
 <li><p class="first">Login with your username and password.</p>
 </li>
 <li><p class="first">After logging in you should see the following window:</p>
-<p><a href="#id3"><span class="problematic" id="id4">|image2|</span></a></p>
+<p><a href="#id3"><span class="problematic" id="id4">|image3|</span></a></p>
 </li>
 </ol>
 </div>
-<div class="section" id="task-configure-protected-object-based-sweep-protection">
-<h2>3.1.2.3. Task – Configure Protected Object-Based Sweep Protection<a class="headerlink" href="#task-configure-protected-object-based-sweep-protection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configure-protected-object-based-tcp-xmas-protection">
+<h2>3.1.2.3. Configure Protected Object-Based TCP XMAS Protection<a class="headerlink" href="#configure-protected-object-based-tcp-xmas-protection" title="Permalink to this headline">¶</a></h2>
+<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
+site.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An account is required to download software.  You can create one at
+<a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
+</div>
+<p>Follow these steps to complete this task:</p>
+<ol class="arabic simple">
+<li>Open your web browser</li>
+<li>Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></li>
+<li>Login with your username and password.</li>
+<li>After logging in you should see the following window:</li>
+</ol>
+</div>
+<div class="section" id="check-out-the-dos-visibility-page">
+<h2>3.1.2.4. Check out the DoS Visibility Page<a class="headerlink" href="#check-out-the-dos-visibility-page" title="Permalink to this headline">¶</a></h2>
+<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
+site.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An account is required to download software.  You can create one at
+<a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
+</div>
+<p>Follow these steps to complete this task</p>
+</div>
+<div class="section" id="configure-protected-object-level-udp-flood-attack-protection">
+<h2>3.1.2.5. Configure Protected Object-Level UDP Flood Attack Protection<a class="headerlink" href="#configure-protected-object-level-udp-flood-attack-protection" title="Permalink to this headline">¶</a></h2>
 <p>In this task you will open a web browser and navigate to the F5 Networks Downloads
 site.</p>
 <div class="admonition note">
@@ -313,53 +345,30 @@ site.</p>
 <li><p class="first">Login with your username and password.</p>
 </li>
 <li><p class="first">After logging in you should see the following window:</p>
-<p><a href="#id5"><span class="problematic" id="id6">|image3|</span></a></p>
+<p><a href="#id5"><span class="problematic" id="id6">|image2|</span></a></p>
 </li>
 </ol>
 </div>
-<div class="section" id="task-configure-protected-object-based-tcp-xmas-protection">
-<h2>3.1.2.4. Task – Configure Protected Object-Based TCP XMAS Protection<a class="headerlink" href="#task-configure-protected-object-based-tcp-xmas-protection" title="Permalink to this headline">¶</a></h2>
-<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
-site.</p>
+<div class="section" id="configure-bad-actor-detection">
+<h2>3.1.2.6. Configure Bad Actor Detection<a class="headerlink" href="#configure-bad-actor-detection" title="Permalink to this headline">¶</a></h2>
+<p>Got with the attack and wait for address ip to be blocked</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">An account is required to download software.  You can create one at
 <a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
 </div>
 <p>Follow these steps to complete this task:</p>
-<ol class="arabic">
-<li><p class="first">Open your web browser</p>
-</li>
-<li><p class="first">Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></p>
-</li>
-<li><p class="first">Login with your username and password.</p>
-</li>
-<li><p class="first">After logging in you should see the following window:</p>
-<p><a href="#id7"><span class="problematic" id="id8">|image3|</span></a></p>
-</li>
+<ol class="arabic simple">
+<li>Open your web browser</li>
+<li>Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></li>
+<li>Login with your username and password.</li>
+<li>After logging in you should see the following window:</li>
 </ol>
 </div>
-<div class="section" id="task-check-out-the-dos-visibility-page">
-<h2>3.1.2.5. Task – Check out the DoS Visibility Page<a class="headerlink" href="#task-check-out-the-dos-visibility-page" title="Permalink to this headline">¶</a></h2>
-<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
-site.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">An account is required to download software.  You can create one at
-<a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
-</div>
-<p>Follow these steps to complete this task:</p>
-<ol class="arabic">
-<li><p class="first">Open your web browser</p>
-</li>
-<li><p class="first">Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></p>
-</li>
-<li><p class="first">Login with your username and password.</p>
-</li>
-<li><p class="first">After logging in you should see the following window:</p>
-<p><a href="#id9"><span class="problematic" id="id10">|image3|</span></a></p>
-</li>
-</ol>
+<div class="section" id="configure-bad-auto-threshold">
+<h2>3.1.2.7. Configure Bad Auto Threshold<a class="headerlink" href="#configure-bad-auto-threshold" title="Permalink to this headline">¶</a></h2>
+<p>Create P.O server1</p>
+<p>Got with the attack and wait for address ip to be blocked</p>
 </div>
 </div>
 
@@ -368,10 +377,10 @@ site.</p>
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="lab2.1.html" title="3.1.1. Lab – Configuring Device-Level Protection" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="lab2.1.html" title="3.1.1. Lab – Configuring Flood Attack Protection" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="../module3/module3.html" title="3.2. Module – Configuring Protections for Encrypted Traffic" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="../module3/module3.html" title="3.2. Network Behavioral DoS" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

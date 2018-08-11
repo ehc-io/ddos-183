@@ -1,5 +1,5 @@
-Lab – Configuring SSL keys
---------------------------
+Lab – How to Protect against Network Level DDOS
+------------------------------------------------
 
 This lab will teach you how Hybrid Defender device-level protection works.
 

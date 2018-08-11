@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.1. Lab – Configuring Device-Level Protection &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
+    <title>3.1.1. Lab – Configuring Flood Attack Protection &#8212; Multilayer DDoS Protection  documentation</title>
     
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors" href="lab2.2.html" />
-    <link rel="prev" title="3.1. Module – Configuring Protections for Static DoS Vectors" href="module2.html" />
+    <link rel="next" title="3.1.2. Lab - Configuring DNS Attack Protection" href="lab2.2.html" />
+    <link rel="prev" title="3.1. Configuring DoS Protection for Static DoS Vectors" href="module2.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="../../">Multilayer DDoS Defense Lab Guide </a></h4>
+         <h4><a href="../../">Multilayer DDoS Protection </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="../../search.html" method="get">
     <div>
@@ -212,9 +212,11 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">3.1.1. Lab – Configuring Device-Level Protection</a><ul>
-<li><a class="reference internal" href="#task-open-a-web-browser">3.1.1.1. Task – Open a Web Browser</a></li>
-<li><a class="reference internal" href="#task-download-the-image">3.1.1.2. Task – Download the Image</a></li>
+<li><a class="reference internal" href="#">3.1.1. Lab – Configuring Flood Attack Protection</a><ul>
+<li><a class="reference internal" href="#configure-dhd-device-bandwidth-thresholds">3.1.1.1. Configure DHD Device Bandwidth Thresholds</a></li>
+<li><a class="reference internal" href="#turning-device-level-protection-off">3.1.1.2. Turning Device-Level Protection off</a></li>
+<li><a class="reference internal" href="#let-s-hit-the-lamp-server">3.1.1.3. Let’s Hit the LAMP Server</a></li>
+<li><a class="reference internal" href="#configure-device-level-ipv4-flood-dhd-dos-protection">3.1.1.4. Configure Device-Level IPv4 Flood DHD DoS Protection</a></li>
 </ul>
 </li>
 </ul>
@@ -222,74 +224,277 @@
 
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Lab Setup</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Mitigation Exercises</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Hybrid Defender Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Attack Mitigation Exercises</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="module2.html">3.1. Configuring DoS Protection for Static DoS Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3/module3.html">3.2. Network Behavioral DoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">3.3. Application layer Attacks</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="module2.html"
-                        title="previous chapter">3.1. Module – Configuring Protections for Static DoS Vectors</a></p>
+                        title="previous chapter">3.1. Configuring DoS Protection for Static DoS Vectors</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="lab2.2.html"
-                        title="next chapter">3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors</a></p>
+                        title="next chapter">3.1.2. Lab - Configuring DNS Attack Protection</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Defense Lab Guide</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Protection</a>
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-configuring-device-level-protection">
-<h1>3.1.1. Lab – Configuring Device-Level Protection<a class="headerlink" href="#lab-configuring-device-level-protection" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lab-configuring-flood-attack-protection">
+<h1>3.1.1. Lab – Configuring Flood Attack Protection<a class="headerlink" href="#lab-configuring-flood-attack-protection" title="Permalink to this headline">¶</a></h1>
 <p>This lab will teach you how Hybrid Defender device-level protection works.</p>
-<div class="section" id="task-open-a-web-browser">
-<h2>3.1.1.1. Task – Open a Web Browser<a class="headerlink" href="#task-open-a-web-browser" title="Permalink to this headline">¶</a></h2>
-<p>In this task you will open a web browser and navigate to the F5 Networks Downloads
-site.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">An account is required to download software.  You can create one at
-<a class="reference external" href="https://login.f5.com/resource/registerEmail.jsp">https://login.f5.com/resource/registerEmail.jsp</a></p>
+<div class="section" id="configure-dhd-device-bandwidth-thresholds">
+<h2>3.1.1.1. Configure DHD Device Bandwidth Thresholds<a class="headerlink" href="#configure-dhd-device-bandwidth-thresholds" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">In the Configuration Utility, open the Protected Objects page.</p>
+</li>
+<li><p class="first">In the Network Protection section click Create.</p>
+</li>
+<li><p class="first">Configure as follows then click Save.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Maximum Bandwidth: Specify</td>
+<td>100</td>
+</tr>
+<tr class="row-even"><td>Scrubbing Threshold: Type</td>
+<td>Percentage</td>
+</tr>
+<tr class="row-odd"><td>Scrubbing Threshold: Value</td>
+<td>60</td>
+</tr>
+<tr class="row-even"><td>Advertisement Method</td>
+<td>Silveline</td>
+</tr>
+<tr class="row-odd"><td>Scrubber Details: Type</td>
+<td>Advertise All</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><img alt="image15" src="../../_images/image015.png" /></p>
+</li>
+</ul>
+</div></blockquote>
 </div>
-<p>Follow these steps to complete this task:</p>
-<ol class="arabic">
-<li><p class="first">Open your web browser</p>
+<div class="section" id="turning-device-level-protection-off">
+<h2>3.1.1.2. Turning Device-Level Protection off<a class="headerlink" href="#turning-device-level-protection-off" title="Permalink to this headline">¶</a></h2>
+<p>The idea in here is first to observe how the attack hots the web server when there’s no protection in place.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">In the Configuration Utility, in the Device Protection section click Device Configuration.</p>
+<blockquote>
+<div><p><img alt="image16" src="../../_images/image016.png" /></p>
+</div></blockquote>
 </li>
-<li><p class="first">Navigate to <a class="reference external" href="https://downloads.f5.com">https://downloads.f5.com</a></p>
+<li><p class="first">In the Bad Headers row click the <strong>+</strong> icon, and then click <strong>Bad Source</strong>.</p>
 </li>
-<li><p class="first">Login with your username and password.</p>
+<li><p class="first">On the right-side of the page configure using the following information.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Detection Threshold PPS</td>
+<td>Infinite</td>
+</tr>
+<tr class="row-even"><td>Detection Threshold Percent</td>
+<td>Infinite</td>
+</tr>
+<tr class="row-odd"><td>Rate/Leak Limit</td>
+<td>Infinite</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image17" src="../../_images/image017.png" /></p>
+</div></blockquote>
 </li>
-<li><p class="first">After logging in you should see the following window:</p>
-<p><img alt="image1" src="../../_images/image001.png" /></p>
+<li><p class="first">Now In the Flood row, click the <strong>+</strong> icon, and then click <strong>ICMPv4 flood</strong>.</p>
+</li>
+<li><p class="first">On the right-side of the page configure using the following information.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Detection Threshold PPS</td>
+<td>Infinite</td>
+</tr>
+<tr class="row-even"><td>Detection Threshold Percent</td>
+<td>Infinite</td>
+</tr>
+<tr class="row-odd"><td>Rate/Leak Limit</td>
+<td>Infinite</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image18" src="../../_images/image018.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Apply the settings above for TCP SYN flood and UDP Flood, then click Update.</p>
+</li>
+<li><p class="first">In the Flood row click the + icon, and then click ICMPv4 flood.</p>
+</li>
+<li><p class="first">On the goodclient, if you have not already done so, start the network baselining:</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/tools_agility_183/</span></code></p>
+<p><code class="docutils literal"><span class="pre">./baseline_l4.sh</span></code></p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>f5student@goodclient:~$ cd ~/tools_agility_183/
+f5student@goodclient:~/tools_agility_183$ ./baseline_l4.sh
+/   status: 200     bytes: 3952     time: 0.016
+/   status: 200     bytes: 3952     time: 0.019
+/   status: 200     bytes: 3952     time: 0.014
+/   status: 200     bytes: 3952     time: 0.014
+/   status: 200     bytes: 3952     time: 0.018
+/   status: 200     bytes: 3952     time: 0.221
+/httprequest.php    status: 200     bytes: 699      time: 0.014
+/httprequest.php    status: 200     bytes: 699      time: 0.014
+</pre></div>
+</div>
+</div></blockquote>
 </li>
 </ol>
+</div></blockquote>
 </div>
-<div class="section" id="task-download-the-image">
-<h2>3.1.1.2. Task – Download the Image<a class="headerlink" href="#task-download-the-image" title="Permalink to this headline">¶</a></h2>
-<p>In this task we will download the F5 Networks BIG-IP Virtual Edition image to your system</p>
-<p>Follow these steps to complete this task:</p>
+<div class="section" id="let-s-hit-the-lamp-server">
+<h2>3.1.1.3. Let’s Hit the LAMP Server<a class="headerlink" href="#let-s-hit-the-lamp-server" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The pentest tool can be used to send several types of DoS Attacks for the most part of the lab, few free to try it out. For some specifi exercise though, there will be custom shell scrtips.</p>
+<p class="last"><code class="docutils literal"><span class="pre">#</span> <span class="pre">~/tools_agility_183/pentest</span></code></p>
+</div>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>________ _______  _       _________ _______  ________  _
+|  ____  ||  ____ \| \    /|\__   __/|       ||  ____ \| \    /||\     /|
+| |    | || |    \/|  \  | |   | |   | || || || |    \/|  \  | || |   | |
+| |____| || |__    |   \ | |   | |   | || || || |__    |   \ | || |   | |
+|  ______||  __)   | |\ \| |   | |   | ||_|| ||  __)   | |\ \| || |   | |
+| |       | |      | | \   |   | |   | |   | || |      | | \   || |   | |
+| |       | |____/\| |  \  |   | |   | |   | || |____/\| |  \  || |___| |
+|/        (_______/|/    \_|   |_|   |/     \||_______/|/    \_||_______|
+
+Welcome to pentmenu!
+Please report all bugs, improvements and suggestions to https://github.com/GinjaChris/pentmenu/issues
+This software is only for responsible, authorised use.
+YOU are responsible for your own actions!
+Please review the readme at https://raw.githubusercontent.com/GinjaChris/pentmenu/master/README.md before proceeding
+
+1) Recon
+2) DOS
+3) Extraction
+4) View Readme
+5) Quit
+Pentmenu&gt;
+</pre></div>
+</div>
+</div></blockquote>
 <ol class="arabic">
-<li><p class="first">Click the ‘Find a Download’ button.</p>
-<img alt="../../_images/image002.png" src="../../_images/image002.png" />
+<li><p class="first">Hit option <strong>2</strong> (DOS), then <strong>1</strong> (ICMP Echo Flood)</p>
 </li>
-<li><p class="first">Click the link that contains the BIG-IP TMOS software version you would like
-to download.</p>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Be sure to click a link that has “Virtual Edition” in the name</p>
+<li><p class="first">Use Attack options as follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Enter target IP/hostname:</td>
+<td>server1</td>
+</tr>
+<tr class="row-even"><td>Enter Source IP:</td>
+<td>r (random)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first">Now open two more terminal sessions with <strong>attacker</strong> and <strong>lamp</strong> servers respectively. On each screen open the <strong>bmon</strong> util for instant traffic stats.</p>
+<blockquote>
+<div><div class="code highlight-default"><div class="highlight"><pre><span></span>eth1
+Interfaces                   │ RX bps       pps     %│ TX bps       pps     %
+lo                           │      0         0      │      0         0
+eth0                         │     66B        1      │    545B        1
+    qdisc none (pfifo_fast)  │      0         0      │    525B        1
+-&gt;eth1                       │     77B        1      │   1.59MiB  39.63K
+    qdisc none (pfifo_fast)  │      0         0      │   1.59MiB  39.63K
+───────────────────────────────┴───────────────────────┴────────────────────────────────────────────────────────────
+                            (RX Packtes/second)
+    5.00 ....|..|.........|......|........................|..........
+    4.17 ...|||||||...|...|.||.|||...........|||.......|..||.|.|...||
+    3.33 ...||||||||..|..||||||||||..||.....|||||.....|||||||||||.|||
+    2.50 ...||||||||..|..||||||||||..||.....|||||.....|||||||||||.|||
+    1.67 .|||||||||||||.|||||||||||||||....|||||||...||||||||||||||||
+    0.83 ||||||||||||||||||||||||||||||||.|||||||||..||||||||||||||||
+        1   5   10   15   20   25   30   35   40   45   50   55   60
+    K                     (TX Packtes/second)
+52.32 ..............||||....|.||..................................
+43.60 ||.|||||||||||||||||||||||||||||||||..||||||||.|||||||||||||
+34.88 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+26.16 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+17.44 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    8.72 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        1   5   10   15   20   25   30   35   40   45   50   55   60
+</pre></div>
 </div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Don’t forget selecting the right inteface with the UP arrow key. Attacker uses eth1 and Lamp uses eth4 for data traffic.</p>
+</div>
+</div></blockquote>
 </li>
-<li><p class="first">Find the image appropriate for your hypervisor</p>
+<li><p class="first">Open a terminal session with the BIG-IP DHD and use the tcpdump util to verify that ICMP attack traffic is passing through the device.</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">[root&#64;dhd:Active:Standalone]</span> <span class="pre">config</span> <span class="pre">#</span> <span class="pre">tcpdump</span> <span class="pre">-i</span> <span class="pre">defaultVLAN</span></code></p>
+</div></blockquote>
 </li>
-<li><p class="first">Download the image and save it to you local system</p>
+<li><p class="first">Observe the baseline running on goodclient. Since the flood attack is hitting the server hard, the legitimate client sessions are being degraded. Look at the <strong>status: 000</strong> responses.</p>
+</li>
+<li><p class="first">In the Configuration Utility, open the Statistics &gt; Performance &gt; Performance page. As you can see, there is a drastic spike in the traffic.</p>
+<blockquote>
+<div><p><img alt="image19" src="../../_images/image019.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Open the Security &gt; DoS Protection &gt; DoS Overview page.</p>
+</li>
+<li><p class="first">In the Filter Type field select Device DoS. Then on the left corner search for ICMP.</p>
+<blockquote>
+<div><p><img alt="image20" src="../../_images/image020.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Review the statistics for Current, 1 min. Average, and 1 hr Average.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Open the Security &gt; Event Logs &gt; DoS &gt; Network &gt; Events page.</dt>
+<dd><p class="first last">The log file is empty as we disabled device-level flood protection on BIG-IP DHD.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">From the Attacker terminal session type Ctrl + C to stop the ICMP flood.</p>
 </li>
 </ol>
+</div></blockquote>
+</div>
+<div class="section" id="configure-device-level-ipv4-flood-dhd-dos-protection">
+<h2>3.1.1.4. Configure Device-Level IPv4 Flood DHD DoS Protection<a class="headerlink" href="#configure-device-level-ipv4-flood-dhd-dos-protection" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -298,10 +503,10 @@ to download.</p>
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="module2.html" title="3.1. Module – Configuring Protections for Static DoS Vectors" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="module2.html" title="3.1. Configuring DoS Protection for Static DoS Vectors" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="lab2.2.html" title="3.1.2. Lab - Configuring Protections for Well-Known DoS Vectors" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="lab2.2.html" title="3.1.2. Lab - Configuring DNS Attack Protection" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

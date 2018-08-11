@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.2.1. Lab – Configuring SSL keys &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
+    <title>3.2.1. Lab – How to Protect against Network Level DDOS &#8212; Multilayer DDoS Protection  documentation</title>
     
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,7 +28,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="3.2. Module – Configuring Protections for Encrypted Traffic" href="module3.html" />
+    <link rel="next" title="3.3. Application layer Attacks" href="../module4/module4.html" />
+    <link rel="prev" title="3.2. Network Behavioral DoS" href="module3.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -194,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="../../">Multilayer DDoS Defense Lab Guide </a></h4>
+         <h4><a href="../../">Multilayer DDoS Protection </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="../../search.html" method="get">
     <div>
@@ -211,7 +212,7 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">3.2.1. Lab – Configuring SSL keys</a><ul>
+<li><a class="reference internal" href="#">3.2.1. Lab – How to Protect against Network Level DDOS</a><ul>
 <li><a class="reference internal" href="#task-open-a-web-browser">3.2.1.1. Task – Open a Web Browser</a></li>
 <li><a class="reference internal" href="#task-download-the-image">3.2.1.2. Task – Download the Image</a></li>
 </ul>
@@ -221,28 +222,32 @@
 
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Lab Setup</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Mitigation Exercises</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">3.1. Module – Configuring Protections for Static DoS Vectors</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="module3.html">3.2. Module – Configuring Protections for Encrypted Traffic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup.html">2. Hybrid Defender Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">3. On prem Attack Mitigation Exercises</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">3.1. Configuring DoS Protection for Static DoS Vectors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="module3.html">3.2. Network Behavioral DoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4/module4.html">3.3. Application layer Attacks</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="module3.html"
-                        title="previous chapter">3.2. Module – Configuring Protections for Encrypted Traffic</a></p>
+                        title="previous chapter">3.2. Network Behavioral DoS</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../module4/module4.html"
+                        title="next chapter">3.3. Application layer Attacks</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Defense Lab Guide</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">Multilayer DDoS Protection</a>
           <span class="right"><a href="../../genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-configuring-ssl-keys">
-<h1>3.2.1. Lab – Configuring SSL keys<a class="headerlink" href="#lab-configuring-ssl-keys" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lab-how-to-protect-against-network-level-ddos">
+<h1>3.2.1. Lab – How to Protect against Network Level DDOS<a class="headerlink" href="#lab-how-to-protect-against-network-level-ddos" title="Permalink to this headline">¶</a></h1>
 <p>This lab will teach you how Hybrid Defender device-level protection works.</p>
 <div class="section" id="task-open-a-web-browser">
 <h2>3.2.1.1. Task – Open a Web Browser<a class="headerlink" href="#task-open-a-web-browser" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +267,7 @@ site.</p>
 <li><p class="first">Login with your username and password.</p>
 </li>
 <li><p class="first">After logging in you should see the following window:</p>
-<p><img alt="image1" src="../../_images/image001.png" /></p>
+<p><a href="#id1"><span class="problematic" id="id2">|image1|</span></a></p>
 </li>
 </ol>
 </div>
@@ -272,7 +277,7 @@ site.</p>
 <p>Follow these steps to complete this task:</p>
 <ol class="arabic">
 <li><p class="first">Click the ‘Find a Download’ button.</p>
-<img alt="../../_images/image002.png" src="../../_images/image002.png" />
+<p><a href="#id3"><span class="problematic" id="id4">|image1|</span></a></p>
 </li>
 <li><p class="first">Click the link that contains the BIG-IP TMOS software version you would like
 to download.</p>
@@ -284,6 +289,7 @@ to download.</p>
 <li><p class="first">Find the image appropriate for your hypervisor</p>
 </li>
 <li><p class="first">Download the image and save it to you local system</p>
+<p><a href="#id5"><span class="problematic" id="id6">|image1|</span></a></p>
 </li>
 </ol>
 </div>
@@ -294,8 +300,10 @@ to download.</p>
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="module3.html" title="3.2. Module – Configuring Protections for Encrypted Traffic" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="module3.html" title="3.2. Network Behavioral DoS" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
+           
+              <a href="../module4/module4.html" title="3.3. Application layer Attacks" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>

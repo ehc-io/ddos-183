@@ -1,5 +1,5 @@
-Module – Configuring Protections for Encrypted Traffic
-=======================================================
+Network Behavioral DoS
+===============================
 
 In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
 

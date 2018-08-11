@@ -12,11 +12,21 @@ Getting Started
 
    .. HINT::
 
-      You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt which has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. A few scripts require root access. Don't forget to ‘sudo bash’ before running attacks, baselines, etc.
+      You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
+  
+    |image1|   
 
-  |image1| 
+   .. TODO:: Replace Dashboard picture, for a more precise description/visualization.  
 
-    .. TODO:: Replace Dashboard picture, for a more precise description/visualization.
+#.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
+
+    ``rm -fr ~/tools_agility_183/ pentmenu/``
+
+    ``cd ~/ ; git clone https://github.com/ehc-io/tools_agility_183.git``  
+
+    ``cd ~/ ; git clone https://github.com/ehc-io/pentmenu.git``  
+
+    ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183/ ; chmod a+x ~/tools_agility_183/pentmenu ; cd ~/tools_agility_183/``
 
 Lab Components
 ~~~~~~~~~~~~~~
@@ -31,8 +41,7 @@ Lab Components
 The lab environment provides the following resources:
 
 - 1 x F5 BIG-IP DHD (v13.1.2)
-- 1 x Linux Kali **[Attacker]** 
-- 3 x Linux Ubuntu 14.04.5 LTS [**Jumphost**, **LAMP server**, **goodclient**]
+- 4 x Linux Ubuntu 14.04.5 LTS [**jumphost**, **lamp**, **goodclient**, **attacker** ]
 
 Networking Info
 ~~~~~~~~~~~~~~~
@@ -47,30 +56,30 @@ IP addressing, Out of Band management, and credentials for all components:
       * - **Component**
         - **VLAN/IP Address(es)**
         - **Credentials**
-      * - Jumphost
+      * - jumphost
         - - **Management:** 10.1.0.51
           - **internal:** 10.1.20.51
-        - ``f5student``/``f5student``
+        - ``f5student``/``[will be provided]``
 
-      * - kali
+      * - attacker
         - - **Management:** 10.1.0.52
           - **internal:** 10.1.20.52
-        - ``f5student``/``f5student``
+        - ``f5student``/``[will be provided]``
 
       * - goodclient
         - - **Management:** 10.1.0.53
           - **internal:** 10.1.20.53
-        - ``f5student``/``f5student``
+        - ``f5student``/``[will be provided]``
 
-      * - Lamp
+      * - lamp
         - - **Management:** 10.1.0.252
           - **internal:** 10.1.20.252
-        - ``f5``/``f5student``
+        - ``f5``/``[will be provided]``
 
       * - F5-DHD
         - - **Management:** 10.1.0.244
           - **internal:** 10.1.20.244
-        - ``root``/``root``
+        - ``root``/``[will be provided]``
 
 Re License your DHD Device
 ==========================
@@ -123,29 +132,32 @@ For Silverline signaling we will be leveraging both the DHD built-in signaling, 
 
   #. From the Hybrid Defender shell, restart services with:  
  
-      ``# bigstart restart``  
+      ``bigstart restart``  
 
   #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:  
 
-    - Provide proper credentials:  
+    - DHD admin credentials:  
 
       ===========   =============================
-      username      dhdadmin@signaling.com        
-      password      [will be provided]               
+      username      dhd2018us@f5agility.com        
+      password      **[will be provided]**               
       Service URL   https://api.f5silverline.com  
       ===========   =============================
 
       |image12|
 
+      .. Hint::
+          That screen provides no feedback when the authentication actually works, so no worries and go to the next step unless you got an error message.
+
     - Access the Silverline Portal https://portal.f5silverline.com  using same DHD admin account  
 
-    - Navigate to Config->Hybrid Config->Hybrid Device Management  
+    - Navigate to Config->Hybrid Config->Hybrid Device Management
 
-    - Enter your email prefix in the Search field  
+      |image13| 
 
-    - Verify that you have both registrations. Approve both  
+    - Enter the hostname of your DHD device in the Search field. Verify that you have both registrations, approve them and you're done!  
 
-      |image13|
+      |image14|
 
 .. |image1| image:: /_static/dashboard_student.png
 .. |image2| image:: /_static/lab_network_topology.png
@@ -160,3 +172,4 @@ For Silverline signaling we will be leveraging both the DHD built-in signaling, 
 .. |image11| image:: /_static/image011.png
 .. |image12| image:: /_static/image012.png
 .. |image13| image:: /_static/image013.png
+.. |image14| image:: /_static/image014.png

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Lab Setup &#8212; Multilayer DDoS Defense Lab Guide  documentation</title>
+    <title>2. Hybrid Defender Setup &#8212; Multilayer DDoS Protection  documentation</title>
     
     <link rel="stylesheet" href="_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. On prem Mitigation Exercises" href="class1/class1.html" />
-    <link rel="prev" title="1. Introduction to Multi layer DDOS Defense" href="intro.html" />
+    <link rel="next" title="3. On prem Attack Mitigation Exercises" href="class1/class1.html" />
+    <link rel="prev" title="1. Introduction" href="intro.html" />
 <!--
 # Copyright 2017 F5 Networks
 #
@@ -195,7 +195,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-3 sidebar">
-         <h4><a href="./">Multilayer DDoS Defense Lab Guide </a></h4>
+         <h4><a href="./">Multilayer DDoS Protection </a></h4>
 <div id="searchbox" style="display: none" role="search">
   <form class="search" action="search.html" method="get">
     <div>
@@ -212,11 +212,14 @@
    <span class="caption-text">Current Page</span>
   </p>
   <ul>
-<li><a class="reference internal" href="#">2. Lab Setup</a><ul>
-<li><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
-<li><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
-<li><a class="reference internal" href="#networking-info">2.3. Networking Info</a></li>
-<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
+<li><a class="reference internal" href="#">2. Hybrid Defender Setup</a><ul>
+<li><a class="reference internal" href="#getting-started">2.1. Getting Started</a><ul>
+<li><a class="reference internal" href="#lab-components">2.1.1. Lab Components</a></li>
+<li><a class="reference internal" href="#networking-info">2.1.2. Networking Info</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#re-license-your-dhd-device">2.2. Re License your DHD Device</a></li>
+<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 </ul>
@@ -224,33 +227,32 @@
 
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction to Multi layer DDOS Defense</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Lab Setup</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Hybrid Defender Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-components">2.2. Lab Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#networking-info">2.3. Networking Info</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#re-license-your-dhd-device">2.2. Re License your DHD Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. On prem Mitigation Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. On prem Attack Mitigation Exercises</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="intro.html"
-                        title="previous chapter">1. Introduction to Multi layer DDOS Defense</a></p>
+                        title="previous chapter">1. Introduction</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="class1/class1.html"
-                        title="next chapter">3. On prem Mitigation Exercises</a></p>
+                        title="next chapter">3. On prem Attack Mitigation Exercises</a></p>
         
       </div>
       <div class="col-md-offset-3 col-sm-offset-3 main">
         <h4>
-          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Defense Lab Guide</a>
+          <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="index.html">Multilayer DDoS Protection</a>
           <span class="right"><a href="genindex.html">Index</a></span>
         </h4>
         
-  <div class="section" id="lab-setup">
-<h1>2. Lab Setup<a class="headerlink" href="#lab-setup" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hybrid-defender-setup">
+<h1>2. Hybrid Defender Setup<a class="headerlink" href="#hybrid-defender-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="getting-started">
 <h2>2.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p><strong>Accessing the lab environment.</strong></p>
@@ -260,18 +262,28 @@
 <li><p class="first">Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt which has been preconfigured with appropriate keys to access the Good Client and the Attacker systems. A few scripts require root access. Don’t forget to ‘sudo bash’ before running attacks, baselines, etc.</p>
+<blockquote>
+<div><p>You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don’t forget to <strong>sudo</strong> before running attacks, baselines, etc.</p>
+</div></blockquote>
+<p class="last"><img alt="image1" src="_images/dashboard_student.png" /></p>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Replace Dashboard picture, for a more precise description/visualization.</p>
 </div>
 </li>
+<li><p class="first">Run the following scripts from both <strong>goodclient</strong> and <strong>attacker</strong> hosts. It’s going to sync the tools to be used in the entire lab.</p>
+<p><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-fr</span> <span class="pre">~/tools_agility_183/</span> <span class="pre">pentmenu/</span></code></p>
+<p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/</span> <span class="pre">;</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ehc-io/tools_agility_183.git</span></code></p>
+<p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/</span> <span class="pre">;</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ehc-io/pentmenu.git</span></code></p>
+<p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/</span> <span class="pre">;</span> <span class="pre">mv</span> <span class="pre">pentmenu/pentmenu</span> <span class="pre">~/tools_agility_183/</span> <span class="pre">;</span> <span class="pre">chmod</span> <span class="pre">a+x</span> <span class="pre">~/tools_agility_183/pentmenu</span> <span class="pre">;</span> <span class="pre">cd</span> <span class="pre">~/tools_agility_183/</span></code></p>
+</li>
 </ol>
-<blockquote>
-<div><img alt="dashboard" src="_images/dashboard_student.png" /></div></blockquote>
-</div>
 <div class="section" id="lab-components">
-<h2>2.2. Lab Components<a class="headerlink" href="#lab-components" title="Permalink to this headline">¶</a></h2>
+<h3>2.1.1. Lab Components<a class="headerlink" href="#lab-components" title="Permalink to this headline">¶</a></h3>
 <p><strong>Lab Diagram</strong></p>
 <blockquote>
-<div><img alt="topology" src="_images/lab_network_topology.png" /></div></blockquote>
+<div><img alt="image2" src="_images/lab_network_topology.png" /></div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they’re in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.</p>
@@ -279,12 +291,11 @@
 <p>The lab environment provides the following resources:</p>
 <ul class="simple">
 <li>1 x F5 BIG-IP DHD (v13.1.2)</li>
-<li>1 x Linux Kali <strong>[Attacker]</strong></li>
-<li>3 x Linux Ubuntu 14.04.5 LTS [<strong>Jumphost</strong>, <strong>LAMP server</strong>, <strong>goodclient</strong>]</li>
+<li>4 x Linux Ubuntu 14.04.5 LTS [<strong>jumphost</strong>, <strong>lamp</strong>, <strong>goodclient</strong>, <strong>attacker</strong> ]</li>
 </ul>
 </div>
 <div class="section" id="networking-info">
-<h2>2.3. Networking Info<a class="headerlink" href="#networking-info" title="Permalink to this headline">¶</a></h2>
+<h3>2.1.2. Networking Info<a class="headerlink" href="#networking-info" title="Permalink to this headline">¶</a></h3>
 <p>IP addressing, Out of Band management, and credentials for all components:</p>
 <blockquote>
 <div><table border="1" class="colwidths-given docutils">
@@ -300,21 +311,21 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><th class="stub">Jumphost</th>
+<tr class="row-even"><th class="stub">jumphost</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.51</li>
 <li><strong>internal:</strong> 10.1.20.51</li>
 </ul>
 </td>
-<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
+<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">[will</span> <span class="pre">be</span> <span class="pre">provided]</span></code></td>
 </tr>
-<tr class="row-odd"><th class="stub">kali</th>
+<tr class="row-odd"><th class="stub">attacker</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.52</li>
 <li><strong>internal:</strong> 10.1.20.52</li>
 </ul>
 </td>
-<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
+<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">[will</span> <span class="pre">be</span> <span class="pre">provided]</span></code></td>
 </tr>
 <tr class="row-even"><th class="stub">goodclient</th>
 <td><ul class="first last simple">
@@ -322,15 +333,15 @@
 <li><strong>internal:</strong> 10.1.20.53</li>
 </ul>
 </td>
-<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
+<td><code class="docutils literal"><span class="pre">f5student</span></code>/<code class="docutils literal"><span class="pre">[will</span> <span class="pre">be</span> <span class="pre">provided]</span></code></td>
 </tr>
-<tr class="row-odd"><th class="stub">Lamp</th>
+<tr class="row-odd"><th class="stub">lamp</th>
 <td><ul class="first last simple">
 <li><strong>Management:</strong> 10.1.0.252</li>
 <li><strong>internal:</strong> 10.1.20.252</li>
 </ul>
 </td>
-<td><code class="docutils literal"><span class="pre">f5</span></code>/<code class="docutils literal"><span class="pre">f5student</span></code></td>
+<td><code class="docutils literal"><span class="pre">f5</span></code>/<code class="docutils literal"><span class="pre">[will</span> <span class="pre">be</span> <span class="pre">provided]</span></code></td>
 </tr>
 <tr class="row-even"><th class="stub">F5-DHD</th>
 <td><ul class="first last simple">
@@ -338,67 +349,113 @@
 <li><strong>internal:</strong> 10.1.20.244</li>
 </ul>
 </td>
-<td><code class="docutils literal"><span class="pre">root</span></code>/<code class="docutils literal"><span class="pre">root</span></code></td>
+<td><code class="docutils literal"><span class="pre">root</span></code>/<code class="docutils literal"><span class="pre">[will</span> <span class="pre">be</span> <span class="pre">provided]</span></code></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="register-dhd-device-with-silverline">
-<h2>2.4. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
-<p>For Silverline signaling we will be leveraging both the DHD built-in signaling,
-as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
-<ol class="arabic">
-<li><p class="first">Go to System-&gt;Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal.</p>
+</div>
+<div class="section" id="re-license-your-dhd-device">
+<h2>2.2. Re License your DHD Device<a class="headerlink" href="#re-license-your-dhd-device" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">For Silverline device registration to function properly the Hybrid Defender device must have a unique device ID, which is comprised of unique attributes like Base MAC and registration key.</p>
+</div>
+<p>For the following steps please use the registration key provided by your instructor.</p>
 <blockquote>
-<div><p><strong>dhd-77.latam.f5demo.com</strong></p>
+<div><ol class="arabic">
+<li><p class="first">Go to System-&gt;License and then click on Re-activate.</p>
+<blockquote>
+<div><p><img alt="image3" src="_images/image003.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Edit the Base Registration key, replacing it by the new license key. The Activation method option must be manual. Then click <strong>Next</strong>.</p>
+<blockquote>
+<div><p><img alt="image4" src="_images/image004.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Select all in the Dossier frame and copy it.  Click on “Click here to access F5 Licensing Server”.</p>
+<p><img alt="image5" src="_images/image005.png" /></p>
+</li>
+<li><p class="first">Agreee with the contract terms, copy the contents in the license frame, then click <strong>Next</strong> ”.</p>
+<p><img alt="image6" src="_images/image006.png" /></p>
+</li>
+<li><p class="first">Go back to your F5 DHD and paste the contents copied from the above. License and click <strong>Next</strong>.</p>
+<p><img alt="image7" src="_images/image007.png" /></p>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click <strong>Continue</strong>. Your device is now licensed.  Click <strong>Next</strong></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="register-dhd-device-with-silverline">
+<h2>2.3. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
+<p>For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Go to System-&gt;Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal. When finished, click <strong>Update</strong>.</p>
+<blockquote>
+<div><p><img alt="image8" src="_images/image008.png" /></p>
 </div></blockquote>
 </li>
 <li><p class="first">In Device Management-&gt;Devices select the device and then click “Change Device Name”.</p>
+<blockquote>
+<div><p><img alt="image9" src="_images/image009.png" /></p>
+</div></blockquote>
 </li>
-<li><p class="first">Update the device name to match the hostname you have chosen.</p>
+<li><p class="first">Update the device name to match the hostname you have chosen. <strong>Important</strong>: Use your student number.</p>
+<blockquote>
+<div><p><img alt="image11" src="_images/image011.png" /></p>
+</div></blockquote>
 </li>
 <li><p class="first">From the Hybrid Defender shell, restart services with:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">#</span> <span class="pre">bigstart</span> <span class="pre">restart</span></code></p>
+<div><p><code class="docutils literal"><span class="pre">bigstart</span> <span class="pre">restart</span></code></p>
 </div></blockquote>
 </li>
-<li><p class="first">Register the device with Silverline in DoS Protection-&gt;Quick Configuration-&gt;Silverline as follows:</p>
+<li><p class="first">Now proceed with the Silverline registration going to the DoS Protection-&gt;Quick Configuration-&gt;Silverline menu as follows:</p>
+</li>
+</ol>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><ul>
+<li><p class="first">DHD admin credentials:</p>
+<table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
 <col width="73%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>Username</td>
-<td><a class="reference external" href="mailto:dhdadmin&#37;&#52;&#48;signaling&#46;com">dhdadmin<span>&#64;</span>signaling<span>&#46;</span>com</a></td>
+<tr class="row-odd"><td>username</td>
+<td><a class="reference external" href="mailto:dhd2018us&#37;&#52;&#48;f5agility&#46;com">dhd2018us<span>&#64;</span>f5agility<span>&#46;</span>com</a></td>
 </tr>
-<tr class="row-even"><td>Password</td>
-<td>[will be provided]</td>
+<tr class="row-even"><td>password</td>
+<td><strong>[will be provided]</strong></td>
 </tr>
 <tr class="row-odd"><td>Service URL</td>
 <td><a class="reference external" href="https://api.f5silverline.com">https://api.f5silverline.com</a></td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
+<p><img alt="image12" src="_images/image012.png" /></p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">That screen provides no feedback when the authentication actually works, so no worries and go to the next step unless you got an error message.</p>
+</div>
 </li>
-<li><p class="first">Register the device with the Silverline iApp, to provide bandwith utilization updates in iApps-&gt;Application Services-&gt;Applications-&gt;silverline_connector. In the iApp, select Reconfigure and then click Finished. This will cause the iApp to register under the new device name.</p>
+<li><p class="first">Access the Silverline Portal <a class="reference external" href="https://portal.f5silverline.com">https://portal.f5silverline.com</a>  using same DHD admin account</p>
 </li>
-<li><p class="first">Approve the device registrations</p>
+<li><p class="first">Navigate to Config-&gt;Hybrid Config-&gt;Hybrid Device Management</p>
+<p><img alt="image13" src="_images/image013.png" /></p>
 </li>
-<li><dl class="first docutils">
-<dt>Access the Silverline Portal DHD Admin Account:</dt>
-<dd><ul class="first last simple">
-<li>Navigate to Config-&gt;Hybrid Config-&gt;Hybrid Device Management</li>
-<li>Enter your email prefix in the Search field</li>
-<li>Verify that you have both registrations. Approve both</li>
+<li><p class="first">Enter the hostname of your DHD device in the Search field. Verify that you have both registrations, approve them and you’re done!</p>
+<p><img alt="image14" src="_images/image014.png" /></p>
+</li>
 </ul>
-</dd>
-</dl>
-</li>
-</ol>
+</div></blockquote>
+</div></blockquote>
 </div>
 </div>
 
@@ -407,10 +464,10 @@ as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
 		     <div class="row next-prev-btn-row">
            <div class="col-lg-12">
            
-		        <a href="intro.html" title="1. Introduction to Multi layer DDOS Defense" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+		        <a href="intro.html" title="1. Introduction" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
            
            
-              <a href="class1/class1.html" title="3. On prem Mitigation Exercises" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              <a href="class1/class1.html" title="3. On prem Attack Mitigation Exercises" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
            
 		     </div>
          </div>
