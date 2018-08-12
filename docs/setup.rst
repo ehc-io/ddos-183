@@ -6,7 +6,7 @@ Getting Started
 
   **Accessing the lab environment.**
 
-  #. Open a browser and go to http://training.f5agility.com/  Enter your Class# and Student# as provided by your instructor.
+  #. Open a browser and go to http://training.f5agility.com, then enter your Class# and Student# as provided by your instructor.
 
   #. Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)
 
