@@ -1,13 +1,14 @@
-Lab – Configuring Flood Attack Protection
-------------------------------------------
+Lab – Understanding Flood Attacks
+----------------------------------
 
-This lab will teach you how Hybrid Defender device-level protection works.
+    The idea in here is to observe how poorly the application performs when the network is under attack.
 
 Configure DHD Device Bandwidth Thresholds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    - In the Configuration Utility, open the Protected Objects page.
-    - In the Network Protection section click Create.
-    - Configure as follows then click Save.
+
+    #. In the Configuration Utility, open the Protected Objects page.
+    #. In the Network Protection section click Create.
+    #. Configure as follows then click Save.
 
         ==========================   ==============
         Maximum Bandwidth: Specify   100           
@@ -17,13 +18,11 @@ Configure DHD Device Bandwidth Thresholds
         Scrubber Details: Type       Advertise All  
         ==========================   ==============
 
-      |image15|
+        |image15|
 
 Turning Device-Level Protection off
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The idea in here is first to observe how the attack hots the web server when there's no protection in place.
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     #. In the Configuration Utility, in the Device Protection section click Device Configuration.  
 
         |image16|
@@ -76,8 +75,8 @@ The idea in here is first to observe how the attack hots the web server when the
             /httprequest.php	status: 200	bytes: 699	time: 0.014
             /httprequest.php	status: 200	bytes: 699	time: 0.014
 
-Let's Hit the LAMP Server 
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Launch an ICMP flood Attack on the LAMP Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         .. Hint::
             The pentest tool can be used to send several types of DoS Attacks for the most part of the lab, few free to try it out. For some specifi exercise though, there will be custom shell scrtips.  
@@ -138,13 +137,13 @@ Let's Hit the LAMP Server
                 0.83 ||||||||||||||||||||||||||||||||.|||||||||..||||||||||||||||
                     1   5   10   15   20   25   30   35   40   45   50   55   60
                 K                     (TX Packtes/second)
-            52.32 ..............||||....|.||..................................
-            43.60 ||.|||||||||||||||||||||||||||||||||..||||||||.|||||||||||||
-            34.88 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-            26.16 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-            17.44 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-                8.72 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-                    1   5   10   15   20   25   30   35   40   45   50   55   60
+                52.32 ..............||||....|.||..................................
+                43.60 ||.|||||||||||||||||||||||||||||||||..||||||||.|||||||||||||
+                34.88 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                26.16 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                17.44 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                    8.72 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                        1   5   10   15   20   25   30   35   40   45   50   55   60
 
 
         .. Hint::
@@ -165,18 +164,13 @@ Let's Hit the LAMP Server
     #. In the Filter Type field select Device DoS. Then on the left corner search for ICMP.
 
         |image20|
-    
+
     #. Review the statistics for Current, 1 min. Average, and 1 hr Average.
 
     #. Open the Security > Event Logs > DoS > Network > Events page.
         The log file is empty as we disabled device-level flood protection on BIG-IP DHD.
 
-    #. From the Attacker terminal session type Ctrl + C to stop the ICMP flood.
-    
-
-Configure Device-Level IPv4 Flood DHD DoS Protection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+    #. From Attacker terminal session type Ctrl + C to stop the ICMP flood.
 
 .. |image15| image:: /_static/image015.png
 .. |image16| image:: /_static/image016.png

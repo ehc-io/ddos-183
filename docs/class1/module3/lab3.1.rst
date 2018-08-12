@@ -1,9 +1,11 @@
-Lab – How to Protect against Network Level DDOS
-------------------------------------------------
+Lab – Configure Network Behavioral DoS Protection
+-------------------------------------------------
+
+.. TODO:: Change title of this lab
 
 This lab will teach you how Hybrid Defender device-level protection works.
 
-Task – Open a Web Browser
+Task – 123
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this task you will open a web browser and navigate to the |f5| Downloads
@@ -21,7 +23,7 @@ Follow these steps to complete this task:
 
    |image1|
 
-Task – Download the Image
+Task – 456
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this task we will download the |f5| |bip| |ve| image to your system
@@ -41,3 +43,5 @@ Follow these steps to complete this task:
 #. Download the image and save it to you local system
 
    |image1|
+
+.. |image15| image:: /_static/image015.png

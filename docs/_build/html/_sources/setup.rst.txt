@@ -4,49 +4,49 @@ Hybrid Defender Setup
 Getting Started
 ================
 
-**Accessing the lab environment.**
+  **Accessing the lab environment.**
 
-#. Open a browser and go to http://training.f5agility.com.  Enter your Class# and Student# as provided by your instructor.
+  #. Open a browser and go to http://training.f5agility.com.  Enter your Class# and Student# as provided by your instructor.
 
-#. Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)
+  #. Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)
 
-   .. HINT::
+    .. HINT::
 
-      You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
-  
-    |image1|   
+        You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
+    
+      |image1|   
 
-   .. TODO:: Replace Dashboard picture, for a more precise description/visualization.  
+    .. TODO:: Replace Dashboard picture, for a more precise description/visualization.  
 
-#.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
+  #.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
 
-    ``rm -fr ~/tools_agility_183/ pentmenu/``
+      ``rm -fr ~/tools_agility_183/ pentmenu/``
 
-    ``cd ~/ ; git clone https://github.com/ehc-io/tools_agility_183.git``  
+      ``cd ~/ ; git clone https://github.com/ehc-io/tools_agility_183.git``  
 
-    ``cd ~/ ; git clone https://github.com/ehc-io/pentmenu.git``  
+      ``cd ~/ ; git clone https://github.com/ehc-io/pentmenu.git``  
 
-    ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183/ ; chmod a+x ~/tools_agility_183/pentmenu ; cd ~/tools_agility_183/``
+      ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183/ ; chmod a+x ~/tools_agility_183/pentmenu ; cd ~/tools_agility_183/``
 
 Lab Components
 ~~~~~~~~~~~~~~
 
-**Lab Diagram**
+  **Lab Diagram**
 
-      |image2|
+        |image2|
 
-.. NOTE::
-   You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they're in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.
+  .. NOTE::
+    You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they're in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.
 
-The lab environment provides the following resources:
+  The lab environment provides the following resources:
 
-- 1 x F5 BIG-IP DHD (v13.1.2)
-- 4 x Linux Ubuntu 14.04.5 LTS [**jumphost**, **lamp**, **goodclient**, **attacker** ]
+  - 1 x F5 BIG-IP DHD (v13.1.2)
+  - 4 x Linux Ubuntu 14.04.5 LTS [**jumphost**, **lamp**, **goodclient**, **attacker** ]
 
 Networking Info
 ~~~~~~~~~~~~~~~
 
-IP addressing, Out of Band management, and credentials for all components:
+  IP addressing, Out of Band management, and credentials for all components:
 
   .. list-table::
       :widths: 20 40 40
@@ -84,10 +84,10 @@ IP addressing, Out of Band management, and credentials for all components:
 Re License your DHD Device
 ==========================
 
-.. IMPORTANT::
-  For Silverline device registration to function properly the Hybrid Defender device must have a unique device ID, which is comprised of unique attributes like Base MAC and registration key.
+  .. IMPORTANT::
+    For Silverline device registration to function properly the Hybrid Defender device must have a unique device ID, which is comprised of unique attributes like Base MAC and registration key.
 
-For the following steps please use the registration key provided by your instructor.
+  For the following steps please use the registration key provided by your instructor.
 
   #. Go to System->License and then click on Re-activate.  
 
@@ -109,55 +109,53 @@ For the following steps please use the registration key provided by your instruc
 
      |image7|
 
-  .. Hint::
-    The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click **Continue**. Your device is now licensed.  Click **Next**
+    .. Hint::
+      The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click **Continue**. Your device is now licensed.  Click **Next**
 
 
 Register DHD Device with Silverline
 ====================================
 
-For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.  
+  For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.  
 
-  #. Go to System->Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal. When finished, click **Update**.  
+    #. Go to System->Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal. When finished, click **Update**.  
 
-      |image8|
+        |image8|
 
-  #. In Device Management->Devices select the device and then click “Change Device Name”.  
+    #. In Device Management->Devices select the device and then click “Change Device Name”.  
 
-      |image9|
+        |image9|
 
-  #. Update the device name to match the hostname you have chosen. **Important**: Use your student number.
+    #. Update the device name to match the hostname you have chosen. **Important**: Use your student number.
 
-      |image11|
+        |image11|
 
-  #. From the Hybrid Defender shell, restart services with:  
- 
-      ``bigstart restart``  
+    #. From the Hybrid Defender shell, restart services with:  
+  
+        ``bigstart restart``  
 
-  #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:  
-
-    - DHD admin credentials:  
+    #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:  
 
       ===========   =============================
       username      dhd2018us@f5agility.com        
       password      **[will be provided]**               
       Service URL   https://api.f5silverline.com  
-      ===========   =============================
+      ===========   =============================  
 
       |image12|
 
       .. Hint::
           That screen provides no feedback when the authentication actually works, so no worries and go to the next step unless you got an error message.
 
-    - Access the Silverline Portal https://portal.f5silverline.com  using same DHD admin account  
+      - Access the Silverline Portal https://portal.f5silverline.com  using same DHD admin account  
 
-    - Navigate to Config->Hybrid Config->Hybrid Device Management
+      - Navigate to Config->Hybrid Config->Hybrid Device Management
 
-      |image13| 
+        |image13| 
 
-    - Enter the hostname of your DHD device in the Search field. Verify that you have both registrations, approve them and you're done!  
+      - Enter the hostname of your DHD device in the Search field. Verify that you have both registrations, approve them and you're done!  
 
-      |image14|
+        |image14|
 
 .. |image1| image:: /_static/dashboard_student.png
 .. |image2| image:: /_static/lab_network_topology.png

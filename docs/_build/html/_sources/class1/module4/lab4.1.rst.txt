@@ -1,43 +1,42 @@
-Lab – Network Behavioral DoS Lab
----------------------------------
+Lab – Configure Application Layer DoS Protections
+-------------------------------------------------
 
-This lab will teach you how Hybrid Defender device-level protection works.
+    This lab will teach you how Hybrid Defender device-level protection works.
 
-Task – Open a Web Browser
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure Protected Object
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this task you will open a web browser and navigate to the |f5| Downloads
-site.
+    In this task you will open a web browser and navigate to the |f5| Downloads site.
 
-.. NOTE:: An account is required to download software.  You can create one at
-   https://login.f5.com/resource/registerEmail.jsp
+    .. NOTE:: An account is required to download software.  You can create one at https://login.f5.com/resource/registerEmail.jsp
 
-Follow these steps to complete this task:
+Generate L7 Behavioral baseline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Open your web browser
-#. Navigate to https://downloads.f5.com
-#. Login with your username and password.
-#. After logging in you should see the following window:
+    In this task we will download the |f5| |bip| |ve| image to your system
 
-   |image1|
+    Follow these steps to complete this task:
 
-Task – Download the Image
-~~~~~~~~~~~~~~~~~~~~~~~~~
+    #. Click the 'Find a Download' button.
 
-In this task we will download the |f5| |bip| |ve| image to your system
+    |image1|
 
-Follow these steps to complete this task:
+    #. Click the link that contains the |bip| TMOS software version you would like
+    to download.
 
-#. Click the 'Find a Download' button.
+    .. IMPORTANT:: Be sure to click a link that has "\ |ve|" in the name
 
-   |image1|
+    #. Find the image appropriate for your hypervisor
+    #. Download the image and save it to you local system
 
-#. Click the link that contains the |bip| TMOS software version you would like
-   to download.
+    |image1|
 
-   .. IMPORTANT:: Be sure to click a link that has "\ |ve|" in the name
 
-#. Find the image appropriate for your hypervisor
-#. Download the image and save it to you local system
+Launch Slow Read
+~~~~~~~~~~~~~~~~
 
-   |image1|
+Behavioral L7 DoS Mitigation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Silverline Signals
+~~~~~~~~~~~~~~~~~~

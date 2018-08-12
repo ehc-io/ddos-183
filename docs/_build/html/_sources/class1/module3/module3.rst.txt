@@ -1,5 +1,5 @@
-Network Behavioral DoS
-===============================
+Module - Network Behavioral DoS Protection
+==========================================
 
 In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
 
