@@ -7,8 +7,8 @@ Configure DHD Device Bandwidth Thresholds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #. In the Configuration Utility, open the Protected Objects page.
-    #. In the Network Protection section click Create.
-    #. Configure as follows then click Save.
+    #. In the Network Protection section click **Create**.
+    #. Configure as follows then click **Save**.
 
         ==========================   ==============
         Maximum Bandwidth: Specify   100           
