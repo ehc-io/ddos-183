@@ -1,7 +1,7 @@
-Module - Protection for Common DoS Vectors
-==========================================
+Module - Network Level DoS Protection
+=====================================
 
-In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
+In this module you will learn how to defense against several network level DDoS vectors using the F5 DHD device.
 
 .. toctree::
    :maxdepth: 1
