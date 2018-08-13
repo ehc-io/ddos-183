@@ -189,7 +189,7 @@ Check out the DoS Visibility Page
 
     #. Mouse over several of the attacks to get additional details of each attack.
     #. Scroll down in the left-side of the page to view the Attacks section.
-    #. You can see the number of high, moderate, and low attacks in addition to the types of attacks (HTTP, DNS, Network) and the severity levels.
+    #. You can see the number of high, moderate, and low attacks in addition to the types of attacks (HTTP, ICMP, etc.) and the severity levels.
 
 .. |image24| image:: /_static/image024.png
 .. |image25| image:: /_static/image025.png

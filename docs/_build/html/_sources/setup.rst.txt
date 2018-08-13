@@ -18,13 +18,15 @@ Getting Started
 
   #.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
 
-      ``rm -fr ~/tools_agility_183/ pentmenu/``
+      ``cd ~ ; rm -fr ~/tools_agility_183 ~/pentmenu``
 
       ``cd ~/ ; git clone https://github.com/ehc-io/tools_agility_183.git``  
 
       ``cd ~/ ; git clone https://github.com/ehc-io/pentmenu.git``  
 
-      ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183/ ; chmod a+x ~/tools_agility_183/pentmenu ; cd ~/tools_agility_183/``
+      ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183``
+      
+      ``chmod a+x ~/tools_agility_183/pentmenu ; rm -fr ~/pentmenu ; cd ~/tools_agility_183/``
 
 Lab Components
 ~~~~~~~~~~~~~~
