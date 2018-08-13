@@ -1,4 +1,4 @@
-Lab – Launching a Network-Level Flood Attacks
+Lab – Launching Network-Level Flood Attacks
 ---------------------------------------------
 
     The idea in this lab is to observe how poorly the application performs when the network is under attack.

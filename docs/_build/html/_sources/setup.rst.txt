@@ -28,6 +28,8 @@ Getting Started
       
       ``chmod a+x ~/tools_agility_183/pentmenu ; rm -fr ~/pentmenu ; cd ~/tools_agility_183/``
 
+      ``cd .``
+
 Lab Components
 ~~~~~~~~~~~~~~
 
