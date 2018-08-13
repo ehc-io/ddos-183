@@ -1,5 +1,5 @@
-Lab - Configure DNS DoS Attack Protection
------------------------------------------
+Lab - Preventing DNS DoS Attacks
+--------------------------------
 
 This lab teachs you on how to configure DoS protection for basic and advanced DDoS vectors.
 
