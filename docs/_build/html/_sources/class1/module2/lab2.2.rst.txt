@@ -191,6 +191,19 @@ Check out the DoS Visibility Page
     #. Scroll down in the left-side of the page to view the Attacks section.
     #. You can see the number of high, moderate, and low attacks in addition to the types of attacks (HTTP, ICMP, etc.) and the severity levels.
 
+Check out the Silverline Portal 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    Use the Silverline portal to view details about the attacks launched in this exercise.
+
+    #. Access the Silverline Portal https://portal.f5silverline.com  
+
+    #. Open the Audit->API Activity Log page.
+
+    #. Enter the hostname of your DHD device in the **Search field** and then check out the activity your Hybrid Defender device has reported back to the Silverline Scrubing Center.  
+
+        |image41|
+
 .. |image24| image:: /_static/image024.png
 .. |image25| image:: /_static/image025.png
 .. |image26| image:: /_static/image026.png
@@ -198,3 +211,4 @@ Check out the DoS Visibility Page
 .. |image28| image:: /_static/image028.png
 .. |image29| image:: /_static/image029.png
 .. |image30| image:: /_static/image030.png
+.. |image41| image:: /_static/image041.png
