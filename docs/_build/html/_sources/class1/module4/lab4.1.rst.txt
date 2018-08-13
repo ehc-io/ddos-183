@@ -1,5 +1,5 @@
-Lab – Configure Application Layer DoS Protections
--------------------------------------------------
+Lab – Configure Application Layer DoS Defenses
+----------------------------------------------
 
     This lab will teach you how Hybrid Defender device-level protection works.
 

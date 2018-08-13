@@ -1,5 +1,5 @@
 Hybrid Defender Setup
-------------------------
+---------------------
 
 Getting Started
 ================
@@ -14,9 +14,7 @@ Getting Started
 
         You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
     
-      |image1|   
-
-    .. TODO:: Replace Dashboard picture, for a more precise description/visualization.  
+      |image1|    
 
   #.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
 
@@ -36,7 +34,7 @@ Lab Components
         |image2|
 
   .. NOTE::
-    You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they're in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.
+    You may have noticed that although clients (goodclient, attacker) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they're in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.
 
   The lab environment provides the following resources:
 
@@ -112,14 +110,62 @@ Re License your DHD Device
     .. Hint::
       The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click **Continue**. Your device is now licensed.  Click **Next**
 
+Perform Initial DHD Network Configuration
+=========================================
+
+    #. In the BIG-IP Configuration Utility, open the DoS Protection > Quick Configuration page.
+
+    #. Open the Network Configuration page, then In the **Default Network** section click **defaultVLAN**.
+
+    #. Configure the Default Network settings as follows, the click on **Done Editing**
+
+      ==========================   ======================================  
+      Internal VLAN tag:              blank                                
+      Internal Interfaces:            1.2 (Click untagged/Add)                    
+      External VLAN tag:              blank       
+      External Interfaces:            1.1 (Click untagged/Add)         
+      IP Address/Mask:                10.1.20.244/24                       
+      ==========================   ====================================== 
+
+      |image21|
+
+    #. In the Routes section click Create.
+
+    #. Configure the route using following information, and then click **Done Editing**, and then click **Update**.
+
+      ==========================   ===========  
+      Route name:                   default                                
+      Destination:                  0.0.0.0                   
+      Netmask:                      0.0.0.0
+      Gateway Address:              10.1.20.2    
+      ==========================   ===========
+
+      |image22|
+
+    #. By this time you should be able to reach the LAMP server from both attacker and gooclient machines.
+        
+      .. code::
+
+        f5student@attacker:~$  ping -c 3 server1
+        PING server1.f5demo.com (10.1.20.11) 56(84) bytes of data.
+        64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=1 ttl=64 time=9.73 ms
+        64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=2 ttl=64 time=6.21 ms
+        64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=3 ttl=64 time=5.88 ms
+
+        --- server1.f5demo.com ping statistics ---
+        3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+        rtt min/avg/max/mdev = 5.880/7.277/9.736/1.744 ms
+        f5student@attacker:~$
 
 Register DHD Device with Silverline
 ====================================
 
   For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.  
 
-    #. Go to System->Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal. When finished, click **Update**.  
-
+    #. Go to System->Platform menu and change the hostname as below. This will make easier to identify alerts from your particular device in the Silverline Portal. When finished, click **Update**.
+      
+        ``dhd-[student#].latam.f5demo.com``  
+        
         |image8|
 
     #. In Device Management->Devices select the device and then click “Change Device Name”.  
@@ -130,11 +176,11 @@ Register DHD Device with Silverline
 
         |image11|
 
-    #. From the Hybrid Defender shell, restart services with:  
+    #. From the Hybrid Defender shell, restart services with:
   
-        ``bigstart restart``  
+        ``bigstart restart``
 
-    #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:  
+    #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:
 
       ===========   =============================
       username      dhd2018us@f5agility.com        
@@ -171,3 +217,5 @@ Register DHD Device with Silverline
 .. |image12| image:: /_static/image012.png
 .. |image13| image:: /_static/image013.png
 .. |image14| image:: /_static/image014.png
+.. |image21| image:: /_static/image021.png
+.. |image22| image:: /_static/image022.png

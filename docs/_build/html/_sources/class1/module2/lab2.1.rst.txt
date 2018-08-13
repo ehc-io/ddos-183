@@ -1,7 +1,7 @@
-Lab – Understanding Flood Attacks
-----------------------------------
+Lab – Launching a Network-Level Flood Attacks
+---------------------------------------------
 
-    The idea in here is to observe how poorly the application performs when the network is under attack.
+    The idea in this lab is to observe how poorly the application performs when the network is under attack.
 
 Configure DHD Device Bandwidth Thresholds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +36,6 @@ Turning Device-Level Protection off
         Detection Threshold Percent    Infinite               
         Rate/Leak Limit                Infinite                   
         ============================   ==============
-
 
         |image17|
 

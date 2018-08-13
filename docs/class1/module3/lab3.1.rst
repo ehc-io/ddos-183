@@ -1,5 +1,5 @@
-Lab – Configure Network Behavioral DoS Protection
--------------------------------------------------
+Lab – Configure Network Behavioral DoS Defenses
+-----------------------------------------------
 
 .. TODO:: Change title of this lab
 

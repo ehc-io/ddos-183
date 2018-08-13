@@ -1,5 +1,5 @@
-Module - DoS Protection for Common DoS Vectors
-==============================================
+Module - Protection for Common DoS Vectors
+==========================================
 
 In this module you will learn how to defense against several basic DDOS vectors using the F5 DHD device.
 

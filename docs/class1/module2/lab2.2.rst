@@ -1,7 +1,7 @@
-Lab - Configure Flood Protections
----------------------------------
+Lab - Configure Hybrid Defender Flood Protections
+-------------------------------------------------
 
-    This lab teachs you on how to configure DoS protection for basic and advanced DDoS vectors.
+    This lab teachs you on how to configure DoS protection for common network-level DoS vectors.
 
 Configure Protected Object-Level IPv4 Flood DHD DoS Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,7 +21,6 @@ Configure Protected Object-Level IPv4 Flood DHD DoS Protection
     #. After logging in you should see the following window:
 
     |image1|
-
 
 Configure Protected Object-Based Sweep Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

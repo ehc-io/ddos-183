@@ -219,7 +219,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#re-license-your-dhd-device">2.2. Re License your DHD Device</a></li>
-<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
+<li><a class="reference internal" href="#perform-initial-dhd-network-configuration">2.3. Perform Initial DHD Network Configuration</a></li>
+<li><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 </ul>
@@ -231,7 +232,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Hybrid Defender Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#re-license-your-dhd-device">2.2. Re License your DHD Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.3. Register DHD Device with Silverline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perform-initial-dhd-network-configuration">2.3. Perform Initial DHD Network Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-dhd-device-with-silverline">2.4. Register DHD Device with Silverline</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="class1/class1.html">3. On prem Attack Mitigation Exercises</a></li>
@@ -255,23 +257,21 @@
 <h1>2. Hybrid Defender Setup<a class="headerlink" href="#hybrid-defender-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="getting-started">
 <h2>2.1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p><strong>Accessing the lab environment.</strong></p>
-<ol class="arabic">
-<li><p class="first">Open a browser and go to <a class="reference external" href="http://training.f5agility.com">http://training.f5agility.com</a>.  Enter your Class# and Student# as provided by your instructor.</p>
-</li>
-<li><p class="first">Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)</p>
-<div class="admonition hint">
+<blockquote>
+<div><p><strong>Accessing the lab environment.</strong></p>
+<ol class="arabic simple">
+<li>Open a browser and go to <a class="reference external" href="http://training.f5agility.com">http://training.f5agility.com</a>, then enter your Class# and Student# as provided by your instructor.</li>
+<li>Look for the jumphost virtual machine. You will use the xubuntu jumphost for all the labs. (see below)</li>
+</ol>
+<blockquote>
+<div><div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <blockquote>
-<div><p>You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don’t forget to <strong>sudo</strong> before running attacks, baselines, etc.</p>
-</div></blockquote>
+<div>You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don’t forget to <strong>sudo</strong> before running attacks, baselines, etc.</div></blockquote>
 <p class="last"><img alt="image1" src="_images/dashboard_student.png" /></p>
 </div>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Replace Dashboard picture, for a more precise description/visualization.</p>
-</div>
-</li>
+</div></blockquote>
+<ol class="arabic">
 <li><p class="first">Run the following scripts from both <strong>goodclient</strong> and <strong>attacker</strong> hosts. It’s going to sync the tools to be used in the entire lab.</p>
 <p><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-fr</span> <span class="pre">~/tools_agility_183/</span> <span class="pre">pentmenu/</span></code></p>
 <p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/</span> <span class="pre">;</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ehc-io/tools_agility_183.git</span></code></p>
@@ -279,26 +279,29 @@
 <p><code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/</span> <span class="pre">;</span> <span class="pre">mv</span> <span class="pre">pentmenu/pentmenu</span> <span class="pre">~/tools_agility_183/</span> <span class="pre">;</span> <span class="pre">chmod</span> <span class="pre">a+x</span> <span class="pre">~/tools_agility_183/pentmenu</span> <span class="pre">;</span> <span class="pre">cd</span> <span class="pre">~/tools_agility_183/</span></code></p>
 </li>
 </ol>
+</div></blockquote>
 <div class="section" id="lab-components">
 <h3>2.1.1. Lab Components<a class="headerlink" href="#lab-components" title="Permalink to this headline">¶</a></h3>
-<p><strong>Lab Diagram</strong></p>
+<blockquote>
+<div><p><strong>Lab Diagram</strong></p>
 <blockquote>
 <div><img alt="image2" src="_images/lab_network_topology.png" /></div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You may have noticed that although clients (goodclient, Kali) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they’re in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.</p>
+<p class="last">You may have noticed that although clients (goodclient, attacker) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they’re in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.</p>
 </div>
 <p>The lab environment provides the following resources:</p>
 <ul class="simple">
 <li>1 x F5 BIG-IP DHD (v13.1.2)</li>
 <li>4 x Linux Ubuntu 14.04.5 LTS [<strong>jumphost</strong>, <strong>lamp</strong>, <strong>goodclient</strong>, <strong>attacker</strong> ]</li>
 </ul>
+</div></blockquote>
 </div>
 <div class="section" id="networking-info">
 <h3>2.1.2. Networking Info<a class="headerlink" href="#networking-info" title="Permalink to this headline">¶</a></h3>
-<p>IP addressing, Out of Band management, and credentials for all components:</p>
 <blockquote>
-<div><table border="1" class="colwidths-given docutils">
+<div><p>IP addressing, Out of Band management, and credentials for all components:</p>
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="40%" />
@@ -358,13 +361,13 @@
 </div>
 <div class="section" id="re-license-your-dhd-device">
 <h2>2.2. Re License your DHD Device<a class="headerlink" href="#re-license-your-dhd-device" title="Permalink to this headline">¶</a></h2>
-<div class="admonition important">
+<blockquote>
+<div><div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">For Silverline device registration to function properly the Hybrid Defender device must have a unique device ID, which is comprised of unique attributes like Base MAC and registration key.</p>
 </div>
 <p>For the following steps please use the registration key provided by your instructor.</p>
-<blockquote>
-<div><ol class="arabic">
+<ol class="arabic">
 <li><p class="first">Go to System-&gt;License and then click on Re-activate.</p>
 <blockquote>
 <div><p><img alt="image3" src="_images/image003.png" /></p>
@@ -385,20 +388,104 @@
 <p><img alt="image7" src="_images/image007.png" /></p>
 </li>
 </ol>
-<div class="admonition hint">
+<blockquote>
+<div><div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click <strong>Continue</strong>. Your device is now licensed.  Click <strong>Next</strong></p>
 </div>
 </div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="perform-initial-dhd-network-configuration">
+<h2>2.3. Perform Initial DHD Network Configuration<a class="headerlink" href="#perform-initial-dhd-network-configuration" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>In the BIG-IP Configuration Utility, open the DoS Protection &gt; Quick Configuration page.</li>
+<li>Open the Network Configuration page, then In the <strong>Default Network</strong> section click <strong>defaultVLAN</strong>.</li>
+<li>Configure the Default Network settings as follows, the click on <strong>Done Editing</strong></li>
+</ol>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Internal VLAN tag:</td>
+<td>blank</td>
+</tr>
+<tr class="row-even"><td>Internal Interfaces:</td>
+<td>1.2 (Click untagged/Add)</td>
+</tr>
+<tr class="row-odd"><td>External VLAN tag:</td>
+<td>blank</td>
+</tr>
+<tr class="row-even"><td>External Interfaces:</td>
+<td>1.1 (Click untagged/Add)</td>
+</tr>
+<tr class="row-odd"><td>IP Address/Mask:</td>
+<td>10.1.20.244/24</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image21" src="_images/image021.png" /></p>
+</div></blockquote>
+<ol class="arabic simple">
+<li>In the Routes section click Create.</li>
+<li>Configure the route using following information, and then click <strong>Done Editing</strong>, and then click <strong>Update</strong>.</li>
+</ol>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="70%" />
+<col width="30%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Route name:</td>
+<td>default</td>
+</tr>
+<tr class="row-even"><td>Destination:</td>
+<td>0.0.0.0</td>
+</tr>
+<tr class="row-odd"><td>Netmask:</td>
+<td>0.0.0.0</td>
+</tr>
+<tr class="row-even"><td>Gateway Address:</td>
+<td>10.1.20.2</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image22" src="_images/image022.png" /></p>
+</div></blockquote>
+<ol class="arabic simple">
+<li>By this time you should be able to reach the LAMP server from both attacker and gooclient machines.</li>
+</ol>
+<blockquote>
+<div><div class="code highlight-default"><div class="highlight"><pre><span></span>f5student@attacker:~$  ping -c 3 server1
+PING server1.f5demo.com (10.1.20.11) 56(84) bytes of data.
+64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=1 ttl=64 time=9.73 ms
+64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=2 ttl=64 time=6.21 ms
+64 bytes from server1.f5demo.com (10.1.20.11): icmp_seq=3 ttl=64 time=5.88 ms
+
+--- server1.f5demo.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 5.880/7.277/9.736/1.744 ms
+f5student@attacker:~$
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="register-dhd-device-with-silverline">
-<h2>2.3. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
-<p>For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
+<h2>2.4. Register DHD Device with Silverline<a class="headerlink" href="#register-dhd-device-with-silverline" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Go to System-&gt;Platform menu and change the hostname replacing the digits part with your student number, as the example bellow. This will make easier to identify alerts from your particular device in the Silvrline Portal. When finished, click <strong>Update</strong>.</p>
+<li><p class="first">Go to System-&gt;Platform menu and change the hostname as below. This will make easier to identify alerts from your particular device in the Silverline Portal. When finished, click <strong>Update</strong>.</p>
 <blockquote>
-<div><p><img alt="image8" src="_images/image008.png" /></p>
+<div><p><code class="docutils literal"><span class="pre">dhd-[student#].latam.f5demo.com</span></code></p>
+<p><img alt="image8" src="_images/image008.png" /></p>
 </div></blockquote>
 </li>
 <li><p class="first">In Device Management-&gt;Devices select the device and then click “Change Device Name”.</p>
@@ -420,9 +507,7 @@
 </li>
 </ol>
 <blockquote>
-<div><ul>
-<li><p class="first">DHD admin credentials:</p>
-<table border="1" class="docutils">
+<div><table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
 <col width="73%" />
@@ -444,7 +529,7 @@
 <p class="first admonition-title">Hint</p>
 <p class="last">That screen provides no feedback when the authentication actually works, so no worries and go to the next step unless you got an error message.</p>
 </div>
-</li>
+<ul>
 <li><p class="first">Access the Silverline Portal <a class="reference external" href="https://portal.f5silverline.com">https://portal.f5silverline.com</a>  using same DHD admin account</p>
 </li>
 <li><p class="first">Navigate to Config-&gt;Hybrid Config-&gt;Hybrid Device Management</p>
@@ -454,6 +539,7 @@
 <p><img alt="image14" src="_images/image014.png" /></p>
 </li>
 </ul>
+</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div>
