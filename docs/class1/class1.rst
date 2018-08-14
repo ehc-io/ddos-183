@@ -1,5 +1,5 @@
-On premise Attack Mitigation Exercises
-======================================
+On Premise Attack Mitigation Exercises
+========================================
 
 This class demonstrates how perform on premise DoS Protection using the F5 DDoS Hybrid Denfender.
 
