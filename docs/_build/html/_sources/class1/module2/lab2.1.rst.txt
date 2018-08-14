@@ -6,8 +6,8 @@ Lab – Launching Network-Level Flood Attacks
 Configure DHD Device Bandwidth Thresholds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #. In the Configuration Utility, open the Protected Objects page.
-    #. In the Network Protection section click **Create**.
+    #. In the **Configuration Utility**, open the **Protected Objects** page.
+    #. In the **Network Protection** section click **Create**.
     #. Configure as follows then click **Save**.
 
         ==========================   ==============
@@ -23,11 +23,11 @@ Configure DHD Device Bandwidth Thresholds
 Turning Device-Level Protection off
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    #. In the Configuration Utility, in the Device Protection section click Device Configuration.  
+    #. In the **Configuration Utility**, in the **Device Protection** section click **Device Configuration**.  
 
         |image16|
 
-    #. In the Bad Headers row click the **+** icon, and then click **Bad Source**.  
+    #. In the **Bad Headers** row click the **+** icon, and then click **Bad Source**.  
 
     #. On the right-side of the page configure using the following information.
 
@@ -39,7 +39,7 @@ Turning Device-Level Protection off
 
         |image17|
 
-    #. Now In the Flood row, click the **+** icon, and then click **ICMPv4 flood**. 
+    #. Now In the **Flood** row, click the **+** icon, and then click **ICMPv4 flood**. 
 
     #. On the right-side of the page configure using the following information.
 
@@ -53,15 +53,13 @@ Turning Device-Level Protection off
 
     #. Apply the settings above for TCP SYN flood and UDP Flood. 
 
-    #. In the Behavioral row click on **Learn Only**, then click **Update**.  
+    #. In the **Behavioral** row click on **Learn Only**, then click **Update**.  
 
         |image23|
 
-    #. On the goodclient, start the network baselining (Let it roll for the entire lab) 
+    #. On the **goodclient**, start the network baselining (Let it running for the entire lab) 
 
-        ``cd ~/tools_agility_183/``  
-
-        ``sudo ./baseline_l4.sh``  
+        ``sudo ~/tools_agility_183/baseline_l4.sh``  
 
         .. IMPORTANT::
             In order to assure best performance and good lab results, always use the management network ip addresses/hostnames for remote access  (goodclient-mgmt, attacker-mgmt and lamp-mgmt)
@@ -84,9 +82,9 @@ Launch an ICMP flood Attack on the LAMP Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         .. Hint::
-            The pentest tool can be used to send several types of DoS Attacks for the most part of the lab, few free to try it out. For some specifi exercise though, there will be custom shell scrtips.  
+            The pentest tool can be used to send several types of DoS Attacks for the most part of the lab, few free to try it out. For some specific exercises there will be custom shell scrtips though.  
 
-            ``# ~/tools_agility_183/pentest``  
+            ``sudo ~/tools_agility_183/pentest``  
 
         .. code::
 
@@ -152,30 +150,30 @@ Launch an ICMP flood Attack on the LAMP Server
 
 
         .. Hint::
-            The RIGHT and LEFT arrow keys move between Bps and pps metrics. Don't forget selecting the right inteface using the UP/DOWN arrow key. Attacker uses eth1 and Lamp uses eth4 for data traffic.  
+            Use either the RIGHT and LEFT arrow keys to move between Bps and pps metrics. Don't forget selecting the right inteface using the UP/DOWN arrow keys. **Attacker** uses eth1 and **Lamp** uses eth4 for data traffic.  
 
-    #. Open a terminal session with the BIG-IP DHD and use the tcpdump util to verify that ICMP attack traffic is passing through the device.
+    #. Open a terminal session with the **DHD** and use the tcpdump util to verify that ICMP attack traffic is passing through the device.
     
         ``[root@dhd:Active:Standalone] config # tcpdump -i defaultVLAN`` 
 
-    #. Observe the baseline running on goodclient. Since the flood attack is hitting the server hard, the legitimate client sessions are being degraded. Look at the **status: 000** responses.
+    #. Observe the baseline running on goodclient. Since the flood attack is hitting the server hard, the legitimate client sessions are being degraded. Look at the statude code **000** for most requests.
 
-    #. In the Configuration Utility, open the Statistics > Performance > Performance page. As you can see, there is a drastic spike in the traffic.
+    #. In the **Configuration Utility**, open the Statistics-> Performance-> Performance page. As you can see, there is a drastic spike in the traffic.
 
             |image19|
 
-    #. Open the Security > DoS Protection > DoS Overview page.
+    #. Open the Security-> DoS Protection-> DoS Overview page.
 
-    #. In the Filter Type field select Device DoS. Then on the left corner search for ICMP.
+    #. In the Filter Type field select **Device DoS**. Then on the left corner search for ICMP.
 
         |image20|
 
     #. Review the statistics for Current, 1 min. Average, and 1 hr Average.
 
-    #. Open the Security > Event Logs > DoS > Network > Events page.
-        The log file is empty as we disabled device-level flood protection on BIG-IP DHD.
+    #. Open the Security-> Event Logs-> DoS-> Network-> Events page.
+        The log file is empty as we disabled device-level flood protection on **BIG-IP DHD**.
 
-    #. From Attacker terminal session type Ctrl + C to stop the ICMP flood.
+    #. From the attacker terminal session type **Ctrl + C** to stop the ICMP flood.
 
 .. |image15| image:: /_static/image015.png
 .. |image16| image:: /_static/image016.png

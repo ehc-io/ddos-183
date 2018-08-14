@@ -4,46 +4,13 @@ Hybrid Defender Setup
 Getting Started
 ================
 
-  **Accessing the lab environment.**
-
-  #. Open a browser and go to http://training.f5agility.com, then enter your Class# and Student# as provided by your instructor.
-
-  #. Look for the **jumphost** virtual machine. You are going it for all the labs.
-
-    .. HINT::
-
-        You will be using the Ubuntu jumpbox to access other systems for all labs. You will use either the PUTTY client or native bash shell prompt to access the GoodClient and the Attacker systems. A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
-    
-      |image1|    
-
-  #.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
-
-      ``cd ~ ; rm -fr ~/tools_agility_183 ~/pentmenu``
-
-      ``cd ~/ ; git clone https://github.com/ehc-io/tools_agility_183.git``  
-
-      ``cd ~/ ; git clone https://github.com/ehc-io/pentmenu.git``  
-
-      ``cd ~/ ; mv pentmenu/pentmenu ~/tools_agility_183``
-      
-      ``chmod a+x ~/tools_agility_183/pentmenu ; rm -fr ~/pentmenu ; cd ~/tools_agility_183/``
-
-      ``cd .``
-
-Lab Components
-~~~~~~~~~~~~~~
-
-  **Lab Diagram**
+Lab Diagram
+~~~~~~~~~~~
 
         |image2|
 
   .. NOTE::
     You may have noticed that although clients (goodclient, attacker) and server (LAMP) are siting at the same network subnet [10.1.20.0/24], they're in different VLANs actually (internal - ID 20 vs external - ID 10). Those two VLANs will be grouped toghether (VLAN Group) and act like a single Layer-2 broadcast domain.
-
-  The lab environment provides the following resources:
-
-  - 1 x F5 BIG-IP DHD (v13.1.2)
-  - 4 x Linux Ubuntu 14.04.5 LTS [**jumphost**, **lamp**, **goodclient**, **attacker** ]
 
 Networking Info
 ~~~~~~~~~~~~~~~
@@ -83,7 +50,26 @@ Networking Info
           - **internal:** 10.1.20.244
         - ``root``/``[will be provided]``
 
-Re License your DHD Device
+Accessing the lab environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  #. Open a browser and go to http://training.f5agility.com, then enter your Class# and Student# as provided by your instructor.
+    
+      |image1|    
+
+  #. Look for the **jumphost** virtual machine. Use the RDP client of your choice and work from there, you are going to use it for all labs.
+
+    .. HINT::
+
+        You can use either use the PUTTY client provisioned on your jumphost desktop, or native shell prompt in order to access both **goodclient** and **attacker** virtual machines. 
+        Private keys have been configured in advance so you won't need passwords.
+        A few scripts require root access. Don't forget to **sudo** before running attacks, baselines, etc.  
+
+  #.  Run the following scripts from both **goodclient** and **attacker** hosts. It's going to sync the tools to be used in the entire lab.  
+
+      ``~/update_tools.sh``
+
+Re-License your DHD Device
 ==========================
 
   .. IMPORTANT::
@@ -91,15 +77,15 @@ Re License your DHD Device
 
   For the following steps please use the registration key provided by your instructor.
 
-  #. Go to System->License and then click on Re-activate.  
+  #. Go to System->License and then click on **Re-activate**.  
 
       |image3|
 
-  #. Edit the Base Registration key, replacing it by the new license key. The Activation method option must be manual. Then click **Next**.  
+  #. Edit the **Base Registration Key**, replacing it by the new license key. The **Activation Method** option must be manual. Then click **Next**.  
 
       |image4|
 
-  #. Select all in the Dossier frame and copy it.  Click on “Click here to access F5 Licensing Server”.  
+  #. Select all in the **Dossier** frame and copy it.  Click on **Click here to access F5 Licensing Server**.  
 
      |image5|
 
@@ -107,7 +93,7 @@ Re License your DHD Device
 
      |image6|
 
-  #. Go back to your F5 DHD and paste the contents copied from the above. License and click **Next**.  
+  #. Go back to your F5 DHD and paste the contents copied from the above. **License** and click **Next**.  
 
      |image7|
 
@@ -117,7 +103,7 @@ Re License your DHD Device
 Perform Initial DHD Network Configuration
 =========================================
 
-    #. In the BIG-IP Configuration Utility, open the DoS Protection > Quick Configuration page.
+    #. In the **BIG-IP Configuration Utility**, open the DoS Protection-> Quick Configuration page.
 
     #. Open the Network Configuration page, then In the **Default Network** section click **defaultVLAN**.
 
@@ -133,7 +119,7 @@ Perform Initial DHD Network Configuration
 
       |image21|
 
-    #. In the Routes section click Create.
+    #. In the Routes section click **Create**.
 
     #. Configure the route using following information, and then click **Done Editing**, and then click **Update**.
 
@@ -146,7 +132,7 @@ Perform Initial DHD Network Configuration
 
       |image22|
 
-    #. By this time you should be able to reach the LAMP server from both attacker and gooclient machines.
+    #. By this time you should be able to reach the **LAMP** server from both **attacker** and **gooclient** machines. Open up a terminal shell with both machines and confirm the can reach out to the **LAMP** server before moving forward.
         
       .. code::
 
@@ -166,13 +152,13 @@ Register DHD Device with Silverline
 
   For Silverline signaling we will be leveraging both the DHD built-in signaling, as well as bandwidth utilization reporting for Hybrid DDoS protection.  
 
-    #. Go to System->Platform menu and change the hostname as below. This will make easier to identify alerts from your particular device in the Silverline Portal. When finished, click **Update**.
+    #. Go to System-> Platform menu and change the hostname as below. This will make easier to identify alerts from your particular device in the Silverline Portal. When finished, click **Update**.
       
         ``dhd-[student#].latam.f5demo.com``  
         
         |image8|
 
-    #. In Device Management->Devices select the device and then click “Change Device Name”.  
+    #. In Device Management->Devices select the device and then click **Change Device Name**.  
 
         |image9|
 
@@ -180,11 +166,11 @@ Register DHD Device with Silverline
 
         |image11|
 
-    #. From the Hybrid Defender shell, restart services with:
+    #. Open a terminal sesson with the Hybrid Defender and restart services:
   
         ``bigstart restart``
 
-    #. Now proceed with the Silverline registration going to the DoS Protection->Quick Configuration->Silverline menu as follows:
+    #. Now proceed with the Silverline registration. Go to DoS Protection-> Quick Configuration-> Silverline. Fill out the **Authentication Credentials** fields  as follows, then click **Update**.
 
       ===========   =============================
       username      dhd2018us@f5agility.com        
@@ -195,15 +181,15 @@ Register DHD Device with Silverline
       |image12|
 
       .. Hint::
-          That screen provides no feedback when the authentication actually works, so no worries and go to the next step unless you got an error message.
+          That screen provides no feedback when the authentication actually works, so no worries. Go to the next step unless you got an error message here.
 
-      - Access the Silverline Portal https://portal.f5silverline.com  using same DHD admin account  
+      - From another tab in your browser, access the Silverline Portal https://portal.f5silverline.com  using same DHD admin account. 
 
-      - Navigate to Config->Hybrid Config->Hybrid Device Management
+      - Navigate to Config-> Hybrid Config-> Hybrid Device Management
 
         |image13| 
 
-      - Enter the hostname of your DHD device in the Search field. Verify that you have both registrations, approve them and you're done!  
+      - Enter the hostname of your DHD device in the Search field. Verify that you have both registrations. Approve them and you're done!  
 
         |image14|
 

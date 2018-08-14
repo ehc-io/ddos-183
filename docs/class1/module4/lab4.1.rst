@@ -4,9 +4,9 @@ Lab – Configure Application Layer DoS Defenses
     Check out how to detect and mitigate application layer attacks, not matter if it's encrypted or behavioral based.
 
 Create Protected Object for Behavioral DoS Protection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #. In the BIG-IP Configuration Utility, open the DoS Protection > Quick Configuration page and in the **Protected Objects** section click **Create**.
+    #. In the **BIG-IP Configuration Utility**, open the DoS Protection-> Quick Configuration page and in the **Protected Objects** section click **Create**.
 
     #. Configure the protected object **Server1-http** using the following information:
 
@@ -25,11 +25,12 @@ Create Protected Object for Behavioral DoS Protection
     #. In the HTTP section click **Proactive Bot Defense**, then from the **Mitigate Action** list select **Disabled**, finally click **Create**
 
         .. NOTE:: 
-            Both the good traffic and the attack traffic are generated with simple tools that would be blocked by Proactive Bot Defense. Please note that, by default, the Hybrid Defender will set Proactive Bot Defense to **always**'.
+            Both the good and bad (attack) traffic are generated with tools that would be blocked by **Proactive Bot Defense**. Please note that by default, the Hybrid Defender will set Proactive Bot Defense to **always**'.
+            That's the reason why we're disabling it, only to allow the scripts to work and generate sample traffic.
 
     #. In the **Protected Objects** section click **Create**.
 
-    #. Open the Security > DoS Protection > DoS Profiles page and click **Server1-http**.
+    #. Open the Security-> DoS Protection-> DoS Profiles page and click **Server1-http**.
 
         |image34|
 
@@ -46,13 +47,11 @@ Create Protected Object for Behavioral DoS Protection
 Generate L7 Behavioral baseline for Server1-http
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Use a script to generate an L7 behavioral DoS baseline on the Hybrid Defender.
+    Use a script to generate an L7 behavioral DoS baseline for the Hybrid Defender.
 
-    #. On the goodclient terminal session, type (or copy and paste) the following command:
+    #. In the **goodclient** terminal session, type (or copy and paste) the following command:
 
-        ``cd ~/tools_agility_183/``  
-
-        ``sudo ./generate_clean_traffic.sh``      
+        ``sudo ~/tools_agility_183/generate_clean_traffic.sh``      
 
     .. NOTE:: 
         This will generate traffic. Please note that it will take at least 15 minutes.
@@ -97,14 +96,14 @@ Generate L7 Behavioral baseline for Server1-http
         vs./Common/Server2-http.sig.health:[0.45349]
 
     .. IMPORTANT::
-            The results for each health check should **not** be 0.5. Let both terminal sessions opened for the rest of this lab. 
+            The results for each health check should **not** be 0.5, otherwise the system ins't learning. Let both terminal sessions opened for the rest of this lab. 
 
 Configure DoS Protection for L7 Encrypted Traffic
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Launch an encrypted Slowloris attack to the web server and view the results, then configure proper mitigation on the Hybrid Defender.
 
-    #.  Go to  DoS Protection > Quick Configuration page and in the **Protected Objects** section click **Create**.
+    #.  Go to  DoS Protection-> Quick Configuration page and in the **Protected Objects** section click **Create**.
 
     #. Configure another **Protected Object** using the following information, and then click **Create**.
 
@@ -118,17 +117,17 @@ Configure DoS Protection for L7 Encrypted Traffic
         Protec. Settings DDoS:          IPv4, TCP, HTTP
         =============================   ======================
 
-    #. Now repeat the steps for disabloing the Proactive Bot Defense which allows the HTTP request scripts to work.
+    #. Now repeat the steps for disabling the Proactive Bot Defense which allows the HTTP request scripts to work.
     
-    #. Click  HTTP section click **Proactive Bot Defense**, then from the **Mitigate Action** list select **Disabled**.
+    #. Go to the **HTTP** section and click **Proactive Bot Defense**, then from the **Mitigate Action** list select **Disabled**.
 
     #. In the HTTP section click **DoS Tool**, then from the **Mitigate Action** list select **Report**, and then click **Create**.
 
-    #. First run the test script on server2 as follows:
+    #. Now run the monitor script on **server2** as follows. It will be usefull for server health monitoring.
 
-         ``./server2_http_test.sh``    
+         ``~/tools_agility_183/server2_monitor.sh``    
 
-    #. Before launching the application layer attack, observe the server2 is currently healthy.
+    #. Before launching the application layer attack, observe **server2** is currently healthy.
 
         .. code::
 
@@ -139,9 +138,9 @@ Configure DoS Protection for L7 Encrypted Traffic
         .. NOTE:: 
             The system is healthy since the web server returns **HTTP Status Code 200** for every request.
 
-    #. Now from the attacker terminal session run the following command:
+    #. Now from the **attacker** terminal session run the following command:
 
-        ``./slowloris.sh`` 
+        ``~/tools_agility_183/slowloris.sh`` 
 
         .. code::
 
@@ -169,7 +168,7 @@ Configure DoS Protection for L7 Encrypted Traffic
             closed:              2092
             service available:   **NO**
 
-    #. Now observe how the service is impacted as the slowloris attack hits the server2.f5demo.com.
+    #. Observe how the service is impacted as the slowloris attack hits the **server2.f5demo.com**.
 
         .. code::
 
@@ -178,11 +177,11 @@ Configure DoS Protection for L7 Encrypted Traffic
             httprequest.php status: 000	bytes: 0    time: 1.002
 
         .. NOTE:: 
-            Since the slowloris attack is being encrypted (https://server2.f5demo.com) we need to setup the certificate and private keys so the traffic can be inspected then mitigated by the Hybrid Defender..
+            Since the slowloris attack is being encrypted (https://server2.f5demo.com) we need to setup the certificate and private keys so the traffic can be inspected by the Hybrid Defender..
 
     #. Configure SSL on the protected object to in order to inspect HTTPS traffic.
     
-    #. Go to DDoS Protection > Quick Configuration > Protected Objects, then click **Server2-http**. Configure the SSL as follows:
+    #. Go to DDoS Protection-> Quick Configuration-> Protected Objects, then click **Server2-http**. Configure the SSL as follows:
 
         =============================    ===============
         Port:                            443
@@ -192,9 +191,11 @@ Configure DoS Protection for L7 Encrypted Traffic
         Encrypt Connection to Server:    Yes (selected)   
         =============================    ===============
     
-    #.  Disable bot protections so the scripts can be used for testing the server health.
+    #. Disable bot protections so the scripts can be used for testing the server health.
 
-    #. On the Server2-http Protected Object section go to the HTTP ro, click the **+** icon, and then click **Behavioral**, then from the **Mitigation** list select **Standard Protection**.
+    #. On the **Server2-http** Protected Object section go to the **HTTP** row, click the **+** icon, click **Behavioral**
+    
+    #. Now from the **Mitigation** list select **Standard Protection**.
 
     #. In the HTTPS section click **Proactive Bot Defense**, then from the **Mitigate Action** list select **Disabled**.
 
@@ -208,32 +209,32 @@ Configure DoS Protection for L7 Encrypted Traffic
 
     #. Now get back to the DHD terminal session. 
     
-    #. You will need to observe the info.learning signature to ensure that the system has accumulated enough learning details. This signature has 4 comma-separated values, that show the learning progress.
+    #. You will need to observe the info.learning signature to ensure that the system has accumulated enough learning details.
 
-    #. This signature has 4 comma-separated values, that show the learning progress:
+    #. This signature has 4 comma-separated values for monitoring the learning progress:
 
-        - Value #1: baseline-learning_confidence.
-            This should be between 80 - 90%.
-        - Value #2: learned_bins_count (the number of learned bins).
-            This should be > 0.
-        - Value #3: good_table_size (the number of learned requests).
-            This should be > 4000.
-        - Value #4: good_table_confidence (how confident, as a percentage, the system is in the good table.
-            It must be 100% for behavioral signatures)
+        - Value #1: baseline-learning_confidence
+            This should be between 80 - 90%
+        - Value #2: learned_bins_count (the number of learned bins)
+            This should be > 0
+        - Value #3: good_table_size (the number of learned requests)
+            This should be > 4000
+        - Value #4: good_table_confidence (how confident, as a percentage, the system is) 
+            It must be 100% for behavioral signatures
 
             .. code::
 
                 vs./Common/Server1-http.info.learning:[96.3163, 78, 5355, 100]
 
-    #. If you see the pattern such as that described, it indicates the traffic baseline was already established, so you can move forward with the lab.
+    #. If you see the pattern such as that described, it indicates the traffic baseline was already established, then you can move forward with the lab.
 
-    #. Once the info.learning values are acceptable based on the details above, from the attacker terminal session run the following command:
+    #. Once the info.learning values are acceptable based on the details above, from the **attacker** terminal session run the following command:
 
-        ``./http_flood.sh``  
+        ``~/tools_agility_183/http_flood.sh``  
 
     #. Select option "1"
 
-    #. Now take a look at the goodclient terminal session, you should start seeing the effect of the HTTP DoS attack, as requests are startinf to fail **(HTTP Status Code 000)**. If you were to examine the web server at this time you would see that it is under severe stress.
+    #. Now take a look at the **goodclient** terminal session, you should start seeing the effects of the HTTP DoS attack, as requests are starting to fail **(HTTP Status Code 000)**. If you were to examine the **Lamp** server at this time, you would see that it is under severe stress.
 
         .. code::
 
@@ -250,7 +251,7 @@ Configure DoS Protection for L7 Encrypted Traffic
             badlinks.html	status: 000	bytes: 0	time: 1.002
             bigip4200.jpg	status: 200	bytes: 9318	time: 0.247
 
-    #. Also from the terminal session watch the health signal feed. You should see it climb from ~.5, which is optimal health, to values over 1, indicating an increase in server stress. You will also be able to watch as the system responds and mitigations are engaged.
+    #. Also from the DHD terminal session watch the health signal feed. You should see it climb from ~.5, which is optimal health, to values over 1, indicating an increase in server stress. You will also be able to watch as the system responds and mitigations are engaged.
 
     #. When the system has analyzed the attack traffic, dynamic signatures are created and engaged:
 
@@ -259,7 +260,7 @@ Configure DoS Protection for L7 Encrypted Traffic
             vs./Common/Server1-http.sig.health:[0.768427]
             vs./Common/Server1-http.info.attack:[1, 1]
             vs./Common/Server1-http.sig.health:[0.746648]
-            vs./Common/Server1-http.info.signature:["Stable signature detected: (http.f5_filename_bin == 21) and (http.request.method eq \"GET\") and (!(http.user_agent matches \"(MSIE|Chrome|Firefox|Opera|Safari|Maxthon|Seamonkey)\")) and (!http.content_type) and ((http.hdr_len >= 128) and (http.hdr_len < 256)) and (http.request.uri matches \"^[^\\\\?]*$\") and (http.f5_headers_count == 5) and (http.f5_cache_control_bin == 0) and (http.accept) and (http.request.line matches \"Accept-Charset:.*\") and (http.f5_host_bin == 4) and (http.f5_referer_bin == 0) and (http.f5_uri_len_bin == 0) and (!(http.accept matches \"(application|audio|message|text|image|multipart)\")) and (http.connection) and (http.host) and (!(http.request.line matches \"Accept-Charset\")) and (http.user_agent)"]
+            vs./Common/Server1-http.info.signature:["Stable signature detected: (http.f5_filename_bin == 21) and (http.request.method eq \"GET\") and (!(http.user_agent matches \"(MSIE|Chrome|Firefox|Opera|Safari|Maxthon|Seamonkey)\")) and (!http.content_type) and ((http.hdr_len->= 128) and (http.hdr_len < 256)) and (http.request.uri matches \"^[^\\\\?]*$\") and (http.f5_headers_count == 5) and (http.f5_cache_control_bin == 0) and (http.accept) and (http.request.line matches \"Accept-Charset:.*\") and (http.f5_host_bin == 4) and (http.f5_referer_bin == 0) and (http.f5_uri_len_bin == 0) and (!(http.accept matches \"(application|audio|message|text|image|multipart)\")) and (http.connection) and (http.host) and (!(http.request.line matches \"Accept-Charset\")) and (http.user_agent)"]
             vs./Common/Server1-http.info.attack:[1, 1]
             vs./Common/Server1-http.sig.health:[0.726608]
             vs./Common/Server1-http.info.attack:[1, 1]
@@ -267,13 +268,13 @@ Configure DoS Protection for L7 Encrypted Traffic
             vs./Common/Server1-http.info.attack:[1, 1]
             vs./Common/Server1-http.sig.health:[0.691779]
 
-    #. In the Configuration Utility, notice the indicator at the top-left side of the page.
+    #. In the **Configuration Utility**, notice the indicator at the top-left side of the page.
 
         |image37|
 
-    #. As you watch the feed, you should see HTTP requests being served again.
+    #. As you watch the feed, you should see HTTP requests being served again after the dynamic signature kicks in.
 
-    #. In the Configuration Utility open the Security > DoS Protection > Behavioral Signatures page.
+    #. In the **Configuration Utility** open the Security-> DoS Protection-> Behavioral Signatures page.
 
         |image39|
 
@@ -291,16 +292,16 @@ Configure DoS Protection for L7 Encrypted Traffic
         be helpful if using the "Approved Only" in the DoS profile setting to allow a risk-averse administrator
         to approve signatures before they begin to filter traffic.
 
-    #. Change the Alias value to ISC Lab signature, and then click Finished.
+    #. Change the Alias value to **Agility2018**, and then click Finished.
 
 – View Silverline Signals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Use the Silverline portal to view details about the L7 DoS attacks that were launched in this exercise.
 
-    #. Click Alerts for Hybrid Defender.
+    #. Click **Alerts for Hybrid Defender**.
 
-    #. Open the Audit->API Activity Log page.
+    #. Open the Audit-> API Activity Log page.
 
         |image41|
 
