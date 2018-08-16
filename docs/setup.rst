@@ -97,8 +97,8 @@ Re-License your DHD Device
 
      |image7|
 
-    .. Hint::
-      The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click **Continue**. Your device is now licensed.  Click **Next**
+      .. Hint::
+        The BIG-IP will restart daemons and a window will pop up indicating system configuration has changed.  Please wait for it to reconnect and click **Continue**. Your device is now licensed.  Click **Next**
 
 Perform Initial DHD Network Configuration
 =========================================
@@ -109,15 +109,15 @@ Perform Initial DHD Network Configuration
 
     #. Configure the Default Network settings as follows, the click on **Done Editing**
 
-      ==========================   ======================================  
-      Internal VLAN tag:              blank                                
-      Internal Interfaces:            1.2 (Click untagged/Add)                    
-      External VLAN tag:              blank       
-      External Interfaces:            1.1 (Click untagged/Add)         
-      IP Address/Mask:                10.1.20.244/24                       
-      ==========================   ====================================== 
+        ==========================   ======================================  
+        Internal VLAN tag:              blank                                
+        Internal Interfaces:            1.2 (Click untagged/Add)                    
+        External VLAN tag:              blank       
+        External Interfaces:            1.1 (Click untagged/Add)         
+        IP Address/Mask:                10.1.20.244/24                       
+        ==========================   ====================================== 
 
-      |image21|
+        |image21|
 
     #. In the Routes section click **Create**.
 
@@ -130,7 +130,7 @@ Perform Initial DHD Network Configuration
       Gateway Address:              10.1.20.2    
       ==========================   ===========
 
-      |image22|
+        |image22|
 
     #. By this time you should be able to reach the **LAMP** server from both **attacker** and **gooclient** machines. Open up a terminal shell with both machines and confirm the can reach out to the **LAMP** server before moving forward.
         
